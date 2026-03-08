@@ -1,24 +1,24 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))] 
 public class DragReturn : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Rigidbody2D rb; 
     Camera cam;
 
-    Vector2 offset;
+    Vector2 offset; 
     Vector2 startPos;
 
     bool dragging;
 
-    public Bin bin;
+    public Bin bin; 
     public PackingBin packingBin;
 
     public bool returnToStartPosition = true;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); 
         cam = Camera.main;
 
         rb.gravityScale = 0f; // ensure no gravity

@@ -149,7 +149,7 @@ public class Pot : MonoBehaviour
             hybridFlower1.SetActive(true);
 
             hybridFlower1.transform.SetParent(transform);
-            hybridFlower1.transform.localPosition = new Vector3(0.3f, 1f, 0f);
+            hybridFlower1.transform.localPosition = new Vector3(0f, 3.2f, 0f);
 
             Debug.Log("Flower 1 parented");
         }
@@ -158,7 +158,7 @@ public class Pot : MonoBehaviour
             hybridFlower2.SetActive(true);
 
             hybridFlower2.transform.SetParent(transform);
-            hybridFlower2.transform.localPosition = new Vector3(0.3f, 1f, 0f);
+            hybridFlower2.transform.localPosition = new Vector3(0f, 3.2f, 0f);
 
             Debug.Log("Flower 2 parented");
         }

@@ -19,3 +19,6 @@ MonoBehaviour:
   - flowerA: {fileID: 11400000, guid: e673a3c32ece0fc419605dec00837f2f, type: 2}
     flowerB: {fileID: 11400000, guid: 1e11fff537b8e2948a93b285191909b3, type: 2}
     resultHybrid: {fileID: 11400000, guid: d19225a747880e248a115f23bf010ab3, type: 2}
+  - flowerA: {fileID: 11400000, guid: 892c22bc2e60ae8439215033c916c122, type: 2}
+    flowerB: {fileID: 11400000, guid: 1e11fff537b8e2948a93b285191909b3, type: 2}
+    resultHybrid: {fileID: 11400000, guid: cf5af75f2fead1e4b9c0a1ffcb721810, type: 2}

@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class PackingManager : MonoBehaviour
 {
+    [Header("Hybrid Flower Slots")]
+    public Button[] hybridSlots;
+
     [Header("Hybrid Flowers (Gameplay)")]
     public GameObject hybridFlower1;
     public GameObject hybridFlower2;
@@ -62,81 +66,91 @@ public class PackingManager : MonoBehaviour
     void Start()
     {
         // Safety
-        if (GameState.Instance == null || GameState.Instance.collectedHybrids.Count == 0)
+        if (InventoryManager.Instance == null)
         {
-            Debug.LogError("No collected hybrid data found.");
+            Debug.LogError("InventoryManager missing.");
             return;
         }
-
-        collectedHybrid = GameState.Instance.collectedHybrids[0];
 
         //store accessory start position
         accessory1StartPos = accessory1Object.transform.localPosition;
         accessory2StartPos = accessory2Object.transform.localPosition;
 
-        // Hide flowers first
-        hybridFlower1.SetActive(false);
-        hybridFlower2.SetActive(false);
-        hybridButton1.gameObject.SetActive(false);
-        hybridButton2.gameObject.SetActive(false);
-
-        //Hide Order Prompt first
+        //set inactive - correct/wrong order pop up
+        //already set inactive in hierachy
         CorrectOrderPrompt.SetActive(false);
         WrongOrderPrompt.SetActive(false);
 
         // Disable wrap + accessory UI initially
+        //already set inactive in hierachy
         wrapAccessoryTabBackground.gameObject.SetActive(false);
         SetWrapButtons(false);
         SetAccessoryButtons(false);
+
+        //disable order complete button
         orderCompleteButton.interactable = false;
 
-        // Determine which hybrid button to show
-        var tag1 = hybridFlower1.GetComponent<HybridFlowerTag>();
-        var tag2 = hybridFlower2.GetComponent<HybridFlowerTag>();
+        DisplayHybridInventory();
 
-        if (tag1 == null || tag2 == null)
+    }
+
+    void DisplayHybridInventory()
+    {
+        for (int i = 0; i < hybridSlots.Length; i++)
         {
-            Debug.LogError("HybridFlowerTag missing on flower GameObjects.");
-            return;
+            hybridSlots[i].gameObject.SetActive(false);
+            hybridSlots[i].onClick.RemoveAllListeners();
         }
 
-        //DECIDE WHICH HYBRID FLOWER ICON BUTTONS TO SHOW UP IN THE FLOWER TAB
-        if (tag1.flowerItemData == collectedHybrid)
+        int slotIndex = 0;
+
+        foreach (var stack in InventoryManager.Instance.hybrids)
         {
-            hybridButton1.gameObject.SetActive(true);
-            hybridButton1.onClick.AddListener(() => ActivateHybridFlower(hybridFlower1));
-        }
-        else if (tag2.flowerItemData == collectedHybrid)
-        {
-            hybridButton2.gameObject.SetActive(true);
-            hybridButton2.onClick.AddListener(() => ActivateHybridFlower(hybridFlower2));
-        }
-        else
-        {
-            Debug.LogError("Collected hybrid does not match any flower.");
+            for (int i = 0; i < stack.amount; i++)
+            {
+                if (slotIndex >= hybridSlots.Length)
+                    return;
+
+                Button slotButton = hybridSlots[slotIndex];
+
+                slotButton.gameObject.SetActive(true);
+                slotButton.image.sprite = stack.item.itemSprite;
+
+                ItemsSOScript flowerData = stack.item;
+
+                slotButton.onClick.AddListener(() =>
+                {
+                    ActivateHybridFromInventory(flowerData);
+                });
+
+                slotIndex++;
+            }
         }
     }
 
-    void ActivateHybridFlower(GameObject flower)
+    void ActivateHybridFromInventory(ItemsSOScript hybridData)
     {
         if (wrapSelected)
         {
             Debug.Log("Dispose current wrap first!");
-            // show popup here
             return;
         }
 
+        collectedHybrid = hybridData;
         flowerSelected = true;
 
-        // Hide buttons after selection
-        hybridButton1.gameObject.SetActive(false);
-        hybridButton2.gameObject.SetActive(false);
-
-        // Activate gameplay object
-        flower.SetActive(true);
+        // decide which gameplay flower to show
+        if (hybridFlower1.GetComponent<HybridFlowerTag>().flowerItemData == hybridData)
+        {
+            hybridFlower1.SetActive(true);
+        }
+        else if (hybridFlower2.GetComponent<HybridFlowerTag>().flowerItemData == hybridData)
+        {
+            hybridFlower2.SetActive(true);
+        }
     }
 
-    // CALL THIS from your leaf plucking script when done
+    //CALL THIS from your leaf plucking script when done
     //CHECK IF ALL LEAVES ON HYBRID FLOWER ARE PLUCKED, THEN SET WRAPACCESSORY TAB + WRAP ICON BUTTONS TO SHOW
     public void OnLeavesPlucked()
     {
@@ -241,6 +255,30 @@ public class PackingManager : MonoBehaviour
     }
 
 
+    //void ValidateOrder()
+    //{
+    //    var order = OrderTakingManager.Instance.currentOrder;
+
+    //    bool flowerCorrect = order.orderedItems.Contains(collectedHybrid);
+    //    bool wrapCorrect = order.orderedItems.Contains(selectedWrap);
+    //    bool accessoryCorrect = order.orderedItems.Contains(selectedAccessory);
+
+    //    if (flowerCorrect && wrapCorrect && accessoryCorrect)
+    //    {
+    //        Debug.Log("Order completed successfully!");
+    //        CorrectOrderPrompt.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Order incorrect!");
+    //        WrongOrderPrompt.SetActive(true);
+
+    //    }
+
+    //    InventoryManager.Instance.RemoveHybrid(collectedHybrid);
+
+    //}
+
     void ValidateOrder()
     {
         var order = OrderTakingManager.Instance.currentOrder;
@@ -253,15 +291,15 @@ public class PackingManager : MonoBehaviour
         {
             Debug.Log("Order completed successfully!");
             CorrectOrderPrompt.SetActive(true);
+
+            InventoryManager.Instance.RemoveHybrid(collectedHybrid);
+            DisplayHybridInventory();
         }
         else
         {
             Debug.Log("Order incorrect!");
             WrongOrderPrompt.SetActive(true);
-
         }
-
-
     }
 
     public void HandleDisposal(GameObject disposed)
@@ -395,5 +433,6 @@ public class PackingManager : MonoBehaviour
         ResetPackingScene();
     }
 }
+
 
 

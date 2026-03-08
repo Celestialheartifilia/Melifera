@@ -92,7 +92,7 @@ public class FlowerCutSwap : MonoBehaviour
                 
 
             // use the data that was passed in
-            GameState.Instance.AddHybrid(hybridData);
+            InventoryManager.Instance.AddHybrid(hybridData);
 
             //maybe not destroy
             //set inactive then reset??
