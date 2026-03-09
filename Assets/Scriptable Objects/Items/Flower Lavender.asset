@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9284d9b5a02ed4c84c7d1fe96bbbf6, type: 3}
-  m_Name: Flower 1
+  m_Name: Flower Lavender
   m_EditorClassIdentifier: 
   itemID: 
-  itemName: Flower 1
-  itemSprite: {fileID: -1270424532052751957, guid: 6fc2e35869d854d4bb286494e815a533, type: 3}
+  itemName: Flower 2
+  itemSprite: {fileID: -6010237784132421464, guid: 269a0a4de2fdcdc4b87a315943a0ad9c, type: 3}

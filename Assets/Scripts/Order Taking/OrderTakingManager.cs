@@ -10,14 +10,19 @@ public class OrderTakingManager : MonoBehaviour
     public List<ItemsSOScript> accessoryItems;
 
     public OrderList currentOrder;
-    public OrderBubbleUI orderBubbleUI;
+
+    public int currentCustomerIndex = 0;
+    public int maxCustomers = 3;
+
+    //public OrderBubbleUI orderBubbleUI;
 
     public static OrderTakingManager Instance;
 
-    //take order button
-    public GameObject takeOrderButton;
-    // Pop up message 
-    public GameObject collectedPopup;
+    ////take order button
+    //public GameObject takeOrderButton;
+    //// Pop up message 
+    //public GameObject collectedPopup;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -57,44 +62,75 @@ public class OrderTakingManager : MonoBehaviour
                 break;
         }
 
+        Debug.Log("New order created.");
+
         //orderBubbleUI.DisplayOrder(currentOrder);
         // HIDE the bubble initially (so it's not showing yet)
-        orderBubbleUI.gameObject.SetActive(false);
+        //orderBubbleUI.gameObject.SetActive(false);
         //SHOW the button 
-        if (takeOrderButton != null) takeOrderButton.SetActive(true);
+        //if (takeOrderButton != null) takeOrderButton.SetActive(true);
     }
 
-    public void OnTakeOrderButtonClicked()
+    public bool HasActiveOrder()
     {
-        if (currentOrder != null)
-        {
-            // SHOW the bubble now that we clicked
-            orderBubbleUI.gameObject.SetActive(true);
-            orderBubbleUI.DisplayOrder(currentOrder);
-
-            // HIDE the button
-            if (takeOrderButton != null) takeOrderButton.SetActive(false);
-            Debug.Log("Order collected!");
-        }
+        return currentOrder != null;
     }
 
-    public void OnCloseOrderBubble()
-    {  
-        //The Bubble disappears first
-        if (orderBubbleUI != null)
-        {
-            orderBubbleUI.gameObject.SetActive(false);
-        }
-        // The Popup message starts appearing immediately after
-        if (collectedPopup != null)
-        {
-
-            collectedPopup.SetActive(true);
-            //StartCoroutine(FlashMessage());
-        }
-
-        Debug.Log("Bubble gone, Popup shown!");
+    public bool HasMoreCustomers()
+    {
+        return currentCustomerIndex < maxCustomers;
     }
+
+    public void FinishOrder()
+    {
+        currentOrder = null;
+    }
+
+    //public void OnTakeOrderButtonClicked()
+    //{
+    //    if (currentOrder != null)
+    //    {
+    //        // SHOW the bubble now that we clicked
+    //        orderBubbleUI.gameObject.SetActive(true);
+    //        orderBubbleUI.DisplayOrder(currentOrder);
+
+    //        // HIDE the button
+    //        if (takeOrderButton != null) takeOrderButton.SetActive(false);
+    //        Debug.Log("Order collected!");
+    //    }
+    //}
+
+    //public void OnTakeOrderButtonClicked()
+    //{
+    //    if (currentOrder != null)
+    //    {
+    //        OrderUIManager.Instance.ShowOrder(currentOrder);
+    //        Debug.Log("Order collected!");
+    //    }
+    //}
+
+    //public void OnCloseOrderBubble()
+    //{
+    //    OrderUIManager.Instance.CloseOrderBubble();
+    //}
+
+    //public void OnCloseOrderBubble()
+    //{  
+    //    //The Bubble disappears first
+    //    if (orderBubbleUI != null)
+    //    {
+    //        orderBubbleUI.gameObject.SetActive(false);
+    //    }
+    //    // The Popup message starts appearing immediately after
+    //    if (collectedPopup != null)
+    //    {
+
+    //        collectedPopup.SetActive(true);
+    //        //StartCoroutine(FlashMessage());
+    //    }
+
+    //    Debug.Log("Bubble gone, Popup shown!");
+    //}
 
 
 

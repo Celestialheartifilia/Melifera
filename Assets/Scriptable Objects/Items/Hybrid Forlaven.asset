@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9284d9b5a02ed4c84c7d1fe96bbbf6, type: 3}
-  m_Name: Hybrid Flower 2
+  m_Name: Hybrid Forlaven
   m_EditorClassIdentifier: 
   itemID: Hybrid_2
-  itemName: Hybrid Flower 2
+  itemName: Forlaven
   itemSprite: {fileID: 5630852016633456992, guid: a6790a3a24513074d9c4aead70efff23, type: 3}

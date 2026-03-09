@@ -181,8 +181,8 @@ public class PackingManager : MonoBehaviour
         selectedWrap = wrap1;
         wrapSelected = true;
 
-        hybridFlower1.GetComponent<DragReturn>().enabled = false;
-        hybridFlower2.GetComponent<DragReturn>().enabled = false;
+        hybridFlower1.GetComponent<DragFlower>().enabled = false;
+        hybridFlower2.GetComponent<DragFlower>().enabled = false;
 
         wrapBackRenderer.sprite = wrap1BackSprite;
         wrapFrontRenderer.sprite = wrap1FrontSprite;
@@ -197,8 +197,8 @@ public class PackingManager : MonoBehaviour
         selectedWrap = wrap2;
         wrapSelected = true;
 
-        hybridFlower1.GetComponent<DragReturn>().enabled = false;
-        hybridFlower2.GetComponent<DragReturn>().enabled = false;
+        hybridFlower1.GetComponent<DragFlower>().enabled = false;
+        hybridFlower2.GetComponent<DragFlower>().enabled = false;
 
         wrapBackRenderer.sprite = wrap2BackSprite;
         wrapFrontRenderer.sprite = wrap2FrontSprite;
@@ -294,11 +294,13 @@ public class PackingManager : MonoBehaviour
 
             InventoryManager.Instance.RemoveHybrid(collectedHybrid);
             DisplayHybridInventory();
+            OrderTakingManager.Instance.FinishOrder();
         }
         else
         {
             Debug.Log("Order incorrect!");
             WrongOrderPrompt.SetActive(true);
+            OrderTakingManager.Instance.FinishOrder();
         }
     }
 

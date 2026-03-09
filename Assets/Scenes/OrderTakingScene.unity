@@ -163,9 +163,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c6004648d5e92c047a3c97b5fac4fc0d, type: 2}
   currentOrder:
     orderedItems: []
-  orderBubbleUI: {fileID: 1244885008}
-  takeOrderButton: {fileID: 1693576110}
-  collectedPopup: {fileID: 2012541116}
 --- !u!4 &131739108
 Transform:
   m_ObjectHideFlags: 0
@@ -325,6 +322,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239677834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239677836}
+  - component: {fileID: 239677835}
+  m_Layer: 0
+  m_Name: OrderUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &239677835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239677834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f852ea3559b56874e883e2e48010ac71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orderBubbleUI: {fileID: 1244885008}
+  takeOrderButton: {fileID: 1693576110}
+  collectedPopup: {fileID: 2012541116}
+--- !u!4 &239677836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239677834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5570879, y: -0.3242172, z: -0.48776352}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541905479
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +519,7 @@ GameObject:
   - component: {fileID: 622252744}
   - component: {fileID: 622252746}
   m_Layer: 5
-  m_Name: Hover
+  m_Name: Onclick for order bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,8 +626,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 131739107}
-        m_TargetAssemblyTypeName: OrderTakingManager, Assembly-CSharp
+      - m_Target: {fileID: 239677835}
+        m_TargetAssemblyTypeName: OrderUIManager, Assembly-CSharp
         m_MethodName: OnCloseOrderBubble
         m_Mode: 1
         m_Arguments:
@@ -1145,7 +1189,6 @@ MonoBehaviour:
   customer1: {fileID: 740556409}
   customer2: {fileID: 165929770}
   customer3: {fileID: 1553597160}
-  orderTakingManager: {fileID: 131739107}
 --- !u!1 &1149562498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,12 +1555,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 622252744}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 131739107}
-        m_TargetAssemblyTypeName: OrderTakingManager, Assembly-CSharp
+      - m_Target: {fileID: 239677835}
+        m_TargetAssemblyTypeName: OrderUIManager, Assembly-CSharp
         m_MethodName: OnCloseOrderBubble
         m_Mode: 1
         m_Arguments:
@@ -2157,8 +2200,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 131739107}
-        m_TargetAssemblyTypeName: OrderTakingManager, Assembly-CSharp
+      - m_Target: {fileID: 239677835}
+        m_TargetAssemblyTypeName: OrderUIManager, Assembly-CSharp
         m_MethodName: OnTakeOrderButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -2634,3 +2677,4 @@ SceneRoots:
   - {fileID: 131739108}
   - {fileID: 1239391603}
   - {fileID: 231500301}
+  - {fileID: 239677836}

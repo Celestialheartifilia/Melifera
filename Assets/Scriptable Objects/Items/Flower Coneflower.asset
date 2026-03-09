@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9284d9b5a02ed4c84c7d1fe96bbbf6, type: 3}
-  m_Name: Hybrid Flower 3
+  m_Name: Flower Coneflower
   m_EditorClassIdentifier: 
-  itemID: Hybrid_3
-  itemName: Hybrid Flower 3
-  itemSprite: {fileID: -6269580356844690907, guid: 281b3759f0d98194db80f836a5448e8d, type: 3}
+  itemID: 
+  itemName: Flower 1
+  itemSprite: {fileID: -1270424532052751957, guid: 6fc2e35869d854d4bb286494e815a533, type: 3}
