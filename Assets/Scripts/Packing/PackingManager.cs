@@ -300,6 +300,7 @@ public class PackingManager : MonoBehaviour
         {
             Debug.Log("Order incorrect!");
             WrongOrderPrompt.SetActive(true);
+            DisplayHybridInventory();
             OrderTakingManager.Instance.FinishOrder();
         }
     }
@@ -344,8 +345,8 @@ public class PackingManager : MonoBehaviour
             wrapSelected = false;
             selectedWrap = null;
 
-            hybridFlower1.GetComponent<DragReturn>().enabled = true;
-            hybridFlower2.GetComponent<DragReturn>().enabled = true;
+            hybridFlower1.GetComponent<DragFlower>().enabled = true;
+            hybridFlower2.GetComponent<DragFlower>().enabled = true;
 
             wrapBackRenderer.sprite = null;
             wrapFrontRenderer.sprite = null;
@@ -368,8 +369,8 @@ public class PackingManager : MonoBehaviour
                 return;
             }
 
-            hybridFlower1.GetComponent<DragReturn>().enabled = true;
-            hybridFlower2.GetComponent<DragReturn>().enabled = true;
+            hybridFlower1.GetComponent<DragFlower>().enabled = true;
+            hybridFlower2.GetComponent<DragFlower>().enabled = true;
 
             ResetPackingScene();
             Debug.Log("Flower removed");

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9284d9b5a02ed4c84c7d1fe96bbbf6, type: 3}
   m_Name: Hybrid Lacone
   m_EditorClassIdentifier: 
-  itemID: Hybrid_2
+  itemID: Hybrid_1
   itemName: Lacone
-  itemSprite: {fileID: -2944767158410593743, guid: 4a8d56d3489d71140b21ca156a25777d, type: 3}
+  itemSprite: {fileID: 3706062468685975452, guid: 790c4939980978f408bd8fff3a9e203e, type: 3}

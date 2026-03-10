@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c65d59fd4278bf54086aeb8d2d99de7e
+guid: 74b6036b250a94844950ac5695fdf314
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3903169081845084081
-    second: Beebop_Forlaven_0
+      213: -2127637032988471129
+    second: Inventory_LeftTab_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beebop_Forlaven_0
+      name: Inventory_LeftTab_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 19
-        width: 304
-        height: 405
+        x: 4
+        y: 5
+        width: 325
+        height: 488
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1bfe9ad9997da2630800000000000000
-      internalID: 3903169081845084081
+      spriteID: 7a091c5246d1972e0800000000000000
+      internalID: -2127637032988471129
       vertices: []
       indices: 
       edges: []

@@ -14,6 +14,8 @@ public class OrderTakingManager : MonoBehaviour
     public int currentCustomerIndex = 0;
     public int maxCustomers = 3;
 
+    //public NextOrderPopup nextOrderPopup;
+
     //public OrderBubbleUI orderBubbleUI;
 
     public static OrderTakingManager Instance;
@@ -84,6 +86,7 @@ public class OrderTakingManager : MonoBehaviour
     public void FinishOrder()
     {
         currentOrder = null;
+        //nextOrderPopup.ShowPopupAfterDelay();
     }
 
     //public void OnTakeOrderButtonClicked()

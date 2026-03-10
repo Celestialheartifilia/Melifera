@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flower Coneflower
   m_EditorClassIdentifier: 
   itemID: 
-  itemName: Flower 1
+  itemName: Coneflower
   itemSprite: {fileID: -1270424532052751957, guid: 6fc2e35869d854d4bb286494e815a533, type: 3}

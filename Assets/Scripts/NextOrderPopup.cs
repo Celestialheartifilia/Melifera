@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class NextOrderPopup : MonoBehaviour
 {
@@ -6,6 +7,13 @@ public class NextOrderPopup : MonoBehaviour
 
     void Start()
     {
+        popup.SetActive(false);   // ensure it starts hidden
+        ShowPopupAfterDelay();
+    }
+
+    public IEnumerator ShowPopupAfterDelay()
+    {
+        yield return new WaitForSeconds(5f);
         CheckForNextOrder();
     }
 

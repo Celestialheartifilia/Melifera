@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flower Lavender
   m_EditorClassIdentifier: 
   itemID: 
-  itemName: Flower 2
+  itemName: Lavender
   itemSprite: {fileID: -6010237784132421464, guid: 269a0a4de2fdcdc4b87a315943a0ad9c, type: 3}

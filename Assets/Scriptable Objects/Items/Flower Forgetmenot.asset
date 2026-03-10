@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flower Forgetmenot
   m_EditorClassIdentifier: 
   itemID: 
-  itemName: Flower 3
+  itemName: Forgetmenot
   itemSprite: {fileID: -5256220484543961449, guid: 5599642fbad966946bf215abae63fb5e, type: 3}
