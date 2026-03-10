@@ -7,7 +7,8 @@ public class DragFlower : MonoBehaviour
     Vector2 offset;
     bool dragging;
 
-    Vector2 startPos;
+    Vector3 homePosition;
+    Quaternion homeRotation;
 
     public DragLeaf[] leaves;
     public PackingBin packingBin;
@@ -15,7 +16,10 @@ public class DragFlower : MonoBehaviour
     void Awake()
     {
         cam = Camera.main;
-        startPos = transform.position;
+
+        // default home = scene position
+        homePosition = transform.position;
+        homeRotation = transform.rotation;
     }
 
     void OnMouseDown()
@@ -27,7 +31,10 @@ public class DragFlower : MonoBehaviour
 
         // disable leaf dragging while flower moves
         foreach (var leaf in leaves)
-            leaf.enabled = false;
+        {
+            if (leaf != null)
+                leaf.enabled = false;
+        }
     }
 
     void OnMouseDrag()
@@ -42,20 +49,26 @@ public class DragFlower : MonoBehaviour
     {
         dragging = false;
 
-        // enable leaves again
         foreach (var leaf in leaves)
-            leaf.enabled = true;
+        {
+            if (leaf != null)
+                leaf.enabled = true;
+        }
 
-        transform.position = startPos;
+        // return to current bouquet/home transform
+        transform.position = homePosition;
+        transform.rotation = homeRotation;
+    }
 
-        //if (packingBin == null || !packingBin.IsFlowerInside(this))
-        //{
-        //    transform.position = startPos;
-        //}
+    public void SetHomeTransform(Vector3 newPosition, Quaternion newRotation)
+    {
+        homePosition = newPosition;
+        homeRotation = newRotation;
     }
 
     public void ResetFlower()
     {
-        transform.position = startPos;
+        transform.position = homePosition;
+        transform.rotation = homeRotation;
     }
 }

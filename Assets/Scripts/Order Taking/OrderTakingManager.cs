@@ -25,6 +25,27 @@ public class OrderTakingManager : MonoBehaviour
     //// Pop up message 
     //public GameObject collectedPopup;
 
+    [System.Serializable]
+    public class BouquetState
+    {
+        public List<ItemsSOScript> flowers = new List<ItemsSOScript>();
+        public ItemsSOScript wrap;
+        public ItemsSOScript accessory;
+    }
+
+    public BouquetState currentBouquet = new BouquetState();
+
+    public void ResetBouquet()
+    {
+        currentBouquet = new BouquetState();
+    }
+
+    public void FinishOrder()
+    {
+        currentOrder = null;
+        ResetBouquet();
+    }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -81,12 +102,6 @@ public class OrderTakingManager : MonoBehaviour
     public bool HasMoreCustomers()
     {
         return currentCustomerIndex < maxCustomers;
-    }
-
-    public void FinishOrder()
-    {
-        currentOrder = null;
-        //nextOrderPopup.ShowPopupAfterDelay();
     }
 
     //public void OnTakeOrderButtonClicked()
