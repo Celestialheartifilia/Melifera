@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9284d9b5a02ed4c84c7d1fe96bbbf6, type: 3}
   m_Name: Flower Lavender
   m_EditorClassIdentifier: 
-  itemID: 
+  itemID: Flower_2
   itemName: Lavender
   itemSprite: {fileID: -6010237784132421464, guid: 269a0a4de2fdcdc4b87a315943a0ad9c, type: 3}

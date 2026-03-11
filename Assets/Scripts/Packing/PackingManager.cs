@@ -4,13 +4,23 @@ using System.Collections.Generic;
 
 public class PackingManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class FlowerEntry
+    {
+        public ItemsSOScript flowerData;
+        public GameObject flowerObject;
+
+        [HideInInspector] public Vector3 startPos;
+        [HideInInspector] public Quaternion startRot;
+    }
+
     [Header("Hybrid Flower Slots UI")]
     public Button[] hybridSlots;
 
     [Header("Flower Gameplay Objects")]
-
-    public GameObject hybridLacone;
-    public GameObject hybridForlaven;
+    public FlowerEntry[] flowers;
+    //public GameObject hybridLacone;
+    //public GameObject hybridForlaven;
 
     [Header("Wrap Visual")]
     public SpriteRenderer wrapBackRenderer;
@@ -46,11 +56,11 @@ public class PackingManager : MonoBehaviour
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
 
-    Vector3 hybridLaconeStartPos;
-    Vector3 hybridForlavenStartPos;
+    //Vector3 hybridLaconeStartPos;
+    //Vector3 hybridForlavenStartPos;
 
-    Quaternion hybridLaconeStartRot;
-    Quaternion hybridForlavenStartRot;
+    //Quaternion hybridLaconeStartRot;
+    //Quaternion hybridForlavenStartRot;
 
     Vector3 accessory1StartPos;
     Vector3 accessory2StartPos;
@@ -74,11 +84,19 @@ public class PackingManager : MonoBehaviour
             return;
         }
 
-        hybridLaconeStartPos = hybridLacone.transform.position;
-        hybridForlavenStartPos = hybridForlaven.transform.position;
+        foreach (var f in flowers)
+        {
+            f.startPos = f.flowerObject.transform.position;
+            f.startRot = f.flowerObject.transform.rotation;
 
-        hybridLaconeStartRot = hybridLacone.transform.rotation;
-        hybridForlavenStartRot = hybridForlaven.transform.rotation;
+            f.flowerObject.SetActive(false);
+        }
+
+        //hybridLaconeStartPos = hybridLacone.transform.position;
+        //hybridForlavenStartPos = hybridForlaven.transform.position;
+
+        //hybridLaconeStartRot = hybridLacone.transform.rotation;
+        //hybridForlavenStartRot = hybridForlaven.transform.rotation;
 
         accessory1StartPos = accessory1Object.transform.localPosition;
         accessory2StartPos = accessory2Object.transform.localPosition;
@@ -91,8 +109,8 @@ public class PackingManager : MonoBehaviour
         SetAccessoryButtons(false);
         orderCompleteButton.interactable = false;
 
-        hybridLacone.SetActive(false);
-        hybridForlaven.SetActive(false);
+        //hybridLacone.SetActive(false);
+        //hybridForlaven.SetActive(false);
 
         DisplayHybridInventory();
         RestoreSavedBouquet();
@@ -133,7 +151,7 @@ public class PackingManager : MonoBehaviour
     // =========================
     // FLOWER SPAWN
     // =========================
-    void ActivateFlowerFromInventory(ItemsSOScript flowerData)
+    public void ActivateFlowerFromInventory(ItemsSOScript flowerData)
     {
         if (pluckingInProgress)
         {
@@ -185,36 +203,31 @@ public class PackingManager : MonoBehaviour
 
     void ResetFlowerToOriginalTransform(GameObject flowerObj)
     {
-        if (flowerObj == hybridLacone)
+        foreach (var f in flowers)
         {
-            hybridLacone.transform.position = hybridLaconeStartPos;
-            hybridLacone.transform.rotation = hybridLaconeStartRot;
+            if (f.flowerObject == flowerObj)
+            {
+                flowerObj.transform.position = f.startPos;
+                flowerObj.transform.rotation = f.startRot;
 
-            DragFlower drag = hybridLacone.GetComponent<DragFlower>();
-            if (drag != null)
-                drag.SetHomeTransform(hybridLaconeStartPos, hybridLaconeStartRot);
-        }
-        else if (flowerObj == hybridForlaven)
-        {
-            hybridForlaven.transform.position = hybridForlavenStartPos;
-            hybridForlaven.transform.rotation = hybridForlavenStartRot;
+                DragFlower drag = flowerObj.GetComponent<DragFlower>();
+                if (drag != null)
+                    drag.SetHomeTransform(f.startPos, f.startRot);
 
-            DragFlower drag = hybridForlaven.GetComponent<DragFlower>();
-            if (drag != null)
-                drag.SetHomeTransform(hybridForlavenStartPos, hybridForlavenStartRot);
+                return;
+            }
         }
     }
 
     GameObject GetAvailableFlowerObject(ItemsSOScript flowerData)
     {
-        HybridFlowerTag tag1 = hybridLacone.GetComponent<HybridFlowerTag>();
-        HybridFlowerTag tag2 = hybridForlaven.GetComponent<HybridFlowerTag>();
-
-        if (tag1 != null && tag1.flowerItemData == flowerData && !hybridLacone.activeSelf)
-            return hybridLacone;
-
-        if (tag2 != null && tag2.flowerItemData == flowerData && !hybridForlaven.activeSelf)
-            return hybridForlaven;
+        foreach (var f in flowers)
+        {
+            if (f.flowerData == flowerData && !f.flowerObject.activeSelf)
+            {
+                return f.flowerObject;
+            }
+        }
 
         return null;
     }
@@ -267,34 +280,33 @@ public class PackingManager : MonoBehaviour
 
     void RelayoutActiveFlowers()
     {
-        int activeCount = 0;
+        List<GameObject> activeFlowers = new List<GameObject>();
 
-        if (hybridLacone.activeSelf) activeCount++;
-        if (hybridForlaven.activeSelf) activeCount++;
+        foreach (var f in flowers)
+        {
+            if (f.flowerObject.activeSelf)
+                activeFlowers.Add(f.flowerObject);
+        }
 
-        // Only 1 flower -> keep original position
+        int activeCount = activeFlowers.Count;
+
+        // 1 flower → original position
         if (activeCount == 1)
         {
-            if (hybridLacone.activeSelf) ResetFlowerToOriginalTransform(hybridLacone);
-            if (hybridForlaven.activeSelf) ResetFlowerToOriginalTransform(hybridForlaven);
+            ResetFlowerToOriginalTransform(activeFlowers[0]);
             return;
         }
 
-        // 2 flowers -> use placement SO
-        int activeIndex = 0;
-
-        if (hybridLacone.activeSelf)
+        // 2 flowers → placement system
+        for (int i = 0; i < activeFlowers.Count; i++)
         {
-            ItemsSOScript data = hybridLacone.GetComponent<HybridFlowerTag>().flowerItemData;
-            ApplyFlowerPlacement(hybridLacone, data, activeIndex);
-            activeIndex++;
-        }
+            GameObject flowerObj = activeFlowers[i];
+            HybridFlowerTag tag = flowerObj.GetComponent<HybridFlowerTag>();
 
-        if (hybridForlaven.activeSelf)
-        {
-            ItemsSOScript data = hybridForlaven.GetComponent<HybridFlowerTag>().flowerItemData;
-            ApplyFlowerPlacement(hybridForlaven, data, activeIndex);
-            activeIndex++;
+            if (tag != null)
+            {
+                ApplyFlowerPlacement(flowerObj, tag.flowerItemData, i);
+            }
         }
     }
 
@@ -514,16 +526,20 @@ public class PackingManager : MonoBehaviour
             return;
         }
 
-        if (disposed == hybridLacone || disposed == hybridForlaven)
+        foreach (var f in flowers)
         {
-            if (wrapSelected || accessorySelected)
+            if (disposed == f.flowerObject)
             {
-                Debug.Log("Remove accessory and wrap first!");
+                if (wrapSelected || accessorySelected)
+                {
+                    Debug.Log("Remove accessory and wrap first!");
+                    return;
+                }
+
+                RemoveFlowerFromBouquet(disposed);
+                Debug.Log("Flower removed");
                 return;
             }
-
-            RemoveFlowerFromBouquet(disposed);
-            Debug.Log("Flower removed");
         }
     }
 
@@ -565,8 +581,10 @@ public class PackingManager : MonoBehaviour
         selectedWrap = null;
         selectedAccessory = null;
 
-        hybridLacone.SetActive(false);
-        hybridForlaven.SetActive(false);
+        foreach (var f in flowers)
+        {
+            f.flowerObject.SetActive(false);
+        }
 
         ResetLeaves();
 
@@ -652,20 +670,22 @@ public class PackingManager : MonoBehaviour
 
     void DisableFlowerDragging()
     {
-        DragFlower d1 = hybridLacone.GetComponent<DragFlower>();
-        DragFlower d2 = hybridForlaven.GetComponent<DragFlower>();
-
-        if (d1 != null) d1.enabled = false;
-        if (d2 != null) d2.enabled = false;
+        foreach (var f in flowers)
+        {
+            DragFlower drag = f.flowerObject.GetComponent<DragFlower>();
+            if (drag != null)
+                drag.enabled = false;
+        }
     }
 
     void EnableFlowerDragging()
     {
-        DragFlower d1 = hybridLacone.GetComponent<DragFlower>();
-        DragFlower d2 = hybridForlaven.GetComponent<DragFlower>();
-
-        if (d1 != null) d1.enabled = true;
-        if (d2 != null) d2.enabled = true;
+        foreach (var f in flowers)
+        {
+            DragFlower drag = f.flowerObject.GetComponent<DragFlower>();
+            if (drag != null)
+                drag.enabled = true;
+        }
     }
 
     void SaveBouquetState()
