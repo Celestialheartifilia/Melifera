@@ -56,12 +56,6 @@ public class PackingManager : MonoBehaviour
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
 
-    //Vector3 hybridLaconeStartPos;
-    //Vector3 hybridForlavenStartPos;
-
-    //Quaternion hybridLaconeStartRot;
-    //Quaternion hybridForlavenStartRot;
-
     Vector3 accessory1StartPos;
     Vector3 accessory2StartPos;
 
@@ -92,12 +86,6 @@ public class PackingManager : MonoBehaviour
             f.flowerObject.SetActive(false);
         }
 
-        //hybridLaconeStartPos = hybridLacone.transform.position;
-        //hybridForlavenStartPos = hybridForlaven.transform.position;
-
-        //hybridLaconeStartRot = hybridLacone.transform.rotation;
-        //hybridForlavenStartRot = hybridForlaven.transform.rotation;
-
         accessory1StartPos = accessory1Object.transform.localPosition;
         accessory2StartPos = accessory2Object.transform.localPosition;
 
@@ -108,9 +96,6 @@ public class PackingManager : MonoBehaviour
         SetWrapButtons(false);
         SetAccessoryButtons(false);
         orderCompleteButton.interactable = false;
-
-        //hybridLacone.SetActive(false);
-        //hybridForlaven.SetActive(false);
 
         DisplayHybridInventory();
         RestoreSavedBouquet();
@@ -322,6 +307,30 @@ public class PackingManager : MonoBehaviour
         SetAccessoryButtons(false);
 
         Debug.Log("Leaves finished. You may wrap now or add another flower.");
+    }
+
+    public GameObject wrapAccessoryTab;
+    public GameObject flowerTab;
+
+    public void ClickToWrapAccessoryTab()
+    {
+        if (pluckingInProgress == false)
+        {
+            wrapAccessoryTab.SetActive(true);
+            wrapAccessoryTabBackground.SetActive(true);
+        }
+        
+    }
+
+    public void ClickToFlowerTab()
+    {
+        if (pluckingInProgress == false)
+        {
+            flowerTab.SetActive(true);
+            wrapAccessoryTab.SetActive(false);
+            wrapAccessoryTabBackground.SetActive(false);
+        }
+
     }
 
     void SetWrapButtons(bool state)

@@ -16,8 +16,6 @@ public class DragFlower : MonoBehaviour
     void Awake()
     {
         cam = Camera.main;
-
-        // default home = scene position
         homePosition = transform.position;
         homeRotation = transform.rotation;
     }
@@ -29,11 +27,15 @@ public class DragFlower : MonoBehaviour
         Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         offset = (Vector2)transform.position - mouse;
 
-        // disable leaf dragging while flower moves
         foreach (var leaf in leaves)
         {
-            if (leaf != null)
-                leaf.enabled = false;
+            if (leaf == null) continue;
+
+            leaf.enabled = false;
+
+            Rigidbody2D rb = leaf.GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.bodyType = RigidbodyType2D.Static;
         }
     }
 
@@ -49,15 +51,30 @@ public class DragFlower : MonoBehaviour
     {
         dragging = false;
 
-        foreach (var leaf in leaves)
+        bool disposed = false;
+
+        if (packingBin != null && packingBin.IsObjectInsideBin(gameObject))
         {
-            if (leaf != null)
-                leaf.enabled = true;
+            packingBin.TryDisposeFlower(gameObject);
+            disposed = true;
         }
 
-        // return to current bouquet/home transform
-        transform.position = homePosition;
-        transform.rotation = homeRotation;
+        foreach (var leaf in leaves)
+        {
+            if (leaf == null) continue;
+
+            leaf.enabled = true;
+
+            Rigidbody2D rb = leaf.GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        if (!disposed)
+        {
+            transform.position = homePosition;
+            transform.rotation = homeRotation;
+        }
     }
 
     public void SetHomeTransform(Vector3 newPosition, Quaternion newRotation)
