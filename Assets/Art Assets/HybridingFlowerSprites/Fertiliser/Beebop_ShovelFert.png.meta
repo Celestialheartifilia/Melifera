@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_ShovelFert_0: 7985115407553192558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

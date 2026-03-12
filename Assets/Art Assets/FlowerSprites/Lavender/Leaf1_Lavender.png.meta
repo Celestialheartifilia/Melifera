@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Leaf1_Lavender_0: 3190531404975403236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

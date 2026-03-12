@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Forlaven_stem_0: -3440628287244369787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

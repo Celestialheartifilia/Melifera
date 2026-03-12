@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lacone_full_0: 5630852016633456992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

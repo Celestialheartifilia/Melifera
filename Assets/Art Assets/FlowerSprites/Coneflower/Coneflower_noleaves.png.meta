@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Coneflower_noleaves_0: 1990203105976326157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

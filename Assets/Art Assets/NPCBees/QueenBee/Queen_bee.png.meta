@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Queen_bee_0: -7427082807996486723
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

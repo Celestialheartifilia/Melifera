@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_Lavender_Mini_0: -6010237784132421464
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

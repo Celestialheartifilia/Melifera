@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_Dustbin-1_0: 3044141030113454318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_Lacone_mini_0: 3706062468685975452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

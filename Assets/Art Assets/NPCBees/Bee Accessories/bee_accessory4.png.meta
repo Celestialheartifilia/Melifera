@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bee_accessory4_0: -4327709262825434153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pollen_Pot_0: -6914902808123738350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

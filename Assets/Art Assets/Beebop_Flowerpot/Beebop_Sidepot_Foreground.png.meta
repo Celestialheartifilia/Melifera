@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_Sidepot_Foreground_0: -1000637565069818559
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

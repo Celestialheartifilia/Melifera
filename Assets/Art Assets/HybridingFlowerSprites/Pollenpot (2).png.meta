@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a2bc9e5ea19e01d4cadc67de236ed462
+guid: c7a82837545e40045b6b072b99b3139d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3366699083656644467
-    second: QueenBee_Cry_0
+      213: -1626982397675231558
+    second: Pollenpot (2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: QueenBee_Cry_0
+      name: Pollenpot (2)_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 16
-        width: 598
-        height: 880
+        x: 26
+        y: 35
+        width: 352
+        height: 319
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 377ccf2aafae8be20800000000000000
-      internalID: 3366699083656644467
+      spriteID: ab621c2212ccb69e0800000000000000
+      internalID: -1626982397675231558
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      QueenBee_Cry_0: 3366699083656644467
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

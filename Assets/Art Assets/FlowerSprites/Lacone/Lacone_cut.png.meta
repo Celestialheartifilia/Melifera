@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lacone_cut_0: 4214250429880198749
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
