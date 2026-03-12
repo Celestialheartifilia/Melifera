@@ -2913,7 +2913,7 @@ Transform:
   m_GameObject: {fileID: 475916879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 2.2, z: 0}
+  m_LocalPosition: {x: 4.4, y: 2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6656,7 +6656,7 @@ MonoBehaviour:
   toolsReadyPopup: {fileID: 0}
   spriteRenderer: {fileID: 1189174309}
   emptyPotSprite: {fileID: 1611005008019809891, guid: 0c05d3558ae19d142bb819d0bc1f61e5, type: 3}
-  pollenPotSprite: {fileID: -6914902808123738350, guid: 423e1bab3c317ce40910877543f12d66, type: 3}
+  pollenPotSprite: {fileID: -1626982397675231558, guid: c7a82837545e40045b6b072b99b3139d, type: 3}
   potWithStudSprite: {fileID: 4834703209982559106, guid: 192663f8a90a4194b9c500435c76aee6, type: 3}
   hybridFlower1: {fileID: 799836706}
   hybridFlower2: {fileID: 124028688}
@@ -9804,8 +9804,8 @@ Transform:
   m_GameObject: {fileID: 1524150873}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -3.25, z: -0.47678107}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 3.5, y: -3.25, z: -0.47678107}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1414054527}
