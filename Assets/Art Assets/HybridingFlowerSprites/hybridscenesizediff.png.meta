@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hybridscenesizediff_0: 1351227584758855608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
