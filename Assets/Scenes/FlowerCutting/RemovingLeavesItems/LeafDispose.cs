@@ -17,10 +17,9 @@ public class LeafDispose : MonoBehaviour
         if (other != binCollider) return;
 
         leafTracker?.NotifyLeafRemoved();
-        
-        gameObject.SetActive(false); // disable only
-    }
 
+        gameObject.SetActive(false);
+    }
     public void ResetLeaf()
     {
         gameObject.SetActive(true);

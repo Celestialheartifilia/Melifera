@@ -1,15 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Customers : MonoBehaviour
 {
     public static Customers Instance;
 
+    [Header("Customer GameObjects")]
     public GameObject customer1;
     public GameObject customer2;
     public GameObject customer3;
-
-    int currentCustomerIndex = 0;
 
     void Awake()
     {
@@ -18,12 +16,39 @@ public class Customers : MonoBehaviour
 
     void Start()
     {
-        SpawnNextCustomer();
+        OrderTakingManager manager = OrderTakingManager.Instance;
+
+        if (manager == null)
+        {
+            Debug.LogError("OrderTakingManager missing.");
+            return;
+        }
+
+        // First time entering the scene
+        if (manager.currentCustomerIndex == 0)
+        {
+            SpawnNextCustomer();
+            return;
+        }
+
+        // If order still exists, restore same customer
+        if (manager.currentOrder != null)
+        {
+            RestoreCurrentCustomer();
+        }
+        else
+        {
+            // Order finished earlier, spawn next one
+            SpawnNextCustomer();
+        }
     }
 
     public void SpawnNextCustomer()
     {
         OrderTakingManager manager = OrderTakingManager.Instance;
+
+        if (manager == null)
+            return;
 
         if (!manager.HasMoreCustomers())
         {
@@ -35,10 +60,7 @@ public class Customers : MonoBehaviour
 
         int index = manager.currentCustomerIndex;
 
-        // Hide all customers
-        if (customer1) customer1.SetActive(false);
-        if (customer2) customer2.SetActive(false);
-        if (customer3) customer3.SetActive(false);
+        HideAllCustomers();
 
         if (index == 1)
         {
@@ -56,7 +78,39 @@ public class Customers : MonoBehaviour
             manager.CreateNewOrder(OrderTakingManager.OrderType.Big);
         }
 
+        RefreshUI();
+    }
+
+    void RestoreCurrentCustomer()
+    {
+        int index = OrderTakingManager.Instance.currentCustomerIndex;
+
+        HideAllCustomers();
+
+        if (index == 1 && customer1 != null)
+            customer1.SetActive(true);
+
+        else if (index == 2 && customer2 != null)
+            customer2.SetActive(true);
+
+        else if (index == 3 && customer3 != null)
+            customer3.SetActive(true);
+
+        RefreshUI();
+    }
+
+    void HideAllCustomers()
+    {
+        if (customer1) customer1.SetActive(false);
+        if (customer2) customer2.SetActive(false);
+        if (customer3) customer3.SetActive(false);
+    }
+
+    void RefreshUI()
+    {
         OrderUIManager ui = FindObjectOfType<OrderUIManager>();
-        if (ui) ui.RefreshUIForNewOrder();
+
+        if (ui != null)
+            ui.RefreshUIForNewOrder();
     }
 }
