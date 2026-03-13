@@ -68,5 +68,8 @@ TagManager:
   - name: Leaves
     uniqueID: 2080379641
     locked: 0
+  - name: Bee
+    uniqueID: 1688527011
+    locked: 0
   m_RenderingLayers:
   - Default

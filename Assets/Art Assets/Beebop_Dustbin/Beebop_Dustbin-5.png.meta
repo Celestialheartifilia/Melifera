@@ -103,10 +103,10 @@ TextureImporter:
       name: Beebop_Dustbin-5_0
       rect:
         serializedVersion: 2
-        x: 84
-        y: 80
-        width: 292
-        height: 444
+        x: 0
+        y: 0
+        width: 500
+        height: 550
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2bddb25b8362d4d469d803210d73fbd3
     internalID: 0
     vertices: []
     indices: 

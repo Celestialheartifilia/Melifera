@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: c50e5a5790db21f49950edebb0f39d90
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4803494063068136841
+    second: Sprout_Anim2-19_0
+  - first:
+      213: -6698722632881034143
+    second: Sprout_Anim2-19_1
+  - first:
+      213: 5080549726997573053
+    second: Sprout_Anim2-19_2
+  - first:
+      213: 659628219282392662
+    second: Sprout_Anim2-19_3
+  - first:
+      213: -5526680849865856253
+    second: Sprout_Anim2-19_4
+  - first:
+      213: -164055607060217326
+    second: Sprout_Anim2-19_5
+  - first:
+      213: 7321367643119292910
+    second: Sprout_Anim2-19_6
+  - first:
+      213: 5084238081468076230
+    second: Sprout_Anim2-19_7
+  - first:
+      213: 1346396550424014666
+    second: Sprout_Anim2-19_8
+  - first:
+      213: 4998203541376425435
+    second: Sprout_Anim2-19_9
+  - first:
+      213: -6672675505843755122
+    second: Sprout_Anim2-19_10
+  - first:
+      213: -2925157148721921142
+    second: Sprout_Anim2-19_11
+  - first:
+      213: -7254682293823948257
+    second: Sprout_Anim2-19_12
+  - first:
+      213: -8877684382739617392
+    second: Sprout_Anim2-19_13
+  - first:
+      213: 1475996469439313411
+    second: Sprout_Anim2-19_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_0
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 620
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a3022899f865db0800000000000000
+      internalID: -4803494063068136841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_1
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 625
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ca14ab14b5903a0800000000000000
+      internalID: -6698722632881034143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_2
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 593
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbde56d0f0db18640800000000000000
+      internalID: 5080549726997573053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 656862ede58772900800000000000000
+      internalID: 659628219282392662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_4
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 543
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30baac47c094d43b0800000000000000
+      internalID: -5526680849865856253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_5
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 507
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212c3c96b4829bdf0800000000000000
+      internalID: -164055607060217326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 462
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee11a26c419ba9560800000000000000
+      internalID: 7321367643119292910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_7
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 428
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c01b6ff897de8640800000000000000
+      internalID: 5084238081468076230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_8
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 409
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4fa5d2778c5fa210800000000000000
+      internalID: 1346396550424014666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_9
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 337
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdd57d6a3af2d5540800000000000000
+      internalID: 4998203541376425435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_10
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 340
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e87abb41bf4e563a0800000000000000
+      internalID: -6672675505843755122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_11
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 302
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a834c364211c767d0800000000000000
+      internalID: -2925157148721921142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_12
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 261
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1abe4604e0325b90800000000000000
+      internalID: -7254682293823948257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_13
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 209
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 099a5c207112cc480800000000000000
+      internalID: -8877684382739617392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprout_Anim2-19_14
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 185
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30639a208facb7410800000000000000
+      internalID: 1475996469439313411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 29efb2ff16a933c4b981b62ebcadc1cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sprout_Anim2-19_0: -4803494063068136841
+      Sprout_Anim2-19_1: -6698722632881034143
+      Sprout_Anim2-19_10: -6672675505843755122
+      Sprout_Anim2-19_11: -2925157148721921142
+      Sprout_Anim2-19_12: -7254682293823948257
+      Sprout_Anim2-19_13: -8877684382739617392
+      Sprout_Anim2-19_14: 1475996469439313411
+      Sprout_Anim2-19_2: 5080549726997573053
+      Sprout_Anim2-19_3: 659628219282392662
+      Sprout_Anim2-19_4: -5526680849865856253
+      Sprout_Anim2-19_5: -164055607060217326
+      Sprout_Anim2-19_6: 7321367643119292910
+      Sprout_Anim2-19_7: 5084238081468076230
+      Sprout_Anim2-19_8: 1346396550424014666
+      Sprout_Anim2-19_9: 4998203541376425435
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

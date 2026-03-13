@@ -150,7 +150,7 @@ public class MoodBarTimer : MonoBehaviour
     void UpdateScoreText()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + scoreValue;
+            scoreText.text = " " + scoreValue;
     }
 
     void UpdateHoneycombs()

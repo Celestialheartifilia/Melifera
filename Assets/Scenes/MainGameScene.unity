@@ -1139,6 +1139,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2890992475156113738, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890992475156113738, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4911185408878663256, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
       propertyPath: m_Name
       value: 'HeaderUIs '
@@ -1221,6 +1229,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7138164046988023122, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191915566387350918, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7191915566387350918, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
