@@ -155,7 +155,6 @@ MonoBehaviour:
   hybridFlowerItems:
   - {fileID: 11400000, guid: bf52e7d21ccceec4f8e905e9390908d5, type: 2}
   - {fileID: 11400000, guid: d19225a747880e248a115f23bf010ab3, type: 2}
-  - {fileID: 11400000, guid: cf5af75f2fead1e4b9c0a1ffcb721810, type: 2}
   wrapItems:
   - {fileID: 11400000, guid: 0ef9d3193fc3d284fa364419af195ccc, type: 2}
   - {fileID: 11400000, guid: 0c065b8e449435b45be3a113c59329d3, type: 2}

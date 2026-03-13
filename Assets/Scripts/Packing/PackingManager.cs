@@ -421,8 +421,6 @@ public class PackingManager : MonoBehaviour
             orderCompleteButton.interactable = false;
     }
 
-    public MoodBarTimer moodBarTimer;
-
     public void OnOrderComplete()
     {
         ValidateOrder();
@@ -443,13 +441,11 @@ public class PackingManager : MonoBehaviour
         {
             Debug.Log("Order completed successfully!");
             CorrectOrderPrompt.SetActive(true);
-            moodBarTimer.OnValidateButtonPressed();
         }
         else
         {
             Debug.Log("Order incorrect!");
             WrongOrderPrompt.SetActive(true);
-            moodBarTimer.OnValidateButtonPressedWrong();
         }
 
         foreach (var flower in bouquetFlowers)

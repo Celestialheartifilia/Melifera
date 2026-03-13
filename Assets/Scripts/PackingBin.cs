@@ -6,13 +6,6 @@ public class PackingBin : MonoBehaviour
     public Collider2D binCollider;
 
     private GameObject currentDisposable;
-    public Animator binAnimator;
-
-    void Awake()
-    {
-        if (binAnimator != null)
-            binAnimator.SetBool("Open", false);
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,20 +13,12 @@ public class PackingBin : MonoBehaviour
             return;
 
         currentDisposable = other.gameObject;
-
-        if (binAnimator != null)
-            binAnimator.SetBool("Open", true);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (currentDisposable == other.gameObject)
-        {
             currentDisposable = null;
-
-            if (binAnimator != null)
-                binAnimator.SetBool("Open", false);
-        }
     }
 
     public bool IsObjectInsideBin(GameObject obj)
@@ -70,27 +55,5 @@ public class PackingBin : MonoBehaviour
     void OnMouseDown()
     {
         packingManager.DisposeWholeBouquet();
-    }
-
-    private void OnMouseEnter()
-    {
-        OpenBin();
-    }
-
-    private void OnMouseExit()
-    {
-        CloseBin();
-    }
-
-    public void CloseBin()
-    {
-        if (binAnimator != null)
-            binAnimator.SetBool("Open", false);
-    }
-
-    public void OpenBin()
-    {
-        if (binAnimator != null)
-            binAnimator.SetBool("Open", true);
     }
 }
