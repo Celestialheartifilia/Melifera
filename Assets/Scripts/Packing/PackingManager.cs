@@ -622,7 +622,10 @@ public class PackingManager : MonoBehaviour
     void RestoreSavedBouquet()
     {
         var saved = OrderTakingManager.Instance.currentBouquet;
-        if (saved == null) return;
+        if (saved == null)
+        {
+            Debug.Log("no bouquet saved");
+        }
 
         bouquetFlowers = new List<ItemsSOScript>(saved.flowers);
         selectedWrap = saved.wrap;
