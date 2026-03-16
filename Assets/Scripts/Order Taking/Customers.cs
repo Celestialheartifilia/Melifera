@@ -58,5 +58,6 @@ public class Customers : MonoBehaviour
 
         OrderUIManager ui = FindObjectOfType<OrderUIManager>();
         if (ui) ui.RefreshUIForNewOrder();
+
     }
 }

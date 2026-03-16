@@ -21,8 +21,12 @@ public class OrderUIManager : MonoBehaviour
 
     public void OnTakeOrderButtonClicked()
     {
+        
         if (OrderTakingManager.Instance == null || OrderTakingManager.Instance.currentOrder == null)
             return;
+
+        Debug.Log("Take order clicked");
+
 
         if (orderBubbleUI != null)
         {
@@ -32,6 +36,7 @@ public class OrderUIManager : MonoBehaviour
 
         if (takeOrderButton != null)
             takeOrderButton.SetActive(false);
+
 
         Debug.Log("Order collected!");
     }
