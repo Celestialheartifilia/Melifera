@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: 
   itemName: Accessory 1
   itemSprite: {fileID: 1286680474757421738, guid: 6ac320166e063f34b839152d0d0f6517, type: 3}
+  itemType: 2

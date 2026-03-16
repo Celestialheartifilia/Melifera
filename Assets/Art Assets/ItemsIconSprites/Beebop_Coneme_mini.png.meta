@@ -103,10 +103,10 @@ TextureImporter:
       name: Beebop_Coneme_mini_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 31
         y: 24
-        width: 114
-        height: 126
+        width: 137
+        height: 152
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Beebop_Coneme_mini_0: -530953699642104567
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

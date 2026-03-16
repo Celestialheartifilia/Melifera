@@ -15,3 +15,4 @@ MonoBehaviour:
   itemID: 
   itemName: Wrap 1
   itemSprite: {fileID: 8462944447153749451, guid: 6fa6187994cffcc4b8728ec92b84fb54, type: 3}
+  itemType: 1
