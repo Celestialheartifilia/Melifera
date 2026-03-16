@@ -16,4 +16,4 @@ MonoBehaviour:
   firstPosition: {x: 0.82, y: 1, z: 0}
   firstRotation: {x: 0, y: 0, z: -10}
   secondPosition: {x: -0.83, y: 0.24, z: -0.1}
-  secondRotation: {x: 0, y: 180, z: -10}
+  secondRotation: {x: 0, y: 0, z: 30}

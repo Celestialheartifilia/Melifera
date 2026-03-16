@@ -8,6 +8,8 @@ public class TopNavUI : MonoBehaviour
     [Header("UI Objects")]
     public GameObject orderViewButton;
     public GameObject hybridGuideButton;
+    public GameObject orderView;
+    public GameObject hybridGuide;
 
     void Awake()
     {
@@ -38,6 +40,8 @@ public class TopNavUI : MonoBehaviour
         // Hide everything first
         orderViewButton.SetActive(false);
         hybridGuideButton.SetActive(false);
+        orderView.SetActive(false);
+        orderViewButton.SetActive(false);
 
         if (sceneName == "HybridingFlowerScene")
         {
@@ -47,6 +51,11 @@ public class TopNavUI : MonoBehaviour
         else if (sceneName == "PackingScene")
         {
             orderViewButton.SetActive(true);
+        }
+        else if (sceneName == "MainGameScene" || sceneName == "OrderTakingScene")
+        {
+            orderView.SetActive(false);
+            hybridGuide.SetActive(false);
         }
     }
 }
