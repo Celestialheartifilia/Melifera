@@ -6,17 +6,33 @@ public class PackingBin : MonoBehaviour
     public Collider2D binCollider;
 
     private GameObject currentDisposable;
+    public Animator binAnimator;
+
+    void Awake()
+    {
+        if (binAnimator != null)
+            binAnimator.SetBool("Open", false);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Disposable"))
             return;
 
+        if (binAnimator != null)
+            binAnimator.SetBool("Open", true);
+
         currentDisposable = other.gameObject;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+        if (!other.CompareTag("Disposable"))
+            return;
+
+        if (binAnimator != null)
+            binAnimator.SetBool("Open", false);
+
         if (currentDisposable == other.gameObject)
             currentDisposable = null;
     }
@@ -55,5 +71,11 @@ public class PackingBin : MonoBehaviour
     void OnMouseDown()
     {
         packingManager.DisposeWholeBouquet();
+    }
+
+    public void OpenBin()
+    {
+        if (binAnimator != null)
+            binAnimator.SetBool("Open", true);
     }
 }

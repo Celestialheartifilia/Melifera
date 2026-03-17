@@ -199,6 +199,7 @@ public class PackingManager : MonoBehaviour
                 if (drag != null)
                     drag.SetHomeTransform(f.startPos, f.startRot);
 
+                SetFlowerOpacity(flowerObj, 1f);
                 return;
             }
         }
@@ -293,6 +294,8 @@ public class PackingManager : MonoBehaviour
                 ApplyFlowerPlacement(flowerObj, tag.flowerItemData, i);
             }
         }
+
+        UpdateFlowerOpacity();
     }
 
     // =========================
@@ -305,6 +308,16 @@ public class PackingManager : MonoBehaviour
         wrapAccessoryTabBackground.SetActive(true);
         SetWrapButtons(true);
         SetAccessoryButtons(false);
+
+        // If both flowers exist, restore full opacity
+        if (bouquetFlowers.Count >= 2)
+        {
+            foreach (var f in flowers)
+            {
+                if (f.flowerObject.activeSelf)
+                    SetFlowerOpacity(f.flowerObject, 1f);
+            }
+        }
 
         Debug.Log("Leaves finished. You may wrap now or add another flower.");
     }
@@ -441,11 +454,14 @@ public class PackingManager : MonoBehaviour
         {
             Debug.Log("Order completed successfully!");
             CorrectOrderPrompt.SetActive(true);
+            Debug.Log("Adding score for customer");
+            ScoreManager.Instance.AddPoints(10);
         }
         else
         {
             Debug.Log("Order incorrect!");
             WrongOrderPrompt.SetActive(true);
+
         }
 
         foreach (var flower in bouquetFlowers)
@@ -592,6 +608,7 @@ public class PackingManager : MonoBehaviour
 
         foreach (var f in flowers)
         {
+            SetFlowerOpacity(f.flowerObject, 1f);
             f.flowerObject.SetActive(false);
         }
 
@@ -618,7 +635,10 @@ public class PackingManager : MonoBehaviour
     void RestoreSavedBouquet()
     {
         var saved = OrderTakingManager.Instance.currentBouquet;
-        if (saved == null) return;
+        if (saved == null)
+        {
+            Debug.Log("no bouquet saved");
+        }
 
         bouquetFlowers = new List<ItemsSOScript>(saved.flowers);
         selectedWrap = saved.wrap;
@@ -702,5 +722,40 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
         OrderTakingManager.Instance.currentBouquet.wrap = selectedWrap;
         OrderTakingManager.Instance.currentBouquet.accessory = selectedAccessory;
+    }
+
+    void SetFlowerOpacity(GameObject flowerObj, float alpha)
+    {
+        if (flowerObj == null) return;
+
+        SpriteRenderer[] renderers = flowerObj.GetComponentsInChildren<SpriteRenderer>(true);
+
+        foreach (SpriteRenderer sr in renderers)
+        {
+            Color c = sr.color;
+            c.a = alpha;
+            sr.color = c;
+        }
+    }
+
+    void UpdateFlowerOpacity()
+    {
+        List<GameObject> activeFlowers = new List<GameObject>();
+
+        foreach (var f in flowers)
+        {
+            if (f.flowerObject.activeSelf)
+                activeFlowers.Add(f.flowerObject);
+        }
+
+        if (activeFlowers.Count == 1)
+        {
+            SetFlowerOpacity(activeFlowers[0], 1f);
+        }
+        else if (activeFlowers.Count >= 2)
+        {
+            SetFlowerOpacity(activeFlowers[0], 0.5f);
+            SetFlowerOpacity(activeFlowers[1], 1f);
+        }
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StationAppear : MonoBehaviour
 {
@@ -24,7 +23,5 @@ public class StationAppear : MonoBehaviour
         if (other.GetComponent<PlayerMovementScript>() != null)
             button.SetActive(false);
     }
-
-
 
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b57d56f25b95fb541b7ca12f3fbdd431
+guid: 9413be05e57216844b19565a8f11751f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7712581453033553243
-    second: Accessory2_0
+      213: 1525873468291063567
+    second: MeterBar_Background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Accessory2_0
+      name: MeterBar_Background_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 7
-        width: 240
-        height: 232
+        x: 0
+        y: 0
+        width: 262
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5db451f7f7980b60800000000000000
-      internalID: 7712581453033553243
+      spriteID: f0f9ea1c5ddfc2510800000000000000
+      internalID: 1525873468291063567
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7232dfbc551d3c8468d8754cc5859b4a
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Accessory2_0: 7712581453033553243
+      MeterBar_Background_0: 1525873468291063567
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

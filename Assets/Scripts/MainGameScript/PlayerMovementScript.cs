@@ -5,6 +5,9 @@ public class PlayerMovementScript : MonoBehaviour
     public float speed = 8f;
     public Camera cam;
 
+    [Header("Movement")]
+    public float moveThreshold = 2f; // how big the mouse movement must be
+
     [Header("Direction animation objects")]
     public GameObject frontObj;
     public GameObject backObj;
@@ -20,23 +23,25 @@ public class PlayerMovementScript : MonoBehaviour
         if (cam == null)
             cam = Camera.main;
 
-        ShowOnly(frontObj); // start facing front
+        ShowOnly(frontObj);
     }
 
     void FixedUpdate()
     {
-        // Get mouse world position EVERY frame
         Vector3 mouse = Input.mousePosition;
         Vector3 world = cam.ScreenToWorldPoint(mouse);
 
         Vector2 targetPos = new Vector2(world.x, world.y);
         Vector2 current = rb.position;
 
-        // Move toward mouse
+        Vector2 dir = targetPos - current;
+
+        // ONLY move if distance is big enough
+        if (dir.magnitude < moveThreshold)
+            return;
+
         Vector2 newPos = Vector2.MoveTowards(current, targetPos, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
-
-        Vector2 dir = targetPos - current;
 
         // Direction animation
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
@@ -58,7 +63,4 @@ public class PlayerMovementScript : MonoBehaviour
         if (leftObj) leftObj.SetActive(obj == leftObj);
         if (rightObj) rightObj.SetActive(obj == rightObj);
     }
-
-
-
 }
