@@ -8,9 +8,14 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
+    //Mixer & UI 
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
+
+    //Audio Sources 
+    private AudioSource sfxSource;
+    private AudioSource musicSource;
 
     private void Awake()
     {
@@ -59,17 +64,26 @@ public class SoundManager : MonoBehaviour
     {
         //MusicSlider.value = PlayerPrefs.GetFloat("musicVolume",1f);
         //SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume",1f);
-
         //SetMusicVolume();
         //SetSFXVolume();
-        if (MusicSlider != null) MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
-        if (SFXSlider != null) SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
-        // Still apply the volume to the mixer even if sliders aren't present
         float mVol = PlayerPrefs.GetFloat("musicVolume", 1f);
         float sVol = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
+        if (MusicSlider != null) MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
+        if (SFXSlider != null) SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        //if (musicSlider != null) musicSlider.value = mVol;
+        //if (sfxSlider != null) sfxSlider.value = sVol;
+
         mainMixer.SetFloat("music", Mathf.Log10(mVol) * 20);
         mainMixer.SetFloat("sfx", Mathf.Log10(sVol) * 20);
+
     }
+
+    // --- SFX LOGIC ---
+    // You can call these from Button OnClick()
+    //public void PlaySound1() => sfxSource.PlayOneShot(sfx1);
+    //public void PlaySound2() => sfxSource.PlayOneShot(sfx2);
+    //public void PlaySound3() => sfxSource.PlayOneShot(sfx3);
+
 }
