@@ -12,7 +12,6 @@ public class HybridFlowerManager : MonoBehaviour
     [Header("Hybrid Flowers in Scene")]
     public GameObject hybridFlower1;
     public GameObject hybridFlower2;
-    public GameObject hybridFlower3;
 
 
     public GameObject speechIndicator;
@@ -47,8 +46,6 @@ public class HybridFlowerManager : MonoBehaviour
         // FORCE hide both at start
         hybridFlower1.SetActive(false);
         hybridFlower2.SetActive(false);
-        hybridFlower3.SetActive(false);
-
     }
 
     //CALLED BY Pot.cs
@@ -71,37 +68,29 @@ public class HybridFlowerManager : MonoBehaviour
 
         hybridFlower1.SetActive(false);
         hybridFlower2.SetActive(false);
-        hybridFlower3.SetActive(false);
 
         var cut1 = hybridFlower1.GetComponentInChildren<FlowerCutSwap>();
         var cut2 = hybridFlower2.GetComponentInChildren<FlowerCutSwap>();
-        var cut3 = hybridFlower3.GetComponentInChildren<FlowerCutSwap>();
 
-        if (cut1 == null || cut2 == null || cut3 == null)
+        if (cut1 == null || cut2 == null)
         {
             Debug.LogError("FlowerCutSwap missing on hybrid flowers");
             return;
         }
 
         Debug.Log($"[MANAGER] Comparing {hybridData.itemID} against:");
-        Debug.Log($"HybridLacone = {cut1.flowerItemData.itemID}");
-        Debug.Log($"HybridForlaven = {cut2.flowerItemData.itemID}");
-        Debug.Log($"HybridConeme = {cut3.flowerItemData.itemID}");
+        Debug.Log($"Hybrid1 = {cut1.flowerItemData.itemID}");
+        Debug.Log($"Hybrid2 = {cut2.flowerItemData.itemID}");
 
         if (cut1.flowerItemData.itemID == hybridData.itemID)
         {
             hybridFlower1.SetActive(true);
-            Debug.Log("[MANAGER] Activated Hybrid Flower Lacone");
+            Debug.Log("[MANAGER] Activated HybridFlower1");
         }
         else if (cut2.flowerItemData.itemID == hybridData.itemID)
         {
             hybridFlower2.SetActive(true);
-            Debug.Log("[MANAGER] Activated Hybrid Flower Forlaven");
-        }
-        else if (cut3.flowerItemData.itemID == hybridData.itemID)
-        {
-            hybridFlower3.SetActive(true);
-            Debug.Log("[MANAGER] Activated Hybrid Flower Coneme");
+            Debug.Log("[MANAGER] Activated HybridFlower2");
         }
         else
         {
