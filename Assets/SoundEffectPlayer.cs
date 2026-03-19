@@ -10,7 +10,7 @@ public class SoundEffectPlayer : MonoBehaviour
     private void OnMouseDown()
     {
         // Play Sound 1 when the object is clicked
-        TrashBin()
+        TrashBin();
         OrderTaking();
         SprinkleFertilizer();
         BuzzingSound();
