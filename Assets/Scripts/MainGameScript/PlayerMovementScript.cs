@@ -3,10 +3,7 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
     public float speed = 8f;
-    public Camera cam;
-
-    [Header("Movement")]
-    public float moveThreshold = 2f; // how big the mouse movement must be
+    public float stopDistance = 0.05f;
 
     [Header("Direction animation objects")]
     public GameObject frontObj;
@@ -16,44 +13,95 @@ public class PlayerMovementScript : MonoBehaviour
 
     Rigidbody2D rb;
 
+    Vector2 currentTarget;
+    bool hasTarget = false;
+    bool isMoving = false;
+
+    public Animator beeLeftAnimator;
+    public Animator beeRightAnimator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (cam == null)
-            cam = Camera.main;
-
-        ShowOnly(frontObj);
+        ShowOnly(leftObj);
+        if (beeLeftAnimator != null)
+            beeLeftAnimator.SetBool("Idle", true);
     }
 
+    void Start()
+    {
+        if (StationManager.hasSpawn)
+        {
+            rb.position = StationManager.playerSpawnPosition;
+            transform.position = StationManager.playerSpawnPosition;
+
+            StationManager.hasSpawn = false; // reset after using
+        }
+    }
     void FixedUpdate()
     {
-        Vector3 mouse = Input.mousePosition;
-        Vector3 world = cam.ScreenToWorldPoint(mouse);
+        if (!hasTarget) return;
 
-        Vector2 targetPos = new Vector2(world.x, world.y);
         Vector2 current = rb.position;
+        Vector2 dir = currentTarget - current;
 
-        Vector2 dir = targetPos - current;
+        Debug.Log("dir.y" + Mathf.Abs(dir.y));
+        Debug.Log("dir.x" + Mathf.Abs(dir.x));
 
-        // ONLY move if distance is big enough
-        if (dir.magnitude < moveThreshold)
+        // Check if reached
+        if (dir.magnitude <= stopDistance)
+        {
+            rb.MovePosition(currentTarget);
+            hasTarget = false;
+            isMoving = false;
+
+            if (!isMoving)
+            {
+                if (beeLeftAnimator != null)
+                    beeLeftAnimator.SetBool("Idle", true);
+
+                if (beeRightAnimator != null)
+                    beeRightAnimator.SetBool("Idle", true);
+            }
+
+            Debug.Log("dir.y" + Mathf.Abs(dir.y));
+            Debug.Log("dir.x" + Mathf.Abs(dir.x));
+
+            // Only show front/back when reached
+            if (Mathf.Abs(dir.y) == Mathf.Abs(dir.x))
+            {
+                if (beeLeftAnimator != null)
+                    beeLeftAnimator.SetBool("Idle", true);
+
+                if (beeRightAnimator != null)
+                    beeRightAnimator.SetBool("Idle", true);
+
+                //ShowOnly(backObj);
+                //if (dir.y > 0) ShowOnly(backObj);
+                //else ShowOnly(frontObj);
+            }
+
             return;
+        }
 
-        Vector2 newPos = Vector2.MoveTowards(current, targetPos, speed * Time.fixedDeltaTime);
+        // Move
+        Vector2 newPos = Vector2.MoveTowards(current, currentTarget, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
+        isMoving = true;
 
-        // Direction animation
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        // While moving, only left/right
+        if (Mathf.Abs(dir.x) > 0.1f)
         {
             if (dir.x > 0) ShowOnly(rightObj);
             else ShowOnly(leftObj);
         }
-        else
-        {
-            if (dir.y > 0) ShowOnly(backObj);
-            else ShowOnly(frontObj);
-        }
+    }
+
+    // Called by move to station
+    public void SetTarget(Vector2 target)
+    {
+        currentTarget = target;
+        hasTarget = true;
     }
 
     void ShowOnly(GameObject obj)
@@ -62,5 +110,19 @@ public class PlayerMovementScript : MonoBehaviour
         if (backObj) backObj.SetActive(obj == backObj);
         if (leftObj) leftObj.SetActive(obj == leftObj);
         if (rightObj) rightObj.SetActive(obj == rightObj);
+
+        // Reset all animators first
+        if (beeLeftAnimator != null)
+            beeLeftAnimator.SetBool("Idle", false);
+
+        if (beeRightAnimator != null)
+            beeRightAnimator.SetBool("Idle", false);
+
+        // Activate correct animator
+        if (obj == leftObj && beeLeftAnimator != null)
+            beeLeftAnimator.SetBool("Idle", false);
+
+        if (obj == rightObj && beeRightAnimator != null)
+            beeRightAnimator.SetBool("Idle", false);
     }
 }

@@ -5,9 +5,14 @@ public class OrderUIManager : MonoBehaviour
     public OrderBubbleUI orderBubbleUI;
     public GameObject takeOrderButton;
     public GameObject collectedPopup;
+    public SceneLoader sceneLoader;
+
+    Camera cam;
 
     void Start()
     {
+        cam = Camera.main;
+
         if (orderBubbleUI != null)
             orderBubbleUI.gameObject.SetActive(false);
 
@@ -19,14 +24,31 @@ public class OrderUIManager : MonoBehaviour
             collectedPopup.SetActive(false);
     }
 
+    void Update()
+    {
+        if (orderBubbleUI == null) return;
+        if (!orderBubbleUI.gameObject.activeSelf) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+            Collider2D hit = Physics2D.OverlapPoint(mousePos);
+
+            // If we clicked something that is NOT the bubble
+            if (hit == null || hit.gameObject != orderBubbleUI.gameObject)
+            {
+                OnCloseOrderBubble();
+            }
+        }
+    }
+
     public void OnTakeOrderButtonClicked()
     {
-        
         if (OrderTakingManager.Instance == null || OrderTakingManager.Instance.currentOrder == null)
             return;
 
         Debug.Log("Take order clicked");
-
 
         if (orderBubbleUI != null)
         {
@@ -37,7 +59,6 @@ public class OrderUIManager : MonoBehaviour
         if (takeOrderButton != null)
             takeOrderButton.SetActive(false);
 
-
         Debug.Log("Order collected!");
     }
 
@@ -46,10 +67,9 @@ public class OrderUIManager : MonoBehaviour
         if (orderBubbleUI != null)
             orderBubbleUI.gameObject.SetActive(false);
 
-        if (collectedPopup != null)
-            collectedPopup.SetActive(true);
+        sceneLoader.LoadMainGameScene();
 
-        Debug.Log("Bubble gone, popup shown!");
+        Debug.Log("Bubble gone!");
     }
 
     public void RefreshUIForNewOrder()

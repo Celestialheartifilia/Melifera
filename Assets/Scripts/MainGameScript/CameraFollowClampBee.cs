@@ -17,45 +17,46 @@ public class CameraFollowClampBee : MonoBehaviour
     //Smooth to keep track of velocity
     float velocityX;
 
+    bool hasSnapped = false;
+
     // LateUpdate runs AFTER all movement =
     void LateUpdate()
     {
-        // Safety check: stop if target or background is missing
         if (target == null || background == null) return;
 
-        // Get the Camera component attached to this GameObject
         Camera cam = GetComponent<Camera>();
 
-        // Half of the camera's visible height (orthographic camera)
         float halfHeight = cam.orthographicSize;
-
-        // Half of the camera's visible width
-        // Aspect = screen width / height
         float halfWidth = halfHeight * cam.aspect;
 
-        // Get the world-space bounds of the background sprite
         Bounds b = background.bounds;
 
-        // Calculate the left boundary where the camera can move
-        // Add halfWidth so camera doesn't show empty space
         float minX = b.min.x + halfWidth;
-
-        // Calculate the right boundary where the camera can move
         float maxX = b.max.x - halfWidth;
 
-        // Clamp the target's X position so the camera stays in bounds
         float targetX = Mathf.Clamp(target.position.x, minX, maxX);
 
-        // Smoothly move the camera toward the target X position
+        //SNAP ON FIRST FRAME (no smooth)
+        if (!hasSnapped)
+        {
+            transform.position = new Vector3(
+                targetX,
+                transform.position.y,
+                transform.position.z
+            );
+
+            hasSnapped = true;
+            return; // skip smoothing this frame
+        }
+
+        //Normal smooth follow AFTER snap
         float smoothX = Mathf.SmoothDamp(
-            transform.position.x,   // current camera X
-            targetX,                // target camera X
-            ref velocityX,          // velocity reference (required)
-            smoothTime              // smooth duration
+            transform.position.x,
+            targetX,
+            ref velocityX,
+            smoothTime
         );
 
-        // Apply the new position
-        // Y and Z stay unchanged (2D side-scrolling)
         transform.position = new Vector3(
             smoothX,
             transform.position.y,

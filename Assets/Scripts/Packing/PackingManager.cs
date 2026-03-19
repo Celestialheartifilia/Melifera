@@ -748,14 +748,24 @@ public class PackingManager : MonoBehaviour
                 activeFlowers.Add(f.flowerObject);
         }
 
-        if (activeFlowers.Count == 1)
+        foreach (var f in activeFlowers)
         {
-            SetFlowerOpacity(activeFlowers[0], 1f);
+            SetFlowerOpacity(f, 1f);
         }
-        else if (activeFlowers.Count >= 2)
+
+        if (activeFlowers.Count >= 2)
         {
             SetFlowerOpacity(activeFlowers[0], 0.5f);
-            SetFlowerOpacity(activeFlowers[1], 1f);
         }
+
+        //if (activeFlowers.Count == 1)
+        //{
+        //    SetFlowerOpacity(activeFlowers[0], 1f);
+        //}
+        //else if (activeFlowers.Count >= 2)
+        //{
+        //    SetFlowerOpacity(activeFlowers[0], 0.5f);
+        //    SetFlowerOpacity(activeFlowers[1], 1f);
+        //}
     }
 }

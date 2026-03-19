@@ -25,6 +25,11 @@ public class OrderTakingManager : MonoBehaviour
     //// Pop up message 
     //public GameObject collectedPopup;
 
+    public bool IsTutorial()
+    {
+        return currentCustomerIndex == 0;
+    }
+
     [System.Serializable]
     public class BouquetState
     {
