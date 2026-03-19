@@ -29,18 +29,18 @@ public class OrderUIManager : MonoBehaviour
         if (orderBubbleUI == null) return;
         if (!orderBubbleUI.gameObject.activeSelf) return;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-            Collider2D hit = Physics2D.OverlapPoint(mousePos);
+        //    Collider2D hit = Physics2D.OverlapPoint(mousePos);
 
-            // If we clicked something that is NOT the bubble
-            if (hit == null || hit.gameObject != orderBubbleUI.gameObject)
-            {
-                OnCloseOrderBubble();
-            }
-        }
+        //    // If we clicked something that is NOT the bubble
+        //    if (hit == null || hit.gameObject != orderBubbleUI.gameObject)
+        //    {
+        //        OnCloseOrderBubble();
+        //    }
+        //}
     }
 
     public void OnTakeOrderButtonClicked()
