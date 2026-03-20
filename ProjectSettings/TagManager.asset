@@ -7,6 +7,8 @@ TagManager:
   - Flower
   - Pot
   - Disposable
+  - OrderViewButton
+  - HybridGuideButton
   layers:
   - Default
   - TransparentFX
@@ -64,6 +66,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3079617619
+    locked: 0
+  - name: Bin
+    uniqueID: 838941837
     locked: 0
   - name: Leaves
     uniqueID: 2080379641

@@ -46,7 +46,7 @@ public class MainGameTutorial : MonoBehaviour
     {
         return OrderTakingManager.Instance != null &&
                OrderTakingManager.Instance.currentCustomerIndex == 1 &&
-               PlayerPrefs.GetInt("GoHybridTutorialDone", 0) == 1 && // hybrid finished
+               PlayerPrefs.GetInt("HybridTutorialDone", 0) == 1 && // hybrid finished
                PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 0;
     }
 
@@ -135,6 +135,7 @@ public class MainGameTutorial : MonoBehaviour
             PlayerPrefs.DeleteKey("MainTutorialDone");
             PlayerPrefs.DeleteKey("OrderTutorialDone");
             PlayerPrefs.DeleteKey("GoHybridTutorialDone");
+            PlayerPrefs.DeleteKey("HybridTutorialDone");
             PlayerPrefs.DeleteKey("GoPackingTutorialDone");
             Debug.Log("Tutorial reset!");
         }
