@@ -53,6 +53,9 @@ public class PackingManager : MonoBehaviour
     [SerializeField] GameObject CorrectOrderPrompt;
     [SerializeField] GameObject WrongOrderPrompt;
 
+    [Header("Game End")]
+    [SerializeField] GameObject GameDonePrompt;
+
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
 
@@ -470,6 +473,22 @@ public class PackingManager : MonoBehaviour
         }
 
         DisplayHybridInventory();
+
+        OrderTakingManager.Instance.currentCustomerIndex++;
+
+        //check if game finished
+        if (OrderTakingManager.Instance.currentCustomerIndex >= OrderTakingManager.Instance.maxCustomers)
+        {
+            Debug.Log("Game Finished!");
+
+            GameDonePrompt.SetActive(true);
+
+            // OPTIONAL: disable button so player can't continue
+            orderCompleteButton.interactable = false;
+
+            return; // stop here, don't proceed
+        }
+
         OrderTakingManager.Instance.FinishOrder();
     }
 
