@@ -104,6 +104,11 @@ public class OrderTakingManager : MonoBehaviour
         return currentCustomerIndex < maxCustomers;
     }
 
+    public bool IsLastCustomer()
+    {
+        return currentCustomerIndex >= maxCustomers;
+    }
+
 
     // Call this to add an item to the order
     void CreateSmallOrder()

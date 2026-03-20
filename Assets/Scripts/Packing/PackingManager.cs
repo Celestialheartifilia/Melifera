@@ -474,22 +474,17 @@ public class PackingManager : MonoBehaviour
 
         DisplayHybridInventory();
 
-        OrderTakingManager.Instance.currentCustomerIndex++;
+        OrderTakingManager.Instance.FinishOrder();
 
-        //check if game finished
-        if (OrderTakingManager.Instance.currentCustomerIndex >= OrderTakingManager.Instance.maxCustomers)
+        if (OrderTakingManager.Instance.IsLastCustomer())
         {
-            Debug.Log("Game Finished!");
+            Debug.Log("GAME OVER");
 
             GameDonePrompt.SetActive(true);
 
-            // OPTIONAL: disable button so player can't continue
-            orderCompleteButton.interactable = false;
-
-            return; // stop here, don't proceed
+            return; // STOP here
         }
 
-        OrderTakingManager.Instance.FinishOrder();
     }
 
     bool ValidateFlowersExactly(OrderList order)
