@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_ConeFlower_mini_0: 5855889916399973139
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
