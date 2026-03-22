@@ -1324,8 +1324,8 @@ MonoBehaviour:
   step4: {fileID: 2095885923}
   next1: {fileID: 1210898894}
   next2: {fileID: 508663641}
-  arrow1C: {fileID: 2044269169}
-  arrow2C: {fileID: 1694245005}
+  arrow1C: {fileID: 0}
+  arrow2C: {fileID: 0}
   arrow1H: {fileID: 1378683798}
   arrow2H: {fileID: 1314309591}
   arrow1P: {fileID: 1926994590}
