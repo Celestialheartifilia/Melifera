@@ -45,6 +45,7 @@ public class OrderTakingTutorial : MonoBehaviour
 
     void Update()
     {
+        if (!IsTutorial()) return;
 
         // when order bubble appears, move to Step2
         if (orderBubble.activeSelf == true && PlayerPrefs.GetInt("OrderTutorialDone", 0) == 0 && !step3active)
@@ -72,6 +73,7 @@ public class OrderTakingTutorial : MonoBehaviour
         step3.SetActive(true);
         black2.SetActive(true);
         arrow2.SetActive(true);
+
     }
 
     public void EndTutorial()
