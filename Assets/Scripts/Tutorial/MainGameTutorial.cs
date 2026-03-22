@@ -91,6 +91,9 @@ public class MainGameTutorial : MonoBehaviour
         if (allTutorialCompleted())
         {
             EnableStationCollider();
+            counterButton.GetComponent<PolygonCollider2D>().enabled = true;
+            hybridButton.GetComponent<PolygonCollider2D>().enabled = true;
+            packingButton.GetComponent<PolygonCollider2D>().enabled = true;
         }
     }
 
