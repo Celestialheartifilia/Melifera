@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beebop_Coneme_mini_0: -530953699642104567
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
