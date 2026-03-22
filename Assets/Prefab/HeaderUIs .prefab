@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 561171070925165951}
   m_Layer: 5
   m_Name: HybridGuideButton
-  m_TagString: HybridGuideButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1357,7 +1357,7 @@ SpriteRenderer:
   m_Size: {x: 4.13, y: 4.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2745178485002297796
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 9035472244780016321}
   m_Layer: 5
   m_Name: OrderViewButton
-  m_TagString: OrderViewButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1884,7 +1884,7 @@ SpriteRenderer:
   m_Size: {x: 4.25, y: 4.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3935139582457458724
@@ -2190,7 +2190,7 @@ SpriteRenderer:
   m_Size: {x: 4.13, y: 4.76}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4770399039713095790
@@ -3036,7 +3036,7 @@ SpriteRenderer:
   m_Size: {x: 4.25, y: 4.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7591367828261411618

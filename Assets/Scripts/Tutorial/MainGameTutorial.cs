@@ -54,7 +54,7 @@ public class MainGameTutorial : MonoBehaviour
     {
         return OrderTakingManager.Instance != null &&
                OrderTakingManager.Instance.currentCustomerIndex == 1 &&
-               PlayerPrefs.GetInt("HybridTutorialDone", 0) == 1 && // hybrid finished
+               PlayerPrefs.GetInt("GoHybridTutorialDone", 0) == 1 && // hybrid finished
                PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 0;
     }
 
