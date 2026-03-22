@@ -28,6 +28,14 @@ public class TopNavUI : MonoBehaviour
     void Start()
     {
         UpdateUI(SceneManager.GetActiveScene().name);
+        orderView.SetActive(true);
+        SpriteRenderer sr = orderView.GetComponent<SpriteRenderer>();
+        if (sr.enabled == false)
+        {
+            sr.enabled = true;
+        }
+        sr.enabled = true;
+
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -57,5 +65,10 @@ public class TopNavUI : MonoBehaviour
             orderView.SetActive(false);
             hybridGuide.SetActive(false);
         }
+
+        //orderViewButton.SetActive(true);
+        //hybridGuideButton.SetActive(true);
+        //orderView.SetActive(true);
+        //orderViewButton.SetActive(true);
     }
 }

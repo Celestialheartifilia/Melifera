@@ -40,7 +40,7 @@ public class FertilizerManager : MonoBehaviour
 
     }
 
-    // Click fertiliser → activate shovel drag
+    // Click fertiliser,activate shovel drag
     void OnMouseDown()
     {
         emptyShovel.SetActive(false);

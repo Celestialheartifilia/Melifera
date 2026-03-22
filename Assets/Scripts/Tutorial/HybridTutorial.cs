@@ -17,14 +17,21 @@ public class HybridTutorial : MonoBehaviour
     public GameObject step11;
     public GameObject step12;
 
+    [Header("Next")]
     public GameObject next1;
     public GameObject next2;
     public GameObject next3;
+    public GameObject next4;
+    public GameObject next5;
 
     [Header("Overlay")]
     public GameObject black;
     public GameObject black2;
     public GameObject black3;
+
+    [Header("Arrow")]
+    public GameObject arrow1;
+    public GameObject arrow2;
 
     [Header("Buttons / UI")]
     public BeeController beeController;
@@ -34,6 +41,7 @@ public class HybridTutorial : MonoBehaviour
     public GameObject fertiliser;
     public GameObject scissors;
     public GameObject flower;
+    public Button exitButton;
 
     int step = 0;
 
@@ -44,8 +52,8 @@ public class HybridTutorial : MonoBehaviour
 
     void Start()
     {
-        orderButton = GameObject.FindWithTag("OrderViewButton");
-        hybridBookButton = GameObject.FindWithTag("HybridGuideButton");
+        //orderButton = GameObject.FindWithTag("OrderViewButton");
+        //hybridBookButton = GameObject.FindWithTag("HybridGuideButton");
 
         Debug.Log("Tutorial Start Running");
 
@@ -103,6 +111,7 @@ public class HybridTutorial : MonoBehaviour
                 next1.SetActive(true);
                 black.SetActive(true);
                 beeController.enabled = false;
+                exitButton.enabled = false;
                 break;
 
             case 2:
@@ -123,12 +132,16 @@ public class HybridTutorial : MonoBehaviour
                 // Order list button
                 black.SetActive(true);
                 step4.SetActive(true);
+                next4.SetActive(true);
+                arrow1.SetActive(true);
                 break;
 
             case 5:
-                // Hybrid book open
+                // Hybrid book open/close
                 black.SetActive(true);
                 step5.SetActive(true);
+                next5.SetActive(true);
+                arrow2.SetActive(true);
                 break;
 
             case 6:
@@ -182,6 +195,7 @@ public class HybridTutorial : MonoBehaviour
     {
         DisableAll();
         beeController.enabled = true;
+        exitButton.enabled = true;
         PlayerPrefs.SetInt("HybridTutorialDone", 1);
     }
 
@@ -190,7 +204,8 @@ public class HybridTutorial : MonoBehaviour
         step1.SetActive(false);
         step2.SetActive(false);
         step3.SetActive(false);
-        //step4.SetActive(false);
+        step4.SetActive(false);
+        step5.SetActive(false);
         //step5.SetActive(false);
         //step6.SetActive(false);
         //step7.SetActive(false);
@@ -206,5 +221,11 @@ public class HybridTutorial : MonoBehaviour
 
         next1.SetActive(false);
         next2.SetActive(false);
+        next3.SetActive(false);
+        next4.SetActive(false);
+        next5.SetActive(false);
+
+        arrow1.SetActive(false);
+        arrow2.SetActive(false);
     }
 }

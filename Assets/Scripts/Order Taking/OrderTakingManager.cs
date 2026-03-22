@@ -16,7 +16,7 @@ public class OrderTakingManager : MonoBehaviour
 
     //public NextOrderPopup nextOrderPopup;
 
-    //public OrderBubbleUI orderBubbleUI;
+    //public OrderBubbleUI orderBubbleUI;s
 
     public static OrderTakingManager Instance;
 
@@ -53,14 +53,15 @@ public class OrderTakingManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
-            return;
         }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public enum OrderType

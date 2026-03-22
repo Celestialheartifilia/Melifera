@@ -50,6 +50,11 @@ public class MainGameTutorial : MonoBehaviour
                PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 0;
     }
 
+    bool allTutorialCompleted()
+    {
+        return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,6 +78,11 @@ public class MainGameTutorial : MonoBehaviour
             Step1Packing();
             return;
         }
+
+        if (allTutorialCompleted())
+        {
+            EnableStationCollider();
+        }
     }
 
     public void DisableStationCollider()
@@ -86,6 +96,7 @@ public class MainGameTutorial : MonoBehaviour
     {
         counterCollider.enabled = true;
         hybridCollider.enabled = true;
+        packingCollider.enabled = true;
     }
 
     public void Step1()
@@ -223,6 +234,8 @@ public class MainGameTutorial : MonoBehaviour
     public void EndTutorialPacking()
     {
         DisableAllTutorialUI();
+        EnableStationCollider();
         PlayerPrefs.SetInt("GoPackingTutorialDone", 1);
+
     }
 }

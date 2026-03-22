@@ -9,8 +9,8 @@ public class OrderViewer : MonoBehaviour
 
     void Start()
     {
-        if (orderPanel != null)
-            orderPanel.SetActive(false);
+        //if (orderPanel != null)
+        //    orderPanel.SetActive(false);
     }
 
     public void ToggleOrderView()
@@ -21,6 +21,8 @@ public class OrderViewer : MonoBehaviour
             return;
         }
 
+        Debug.Log("Current Order: " + OrderTakingManager.Instance.currentOrder);
+
         if (OrderTakingManager.Instance.currentOrder == null)
         {
             Debug.LogWarning("No active order.");
@@ -30,6 +32,18 @@ public class OrderViewer : MonoBehaviour
         isOpen = !isOpen;
 
         orderPanel.SetActive(isOpen);
+        // Instead of SetActive
+        //SpriteRenderer sr = orderPanel.GetComponent<SpriteRenderer>();
+
+        //if (sr != null)
+        //    sr.enabled = isOpen;
+
+        //SpriteRenderer[] renderers = orderPanel.GetComponentsInChildren<SpriteRenderer>();
+
+        //foreach (var r in renderers)
+        //{
+        //    r.enabled = isOpen;
+        //}
 
         if (isOpen)
         {
