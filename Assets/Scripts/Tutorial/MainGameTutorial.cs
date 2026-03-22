@@ -60,12 +60,13 @@ public class MainGameTutorial : MonoBehaviour
 
     bool allTutorialCompleted()
     {
-        return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1;
+        return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1 && PlayerPrefs.GetInt("GoHybridTutorialDone", 0) == 1 && PlayerPrefs.GetInt("MainTutorialDone", 0) == 1;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         DisableAllTutorialUI();
 
         if (IsTutorial())

@@ -128,7 +128,7 @@ public class HybridTutorial : MonoBehaviour
         }
 
         // STEP 9
-        if (!fertilisedTriggered && step == 8 && hybridpot.growthState == Pot.FlowerGrowthState.Fertilised)
+        if (!fertilisedTriggered && step == 8 && (hybridpot.growthState == Pot.FlowerGrowthState.Fertilised || hybridpot.growthState == Pot.FlowerGrowthState.Grown))
         {
             fertilisedTriggered = true;
             NextStep();
@@ -279,7 +279,6 @@ public class HybridTutorial : MonoBehaviour
         step2.SetActive(false);
         step3.SetActive(false);
         step4.SetActive(false);
-        step5.SetActive(false);
         step5.SetActive(false);
         step6.SetActive(false);
         step7.SetActive(false);

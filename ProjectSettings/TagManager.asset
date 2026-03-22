@@ -54,9 +54,6 @@ TagManager:
   - name: Counter
     uniqueID: 2585483519
     locked: 0
-  - name: OrderBubble
-    uniqueID: 3527452549
-    locked: 0
   - name: Background
     uniqueID: 877012923
     locked: 0
@@ -74,6 +71,12 @@ TagManager:
     locked: 0
   - name: Bin
     uniqueID: 669135123
+    locked: 0
+  - name: OrderBubble
+    uniqueID: 3527452549
+    locked: 0
+  - name: UI
+    uniqueID: 474758459
     locked: 0
   m_RenderingLayers:
   - Default
