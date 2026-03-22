@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052174909}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainGameTutorial, Assembly-CSharp
         m_MethodName: Step2
         m_Mode: 1
@@ -1572,7 +1572,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052174910}
-  - component: {fileID: 1052174909}
   m_Layer: 0
   m_Name: ORDER TAKING TUTORIAL MANAGER
   m_TagString: Untagged
@@ -1580,29 +1579,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1052174909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052174908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf52ba05ed353c4d89d12363abf5fa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  step1: {fileID: 1996996825}
-  step2: {fileID: 388312963}
-  step3: {fileID: 2013467180}
-  step4: {fileID: 1292245704}
-  next1: {fileID: 905623297}
-  next2: {fileID: 1964202836}
-  black: {fileID: 1904065443}
-  counterCollider: {fileID: 0}
-  hybridCollider: {fileID: 0}
-  exitButton: {fileID: 0}
-  counterButton: {fileID: 0}
 --- !u!4 &1052174910
 Transform:
   m_ObjectHideFlags: 0
@@ -3943,7 +3919,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1052174909}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainGameTutorial, Assembly-CSharp
         m_MethodName: Step3
         m_Mode: 1
