@@ -7,6 +7,7 @@ TagManager:
   - Flower
   - Pot
   - Disposable
+  - CutFlower
   layers:
   - Default
   - TransparentFX
@@ -70,6 +71,9 @@ TagManager:
     locked: 0
   - name: Bee
     uniqueID: 1688527011
+    locked: 0
+  - name: Bin
+    uniqueID: 669135123
     locked: 0
   m_RenderingLayers:
   - Default

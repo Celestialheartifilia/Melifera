@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Pot : MonoBehaviour
@@ -20,11 +19,9 @@ public class Pot : MonoBehaviour
     [Header("Hybrid Flower Visuals")]
     public GameObject hybridFlower1;
     public GameObject hybridFlower2;
-    public GameObject hybridFlower3;
 
     public ItemsSOScript hybrid1Data;
     public ItemsSOScript hybrid2Data;
-    public ItemsSOScript hybrid3Data;
 
     //public bool isEmpty = true;
     public enum FlowerGrowthState
@@ -52,7 +49,6 @@ public class Pot : MonoBehaviour
         ResetPot();
     }
 
-
     public void ResetPot()
     {
         plantedHybrid = null;
@@ -60,8 +56,6 @@ public class Pot : MonoBehaviour
 
         if (fertilizerManager != null)
             fertilizerManager.ResetFertiliserState();
-
-        flowerGrow.SetActive(false);
 
         //disables the fertiliser
         if (fertiliserCollider != null)
@@ -131,11 +125,6 @@ public class Pot : MonoBehaviour
         return true;
 
     }
-
-    [Header("Flower Animations")]
-    public Animator flowerGrowAnimator;
-    public GameObject flowerGrow;
-
     //method is used in FertilizerGrowFlower script
     public bool Fertilise()
     {
@@ -151,17 +140,34 @@ public class Pot : MonoBehaviour
             spriteRenderer.sprite = emptyPotSprite;
         }
 
+        // Enable fertiliser + scissors colliders
+        if (fertiliserCollider != null)
+        {
+            fertiliserCollider.enabled = true;
+        }
+
         //new
         if (hybridFlower1 != null) hybridFlower1.SetActive(false);
         if (hybridFlower2 != null) hybridFlower2.SetActive(false);
-        if (hybridFlower3 != null) hybridFlower3.SetActive(false);
 
-        flowerGrow.SetActive(true);
+        if (plantedHybrid == hybrid1Data)
+        {
+            hybridFlower1.SetActive(true);
 
-        if (flowerGrowAnimator != null)
-            flowerGrowAnimator.SetTrigger("Grow");
+            hybridFlower1.transform.SetParent(transform);
+            hybridFlower1.transform.localPosition = new Vector3(0f, 3.2f, 0f);
 
-        StartCoroutine(ShowFlowerAfterGrow());
+            Debug.Log("Flower 1 parented");
+        }
+        else if (plantedHybrid == hybrid2Data)
+        {
+            hybridFlower2.SetActive(true);
+
+            hybridFlower2.transform.SetParent(transform);
+            hybridFlower2.transform.localPosition = new Vector3(0f, 3.2f, 0f);
+
+            Debug.Log("Flower 2 parented");
+        }
 
         //use when final flower is out
         //if (spriteRenderer != null && pollenPotSprite != null)
@@ -175,45 +181,9 @@ public class Pot : MonoBehaviour
 
 
         //add anim here, then grow method
-
-        //Grow();
+        Grow();
         //if fertilise is successful
         return true;
-    }
-
-    IEnumerator ShowFlowerAfterGrow()
-    {
-        // wait for animation (adjust time if needed)
-        yield return new WaitForSeconds(0.75f);
-
-         if (plantedHybrid == hybrid1Data)
-        {
-            hybridFlower1.SetActive(true);
-            hybridFlower1.transform.SetParent(transform);
-            hybridFlower1.transform.localPosition = new Vector3(0f, 3.2f, 0f);
-
-            Debug.Log("Flower 1 parented");
-        }
-        else if (plantedHybrid == hybrid2Data)
-        {
-            hybridFlower2.SetActive(true);
-            hybridFlower2.transform.SetParent(transform);
-            hybridFlower2.transform.localPosition = new Vector3(0f, 3.2f, 0f);
-
-            Debug.Log("Flower 2 parented");
-        }
-        else if (plantedHybrid == hybrid3Data)
-        {
-            hybridFlower3.SetActive(true);
-            hybridFlower3.transform.SetParent(transform);
-            hybridFlower3.transform.localPosition = new Vector3(0f, 3.2f, 0f);
-
-            Debug.Log("Flower 3 parented");
-        }
-
-        flowerGrow.SetActive(false);
-
-        Grow();
     }
 
     public void Grow()
@@ -274,11 +244,6 @@ public class Pot : MonoBehaviour
         {
             hybridFlower2.transform.SetParent(null);
             hybridFlower2.SetActive(false);
-        }
-        if (hybridFlower3 != null)
-        {
-            hybridFlower3.transform.SetParent(null);
-            hybridFlower3.SetActive(false);
         }
 
         ResetPot();

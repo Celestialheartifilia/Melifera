@@ -15,6 +15,8 @@ public class Shovel : MonoBehaviour
     Pot currentPot;
     Collider2D soilCollider;
 
+    bool hasFertilised = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,8 +29,8 @@ public class Shovel : MonoBehaviour
     {
         currentPot = pot;
         soilCollider = soil;
-
         dragging = true;
+        hasFertilised = false;
     }
 
     void OnMouseDown()
@@ -56,13 +58,14 @@ public class Shovel : MonoBehaviour
     {
         if (soilCollider == null) return;
         if (other != soilCollider) return;
+        if (hasFertilised) return;
 
         if (currentPot != null && currentPot.IsReadyToFertilise())
         {
+            hasFertilised = true;
             currentPot.Fertilise();
+            StartCoroutine(ResetShovel());
         }
-
-        StartCoroutine(ResetShovel());
     }
 
     IEnumerator ResetShovel()

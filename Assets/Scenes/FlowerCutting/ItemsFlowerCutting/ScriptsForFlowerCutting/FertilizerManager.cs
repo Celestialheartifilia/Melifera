@@ -16,33 +16,46 @@ public class FertilizerManager : MonoBehaviour
     public Sprite fertiliserWithShovelSprite;
     public Sprite fertiliserWithoutShovelSprite;
 
+    bool CanUseFertiliser()
+    {
+        return pot != null && pot.IsReadyToFertilise();
+    }
+
     void Start()
     {
         emptyShovel.SetActive(false);
         soilShovel.SetActive(false);
     }
 
-    // Hover fertiliser → show empty shovel
+    // Hover fertiliser,show empty shovel
     void OnMouseEnter()
     {
+        if (!CanUseFertiliser()) return;
+
         emptyShovel.SetActive(true);
         fertiliserRenderer.sprite = fertiliserWithoutShovelSprite;
     }
 
     void OnMouseExit()
     {
-        // Only hide if not dragging
+        if (!CanUseFertiliser()) return;
+
         if (!soilShovel.activeSelf)
         {
             emptyShovel.SetActive(false);
             fertiliserRenderer.sprite = fertiliserWithShovelSprite;
         }
-
     }
 
-    // Click fertiliser → activate shovel drag
+    // Click fertiliser,activate shovel drag
     void OnMouseDown()
     {
+        if (!CanUseFertiliser())
+        {
+            Debug.Log("[FERTILISER] Not ready yet.");
+            return;
+        }
+
         emptyShovel.SetActive(false);
         soilShovel.SetActive(true);
 

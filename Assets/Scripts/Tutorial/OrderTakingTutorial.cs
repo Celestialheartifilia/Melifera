@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ public class OrderTakingTutorial : MonoBehaviour
 
     public Button takeOrderButton;
     public GameObject orderBubble;
+
+    public GameObject arrow1;
+    public GameObject arrow2;
 
     bool step3active = false;
 
@@ -36,6 +40,7 @@ public class OrderTakingTutorial : MonoBehaviour
     {
         black.SetActive(true);
         step1.SetActive(true);
+        arrow1.SetActive(true);
     }
 
     void Update()
@@ -53,6 +58,7 @@ public class OrderTakingTutorial : MonoBehaviour
     {
         step1.SetActive(false);
         black.SetActive(false);
+        arrow1.SetActive(false);
 
         step2.SetActive(true);
         next1.SetActive(true);
@@ -65,6 +71,7 @@ public class OrderTakingTutorial : MonoBehaviour
         next1.SetActive(false);
         step3.SetActive(true);
         black2.SetActive(true);
+        arrow2.SetActive(true);
     }
 
     public void EndTutorial()
@@ -82,5 +89,8 @@ public class OrderTakingTutorial : MonoBehaviour
         next1.SetActive(false);
         black.SetActive(false);
         black2.SetActive(false);
+
+        arrow1.SetActive(false);
+        arrow2.SetActive(false);
     }
 }
