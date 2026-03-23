@@ -33,6 +33,7 @@ public class PackingTutorial : MonoBehaviour
     [Header("Wrong Flower")]
     public GameObject wrongFlowerPopup;
     bool waitingForClear = false;
+    bool wrongFlowerSpawned = false;
 
     ItemsSOScript requiredFlower;
 
@@ -41,6 +42,7 @@ public class PackingTutorial : MonoBehaviour
     bool wrapDone = false;
     bool orderPressed = false;
     bool resultShown = false;
+
 
     int step = 0;
 
@@ -77,21 +79,41 @@ public class PackingTutorial : MonoBehaviour
         if (!IsTutorial()) return;
 
         // STEP 2, detect flower spawn
-        if (!flowerSpawned && step == 2)
+        if (step == 2)
         {
-            if (packingManager != null && OrderTakingManager.Instance.currentBouquet.flowers.Count > 0)
+            var bouquet = OrderTakingManager.Instance.currentBouquet;
+
+            if (bouquet.flowers.Count > 0 && !flowerSpawned)
             {
-                ItemsSOScript spawned = OrderTakingManager.Instance.currentBouquet.flowers[0];
+                ItemsSOScript spawned = bouquet.flowers[0];
 
                 if (spawned == requiredFlower)
                 {
                     flowerSpawned = true;
+                    wrongFlowerSpawned = false;
                     NextStep();
                 }
                 else
                 {
+                    wrongFlowerSpawned = true;
                     ShowWrongFlowerPopup();
                 }
+            }
+        }
+
+        // If wrong flower was spawned, wait until it's removed
+        if (step == 2 && wrongFlowerSpawned)
+        {
+            var bouquet = OrderTakingManager.Instance.currentBouquet;
+
+            if (bouquet.flowers.Count == 0)
+            {
+                // flower removed, reset step 2
+                wrongFlowerSpawned = false;
+                waitingForClear = false;
+                wrongFlowerPopup.SetActive(false);
+
+                ShowStep(); // stay in step 2
             }
         }
 
@@ -199,7 +221,8 @@ public class PackingTutorial : MonoBehaviour
         if (waitingForClear) return;
 
         wrongFlowerPopup.SetActive(true);
-        arrow1.SetActive(true);
+        step2.SetActive(false);
+        arrow1.SetActive(false);
         waitingForClear = true;
     }
 
@@ -209,8 +232,6 @@ public class PackingTutorial : MonoBehaviour
 
         wrongFlowerPopup.SetActive(false);
         waitingForClear = false;
-
-        packingManager.DisposeWholeBouquet();
     }
 
     // ========================
@@ -220,7 +241,6 @@ public class PackingTutorial : MonoBehaviour
     {
         DisableAll();
         PlayerPrefs.SetInt("PackingTutorialDone", 1);
-        PlayerPrefs.Save();
     }
 
     void DisableAll()

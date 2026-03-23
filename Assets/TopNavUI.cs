@@ -46,8 +46,7 @@ public class TopNavUI : MonoBehaviour
         // Hide everything first
         orderViewButton.SetActive(false);
         hybridGuideButton.SetActive(false);
-        orderView.SetActive(false);
-        orderViewButton.SetActive(false);
+        hybridGuide.SetActive(false);
 
         if (sceneName == "HybridingFlowerScene")
         {

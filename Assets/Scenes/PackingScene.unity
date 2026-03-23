@@ -637,6 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 681579445}
+  correctParent: {fileID: 681579444}
 --- !u!114 &116794418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,6 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1269791928}
+  correctParent: {fileID: 1269791921}
 --- !u!50 &131057446
 Rigidbody2D:
   serializedVersion: 5
@@ -1293,6 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &186612064
 Rigidbody2D:
   serializedVersion: 5
@@ -1409,6 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1314359800}
+  correctParent: {fileID: 1314359799}
 --- !u!114 &201613204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1667,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1370850998}
+        m_TargetAssemblyTypeName: PackingTutorial, Assembly-CSharp
+        m_MethodName: EndTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1505747251}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadMainGameScene
@@ -1831,6 +1847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &253410583
 Rigidbody2D:
   serializedVersion: 5
@@ -2709,6 +2726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1314359800}
+  correctParent: {fileID: 1314359799}
 --- !u!50 &406190942
 Rigidbody2D:
   serializedVersion: 5
@@ -3057,7 +3075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &459174704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,7 +3540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &494915024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4139,7 +4156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &523596938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4944,6 +4960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1314359800}
+  correctParent: {fileID: 1314359799}
 --- !u!50 &658293518
 Rigidbody2D:
   serializedVersion: 5
@@ -5334,7 +5351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &681579449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6492,6 +6508,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1370850998}
+        m_TargetAssemblyTypeName: PackingTutorial, Assembly-CSharp
+        m_MethodName: EndTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1505747251}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadMainGameScene
@@ -7476,6 +7504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1108161898}
+  correctParent: {fileID: 1108161897}
 --- !u!50 &1006033825
 Rigidbody2D:
   serializedVersion: 5
@@ -8230,7 +8259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &1108161902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8427,6 +8455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &1113025575
 Rigidbody2D:
   serializedVersion: 5
@@ -8902,6 +8931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 681579445}
+  correctParent: {fileID: 681579444}
 --- !u!50 &1192465237
 Rigidbody2D:
   serializedVersion: 5
@@ -9507,7 +9537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &1269791926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9847,7 +9876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &1270369976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10662,7 +10690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &1314359804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10861,6 +10888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 523596934}
+  correctParent: {fileID: 523596933}
 --- !u!50 &1345556381
 Rigidbody2D:
   serializedVersion: 5
@@ -11723,6 +11751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 523596934}
+  correctParent: {fileID: 523596933}
 --- !u!114 &1406816456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12357,6 +12386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 681579445}
+  correctParent: {fileID: 681579444}
 --- !u!50 &1466705953
 Rigidbody2D:
   serializedVersion: 5
@@ -13103,6 +13133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &1552892366
 Rigidbody2D:
   serializedVersion: 5
@@ -13561,6 +13592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1270369972}
+  correctParent: {fileID: 1270369971}
 --- !u!114 &1688520372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13849,6 +13881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &1702608059
 Rigidbody2D:
   serializedVersion: 5
@@ -14686,6 +14719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 0}
+  correctParent: {fileID: 0}
 --- !u!50 &1757746388
 Rigidbody2D:
   serializedVersion: 5
@@ -15029,7 +15063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89261ab5217a2564f87fa2e081df7ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PluckLeaves: {fileID: 782804861}
 --- !u!114 &1799674008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15623,6 +15656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1270369972}
+  correctParent: {fileID: 1270369971}
 --- !u!50 &1846063996
 Rigidbody2D:
   serializedVersion: 5
@@ -16935,6 +16969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1108161898}
+  correctParent: {fileID: 1108161897}
 --- !u!114 &1982398079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17152,6 +17187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1108161898}
+  correctParent: {fileID: 13380644}
 --- !u!114 &2004208695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17587,6 +17623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1269791928}
+  correctParent: {fileID: 1269791921}
 --- !u!50 &2043173471
 Rigidbody2D:
   serializedVersion: 5
@@ -17929,6 +17966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flower: {fileID: 1270369972}
+  correctParent: {fileID: 1270369971}
 --- !u!50 &2070440029
 Rigidbody2D:
   serializedVersion: 5

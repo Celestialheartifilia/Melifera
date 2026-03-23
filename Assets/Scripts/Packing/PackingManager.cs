@@ -19,6 +19,7 @@ public class PackingManager : MonoBehaviour
 
     [Header("Flower Gameplay Objects")]
     public FlowerEntry[] flowers;
+
     //public GameObject hybridLacone;
     //public GameObject hybridForlaven;
 
@@ -167,6 +168,11 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
 
         flowerObj.SetActive(true);
+        foreach (var leaf in flowerObj.GetComponentsInChildren<DragLeaf>(true))
+        {
+            leaf.ownerFlower = flowerObj; // ADD THIS
+            leaf.CacheOriginalState();
+        }
 
         // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
@@ -177,6 +183,12 @@ public class PackingManager : MonoBehaviour
         else if (bouquetFlowers.Count == 2)
         {
             RelayoutActiveFlowers();
+        }
+
+        foreach (var leaf in flowerObj.GetComponentsInChildren<DragLeaf>(true))
+        {
+            leaf.ownerFlower = flowerObj; // ADD THIS
+            leaf.CacheOriginalState();
         }
 
         pluckingInProgress = true;
@@ -560,7 +572,6 @@ public class PackingManager : MonoBehaviour
                     Debug.Log("Remove accessory and wrap first!");
                     return;
                 }
-
                 RemoveFlowerFromBouquet(disposed);
                 Debug.Log("Flower removed");
                 return;
@@ -578,7 +589,7 @@ public class PackingManager : MonoBehaviour
 
         flowerObj.SetActive(false);
 
-        ResetLeaves();
+        ResetLeaves(flowerObj);
         RelayoutActiveFlowers();
 
         pluckingInProgress = false;
@@ -612,7 +623,10 @@ public class PackingManager : MonoBehaviour
             f.flowerObject.SetActive(false);
         }
 
-        ResetLeaves();
+        foreach (var f in flowers)
+        {
+            ResetLeaves(f.flowerObject); // reset EACH flower
+        }
 
         wrapBackRenderer.sprite = null;
         wrapFrontRenderer.sprite = null;
@@ -690,11 +704,21 @@ public class PackingManager : MonoBehaviour
         CheckIfOrderReady();
     }
 
-    void ResetLeaves()
+    void ResetLeaves(GameObject flowerObj)
     {
-        LeafTracker tracker = FindObjectOfType<LeafTracker>();
-        if (tracker != null)
-            tracker.ResetLeaves();
+        foreach (var leaf in DragLeaf.allLeaves)
+        {
+            if (leaf == null) continue;
+
+            if (leaf.ownerFlower == flowerObj) //MUCH CLEANER
+            {
+                leaf.ResetLeaf();
+
+                LeafDispose dispose = leaf.GetComponent<LeafDispose>();
+                if (dispose != null)
+                    dispose.ResetLeaf();
+            }
+        }
     }
 
     void DisableFlowerDragging()
@@ -742,22 +766,23 @@ public class PackingManager : MonoBehaviour
     {
         List<GameObject> activeFlowers = new List<GameObject>();
 
-        foreach (var f in flowers)
+        foreach (var flowerData in bouquetFlowers)
         {
-            if (f.flowerObject.activeSelf)
-                activeFlowers.Add(f.flowerObject);
+            foreach (var f in flowers)
+            {
+                if (f.flowerData == flowerData && f.flowerObject.activeSelf)
+                {
+                    activeFlowers.Add(f.flowerObject);
+                    break;
+                }
+            }
         }
 
-        foreach (var f in activeFlowers)
+        for (int i = 0; i < activeFlowers.Count; i++)
         {
-            SetFlowerOpacity(f, 1f);
+            float alpha = (i == 0 && activeFlowers.Count >= 2) ? 0.5f : 1f;
+            SetFlowerOpacity(activeFlowers[i], alpha);
         }
-
-        if (activeFlowers.Count >= 2)
-        {
-            SetFlowerOpacity(activeFlowers[0], 0.5f);
-        }
-
         //if (activeFlowers.Count == 1)
         //{
         //    SetFlowerOpacity(activeFlowers[0], 1f);
