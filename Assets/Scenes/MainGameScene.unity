@@ -1554,6 +1554,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4019037188284163711, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019037188284163711, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 338269707}
+    - target: {fileID: 4019037188284163711, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019037188284163711, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019037188284163711, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4911185408878663256, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
       propertyPath: m_Name
       value: 'HeaderUIs '
@@ -1643,6 +1663,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+--- !u!1 &338269707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6440166642015811931, guid: 3ddd50e3411c16049ad69fec29e5618a, type: 3}
+  m_PrefabInstance: {fileID: 338269706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339759267
 GameObject:
   m_ObjectHideFlags: 0
