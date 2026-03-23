@@ -49,6 +49,7 @@ public class HybridTutorial : MonoBehaviour
     public GameObject scissors;
     public GameObject flower;
     public Button exitButton;
+    public Button collectedContinueButton;
 
     //wrong hybrid
     ItemsSOScript requiredHybrid;
@@ -64,8 +65,8 @@ public class HybridTutorial : MonoBehaviour
 
     void Start()
     {
-        if (OrderTakingManager.Instance != null &&
-    OrderTakingManager.Instance.currentOrder != null)
+
+        if (OrderTakingManager.Instance != null && OrderTakingManager.Instance.currentOrder != null)
         {
             foreach (var item in OrderTakingManager.Instance.currentOrder.orderedItems)
             {
@@ -192,6 +193,8 @@ public class HybridTutorial : MonoBehaviour
                 black.SetActive(true);
                 beeController.enabled = false;
                 exitButton.enabled = false;
+                pot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+               
                 break;
 
             case 2:
@@ -248,11 +251,13 @@ public class HybridTutorial : MonoBehaviour
             case 10:
                 // Collect flower
                 step10.SetActive(true);
+                beeController.enabled = false;
                 break;
 
             case 11:
                 //leave
                 step11.SetActive(true);
+                collectedContinueButton.enabled = false;
                 break;
 
             default:
@@ -270,6 +275,8 @@ public class HybridTutorial : MonoBehaviour
         DisableAll();
         beeController.enabled = true;
         exitButton.enabled = true;
+        collectedContinueButton.enabled = true;
+        pot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         PlayerPrefs.SetInt("HybridTutorialDone", 1);
     }
 

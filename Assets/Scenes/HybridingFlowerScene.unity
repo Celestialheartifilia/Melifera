@@ -2178,11 +2178,12 @@ MonoBehaviour:
   beeController: {fileID: 1650219922}
   orderButton: {fileID: 0}
   hybridBookButton: {fileID: 0}
-  pot: {fileID: 0}
+  pot: {fileID: 1189174306}
   fertiliser: {fileID: 0}
   scissors: {fileID: 0}
   flower: {fileID: 0}
   exitButton: {fileID: 786031838}
+  collectedContinueButton: {fileID: 1447593659}
   wrongHybridPopup: {fileID: 1677158796}
 --- !u!1 &230164029
 GameObject:
