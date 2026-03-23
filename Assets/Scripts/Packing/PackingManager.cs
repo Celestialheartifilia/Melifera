@@ -50,8 +50,8 @@ public class PackingManager : MonoBehaviour
     public Button orderCompleteButton;
 
     [Header("UI Order")]
-    [SerializeField] GameObject CorrectOrderPrompt;
-    [SerializeField] GameObject WrongOrderPrompt;
+    [SerializeField] public GameObject CorrectOrderPrompt;
+    [SerializeField] public GameObject WrongOrderPrompt;
 
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
@@ -61,7 +61,7 @@ public class PackingManager : MonoBehaviour
 
     List<ItemsSOScript> bouquetFlowers = new List<ItemsSOScript>();
 
-    bool pluckingInProgress = false;
+    public bool pluckingInProgress = false;
     bool wrapSelected = false;
     bool accessorySelected = false;
 
