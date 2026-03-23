@@ -43,13 +43,24 @@ public class TopNavUI : MonoBehaviour
         UpdateUI(scene.name);
     }
 
-    void UpdateUI(string sceneName)
+    public void UpdateUI(string sceneName)
     {
-        // Hide everything first
+        //Updated-------
+        // If options menu is open ? hide everything
+        if (sceneName == "OptionMenuScene")
+        {
+            orderViewButton.SetActive(false);
+            hybridGuideButton.SetActive(false);
+            orderView.SetActive(false);
+            hybridGuide.SetActive(false);
+            return;
+        }
+
+        // Normal scene logic
         orderViewButton.SetActive(false);
         hybridGuideButton.SetActive(false);
         orderView.SetActive(false);
-        orderViewButton.SetActive(false);
+        hybridGuide.SetActive(false);
 
         if (sceneName == "HybridingFlowerScene")
         {
@@ -60,12 +71,28 @@ public class TopNavUI : MonoBehaviour
         {
             orderViewButton.SetActive(true);
         }
-        else if (sceneName == "MainGameScene" || sceneName == "OrderTakingScene")
-        {
-            orderView.SetActive(false);
-            hybridGuide.SetActive(false);
-        }
+        //-------------
+        //// Hide everything first
+        //orderViewButton.SetActive(false);
+        //hybridGuideButton.SetActive(false);
+        //orderView.SetActive(false);
+        //orderViewButton.SetActive(false);
 
+        //if (sceneName == "HybridingFlowerScene")
+        //{
+        //    orderViewButton.SetActive(true);
+        //    hybridGuideButton.SetActive(true);
+        //}
+        //else if (sceneName == "PackingScene")
+        //{
+        //    orderViewButton.SetActive(true);
+        //}
+        //else if (sceneName == "MainGameScene" || sceneName == "OrderTakingScene")
+        //{
+        //    orderView.SetActive(false);
+        //    hybridGuide.SetActive(false);
+        //}
+        //-----------
         //orderViewButton.SetActive(true);
         //hybridGuideButton.SetActive(true);
         //orderView.SetActive(true);
