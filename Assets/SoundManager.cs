@@ -1,75 +1,78 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager instance; // Only ONE SoundManager in the game
 
-    [SerializeField] private AudioMixer mainMixer;
-    [SerializeField] private Slider MusicSlider;
-    [SerializeField] private Slider SFXSlider;
+    [Header("Music")]
+    public AudioSource musicSource; // The speaker
+    public AudioClip backgroundMusic; // The music
+
+    private float currentVolume; // How loud the music is
 
     private void Awake()
     {
-        if (instance == null)
+        // ?? FOR TESTING ONLY (Resets volume every time you press Play in Unity)
+#if UNITY_EDITOR
+        PlayerPrefs.DeleteKey("MusicVolume"); // Remove saved volume
+#endif
+
+        // If another SoundManager already exists, delete this one
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject); // prevent a second one from spawning 
+            Destroy(gameObject);
             return;
         }
+
+        instance = this;
+
+        // Keep this object when switching scenes
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolume"))
+        // Load saved volume (default = 1 if nothing saved)
+        currentVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+
+        // Apply volume
+        if (musicSource != null)
+            musicSource.volume = currentVolume;
+
+        // Play music on loop
+        if (musicSource != null && backgroundMusic != null)
         {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSFXVolume();
+            musicSource.clip = backgroundMusic;
+            musicSource.loop = true; // Repeat forever
+            musicSource.Play();
         }
     }
 
-    public void SetMusicVolume()
+    public void SetMusicVolume(float volume)
     {
-        if (mainMixer == null) return;
-        float volume = MusicSlider.value;
-        mainMixer.SetFloat("music", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("musicVolume", volume);
+        currentVolume = volume;
+
+        // Change volume
+        if (musicSource != null)
+            musicSource.volume = volume;
+
+        // Save volume
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
-    public void SetSFXVolume()
+    public float GetMusicVolume()
     {
-        if (mainMixer == null) return;
-        float volume = SFXSlider.value;
-        mainMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", volume);
+        return currentVolume;
     }
 
-    public void LoadVolume()
+    // ?? OPTIONAL: Button to reset volume manually
+    public void ResetVolume()
     {
-        //MusicSlider.value = PlayerPrefs.GetFloat("musicVolume",1f);
-        //SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume",1f);
+        currentVolume = 1f; // back to full volume
 
-        //SetMusicVolume();
-        //SetSFXVolume();
-        if (MusicSlider != null) MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
-        if (SFXSlider != null) SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        if (musicSource != null)
+            musicSource.volume = currentVolume;
 
-        // Still apply the volume to the mixer even if sliders aren't present
-        float mVol = PlayerPrefs.GetFloat("musicVolume", 1f);
-        float sVol = PlayerPrefs.GetFloat("SFXVolume", 1f);
-
-        mainMixer.SetFloat("music", Mathf.Log10(mVol) * 20);
-        mainMixer.SetFloat("sfx", Mathf.Log10(sVol) * 20);
+        PlayerPrefs.SetFloat("MusicVolume", currentVolume);
     }
 }
