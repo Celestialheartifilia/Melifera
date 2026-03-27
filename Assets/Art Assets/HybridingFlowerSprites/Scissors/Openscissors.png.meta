@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 05098c653a2868a4d9906479d9e9c5aa
+guid: 3416122de1dc056438878adfbe1d8c3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6689946350199266671
-    second: Scissors_0
+      213: 5229740483187970244
+    second: Openscissors_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scissors_0
+      name: Openscissors_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 52
-        width: 429
-        height: 363
+        x: 0
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f6d5c0ab2c677dc50800000000000000
-      internalID: 6689946350199266671
+      spriteID: 4c016e7d245c39840800000000000000
+      internalID: 5229740483187970244
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6d2885c962c3d7b458dbcec4955bc5eb
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Scissors_0: 6689946350199266671
+      Openscissors_0: 5229740483187970244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

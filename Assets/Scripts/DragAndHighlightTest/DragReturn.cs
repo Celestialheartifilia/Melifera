@@ -16,10 +16,14 @@ public class DragReturn : MonoBehaviour
 
     public bool returnToStartPosition = true;
 
+    private Animator scissorAnimator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); 
         cam = Camera.main;
+
+        scissorAnimator = GetComponent<Animator>();
 
         rb.gravityScale = 0f; // ensure no gravity
         rb.linearVelocity = Vector2.zero;
@@ -39,6 +43,9 @@ public class DragReturn : MonoBehaviour
     {
         dragging = true;
 
+        if (scissorAnimator != null)
+            scissorAnimator.SetBool("isCutting", true);
+
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         offset = rb.position - mouseWorld;
     }
@@ -46,6 +53,9 @@ public class DragReturn : MonoBehaviour
     void OnMouseUp()
     {
         dragging = false;
+
+        if (scissorAnimator != null)
+            scissorAnimator.SetBool("isCutting", false);
 
         // Call bin disposal BEFORE resetting position
         if (bin != null)

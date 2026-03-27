@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 196c9e0f7f1cbbd4e84c8dab563c5ccf
+guid: 14d7e5686f47d6e42908ac23073f6169
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8389251026795439679
-    second: Accessory2_Sprite_0
+      213: -6706905267644384565
+    second: CloseScissors_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Accessory2_Sprite_0
+      name: CloseScissors_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 39
-        width: 240
-        height: 208
+        x: 0
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c9d648a3a4639b80800000000000000
-      internalID: -8389251026795439679
+      spriteID: bca3cdb91394ce2a0800000000000000
+      internalID: -6706905267644384565
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f0862f5a7b46e934bb9e4a5d2d8cf59a
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Accessory2_Sprite_0: -8389251026795439679
+      CloseScissors_0: -6706905267644384565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
