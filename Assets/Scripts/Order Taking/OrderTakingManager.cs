@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-public System.Action OnOrderStateChanged;
 
 public class OrderTakingManager : MonoBehaviour
 {
@@ -51,7 +49,6 @@ public class OrderTakingManager : MonoBehaviour
         currentOrder = null;
         ResetBouquet();
 
-        OnOrderStateChanged?.Invoke();
     }
 
     void Awake()
