@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PackingManager : MonoBehaviour
 {
@@ -142,18 +143,24 @@ public class PackingManager : MonoBehaviour
         if (pluckingInProgress)
         {
             Debug.Log("Finish plucking current flower first.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Finish plucking current flower first.");
             return;
         }
 
         if (wrapSelected || accessorySelected)
         {
             Debug.Log("Remove wrap/accessory first before adding another flower.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Remove wrap/accessory first before adding another flower.");
             return;
         }
 
         if (bouquetFlowers.Count >= maxBouquetFlowers)
         {
             Debug.Log("Bouquet already has 2 flowers.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Bouquet already has 2 flowers.");
             return;
         }
 
@@ -161,6 +168,8 @@ public class PackingManager : MonoBehaviour
         if (flowerObj == null)
         {
             Debug.LogWarning("No available flower GameObject for this flower data.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("No more flowers available.");
             return;
         }
 
@@ -168,11 +177,6 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
 
         flowerObj.SetActive(true);
-        foreach (var leaf in flowerObj.GetComponentsInChildren<DragLeaf>(true))
-        {
-            leaf.ownerFlower = flowerObj; // ADD THIS
-            leaf.CacheOriginalState();
-        }
 
         // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
@@ -183,12 +187,6 @@ public class PackingManager : MonoBehaviour
         else if (bouquetFlowers.Count == 2)
         {
             RelayoutActiveFlowers();
-        }
-
-        foreach (var leaf in flowerObj.GetComponentsInChildren<DragLeaf>(true))
-        {
-            leaf.ownerFlower = flowerObj; // ADD THIS
-            leaf.CacheOriginalState();
         }
 
         pluckingInProgress = true;
@@ -332,6 +330,8 @@ public class PackingManager : MonoBehaviour
         }
 
         Debug.Log("Leaves finished. You may wrap now or add another flower.");
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowMessage("You may wrap now or add another flower.");
     }
 
     public GameObject wrapAccessoryTab;
@@ -535,6 +535,8 @@ public class PackingManager : MonoBehaviour
 
             orderCompleteButton.interactable = false;
             Debug.Log("Accessory removed");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Accessory removed");
             return;
         }
 
@@ -543,6 +545,8 @@ public class PackingManager : MonoBehaviour
             if (accessorySelected)
             {
                 Debug.Log("Remove accessory first!");
+                if (UIManager.Instance != null)
+                    UIManager.Instance.ShowMessage("Remove accessory first!");
                 return;
             }
 
@@ -560,6 +564,8 @@ public class PackingManager : MonoBehaviour
             orderCompleteButton.interactable = false;
 
             Debug.Log("Wrap removed");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Wrap removed");
             return;
         }
 
@@ -570,10 +576,14 @@ public class PackingManager : MonoBehaviour
                 if (wrapSelected || accessorySelected)
                 {
                     Debug.Log("Remove accessory and wrap first!");
+                    if (UIManager.Instance != null)
+                        UIManager.Instance.ShowMessage("Remove accessory and wrap first!");
                     return;
                 }
                 RemoveFlowerFromBouquet(disposed);
                 Debug.Log("Flower removed");
+                if (UIManager.Instance != null)
+                    UIManager.Instance.ShowMessage("Flower removed");
                 return;
             }
         }
@@ -599,6 +609,8 @@ public class PackingManager : MonoBehaviour
     public void DisposeWholeBouquet()
     {
         Debug.Log("Whole bouquet disposed");
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowMessage("Bouquet disposed!");
         ResetPackingScene();
     }
 
@@ -706,18 +718,10 @@ public class PackingManager : MonoBehaviour
 
     void ResetLeaves(GameObject flowerObj)
     {
-        foreach (var leaf in DragLeaf.allLeaves)
+        LeafTracker tracker = FindObjectOfType<LeafTracker>();
+        if (tracker != null)
         {
-            if (leaf == null) continue;
-
-            if (leaf.ownerFlower == flowerObj) //MUCH CLEANER
-            {
-                leaf.ResetLeaf();
-
-                LeafDispose dispose = leaf.GetComponent<LeafDispose>();
-                if (dispose != null)
-                    dispose.ResetLeaf();
-            }
+            tracker.ResetLeaves();
         }
     }
 

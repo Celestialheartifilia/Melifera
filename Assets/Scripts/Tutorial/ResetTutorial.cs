@@ -10,6 +10,7 @@ public class ResetTutorial : MonoBehaviour
         PlayerPrefs.DeleteKey("GoHybridTutorialDone");
         PlayerPrefs.DeleteKey("HybridTutorialDone");
         PlayerPrefs.DeleteKey("GoPackingTutorialDone");
+        PlayerPrefs.DeleteKey("PackingTutorialDone");
         Debug.Log("Tutorial reset!");
     }
 

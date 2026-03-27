@@ -241,6 +241,7 @@ public class PackingTutorial : MonoBehaviour
     {
         DisableAll();
         PlayerPrefs.SetInt("PackingTutorialDone", 1);
+        PlayerPrefs.Save();
     }
 
     void DisableAll()

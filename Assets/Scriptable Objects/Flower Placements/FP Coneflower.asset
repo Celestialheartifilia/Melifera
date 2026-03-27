@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FP Coneflower
   m_EditorClassIdentifier: 
   flowerItem: {fileID: 11400000, guid: 892c22bc2e60ae8439215033c916c122, type: 2}
-  firstPosition: {x: -0.1, y: 1.18, z: 0}
-  firstRotation: {x: 0, y: 0, z: 0}
-  secondPosition: {x: -1.05, y: 0.25, z: -0.1}
+  firstPosition: {x: -0.28, y: -0.5, z: 0}
+  firstRotation: {x: 0, y: 0, z: -20}
+  secondPosition: {x: -1.07, y: -1.2, z: -0.1}
   secondRotation: {x: 0, y: 0, z: 15}
