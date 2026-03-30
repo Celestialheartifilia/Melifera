@@ -13,15 +13,17 @@ public class OrderUIManager : MonoBehaviour
     {
         cam = Camera.main;
 
-        if (orderBubbleUI != null)
-            orderBubbleUI.gameObject.SetActive(false);
+        //if (orderBubbleUI != null)
+        //    orderBubbleUI.gameObject.SetActive(false);
 
-        if (takeOrderButton != null)
-            takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
-                                      OrderTakingManager.Instance.currentOrder != null);
+        //if (takeOrderButton != null)
+        //    takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
+        //                              OrderTakingManager.Instance.currentOrder != null);
 
-        if (collectedPopup != null)
-            collectedPopup.SetActive(false);
+        //if (collectedPopup != null)
+        //    collectedPopup.SetActive(false);
+
+        RefreshUIForNewOrder();
     }
 
     void Update()

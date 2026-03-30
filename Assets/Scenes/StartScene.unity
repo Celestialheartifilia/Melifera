@@ -385,7 +385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &680688731
 Transform:
   m_ObjectHideFlags: 0
@@ -989,7 +989,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &1096736779
 MonoBehaviour:
@@ -1533,7 +1533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1096736775}
         m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
-        m_MethodName: OnStartClick
+        m_MethodName: TempStartClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

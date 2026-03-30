@@ -482,7 +482,25 @@ public class PackingManager : MonoBehaviour
         }
 
         DisplayHybridInventory();
+    }
+
+    public SceneLoader sceneLoader;
+    public void OnContinueAfterOrder()
+    {
+        CorrectOrderPrompt.SetActive(false);
+        WrongOrderPrompt.SetActive(false);
+
         OrderTakingManager.Instance.FinishOrder();
+
+        if (OrderTakingManager.Instance.IsLastCustomer())
+        {
+            // Show score screen instead of going back to order scene
+            ScoreManager.Instance.ShowFinalScore(); // or load a score scene
+        }
+        else
+        {
+            sceneLoader.LoadMainGameScene(); // your normal flow
+        }
     }
 
     bool ValidateFlowersExactly(OrderList order)

@@ -26,7 +26,7 @@ public class OrderTakingManager : MonoBehaviour
 
     public bool IsTutorial()
     {
-        return currentCustomerIndex == 0;
+        return currentCustomerIndex == 1;
     }
 
     [System.Serializable]
@@ -49,6 +49,10 @@ public class OrderTakingManager : MonoBehaviour
         currentOrder = null;
         ResetBouquet();
 
+    }
+    public bool IsLastCustomer()
+    {
+        return currentCustomerIndex >= maxCustomers;
     }
 
     void Awake()

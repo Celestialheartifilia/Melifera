@@ -15,5 +15,5 @@ MonoBehaviour:
   flowerItem: {fileID: 11400000, guid: cf5af75f2fead1e4b9c0a1ffcb721810, type: 2}
   firstPosition: {x: 0.28, y: -0.76, z: 0}
   firstRotation: {x: 0, y: 0, z: -10}
-  secondPosition: {x: 0.33, y: -0.95, z: -0.1}
+  secondPosition: {x: -0.73, y: -0.95, z: -0.1}
   secondRotation: {x: 0, y: 0, z: 25}

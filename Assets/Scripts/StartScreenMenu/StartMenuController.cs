@@ -5,6 +5,11 @@ public class StartMenuController : MonoBehaviour
 {
     public void OnStartClick()
     {
+        SceneManager.LoadScene("IntroCutScene");
+    }
+
+    public void TempStartClick()
+    {
         SceneManager.LoadScene("MainGameScene");
     }
 

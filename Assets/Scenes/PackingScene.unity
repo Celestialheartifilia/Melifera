@@ -1777,9 +1777,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1505747251}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadMainGameScene
+      - m_Target: {fileID: 1610541583}
+        m_TargetAssemblyTypeName: PackingManager, Assembly-CSharp
+        m_MethodName: OnContinueAfterOrder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6618,9 +6618,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1505747251}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadMainGameScene
+      - m_Target: {fileID: 1610541583}
+        m_TargetAssemblyTypeName: PackingManager, Assembly-CSharp
+        m_MethodName: OnContinueAfterOrder
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11263,7 +11263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 307456871581747682, guid: 1c60aedb2b2177a44b9366000050b388, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11271,7 +11271,7 @@ SpriteRenderer:
   m_Size: {x: 3.05, y: 2.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1361393153
@@ -13274,6 +13274,7 @@ MonoBehaviour:
   pluckingInProgress: 0
   wrapAccessoryTab: {fileID: 481563851}
   flowerTab: {fileID: 894664428}
+  sceneLoader: {fileID: 1505747251}
 --- !u!1 &1619071984
 GameObject:
   m_ObjectHideFlags: 0
@@ -16276,7 +16277,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5436139473078261504, guid: 1d6311e70520eef43837d02806986ba6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16284,7 +16285,7 @@ SpriteRenderer:
   m_Size: {x: 2.97, y: 2.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1916231505

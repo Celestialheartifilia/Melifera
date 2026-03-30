@@ -9,7 +9,7 @@ public class Customers : MonoBehaviour
     public GameObject customer2;
     public GameObject customer3;
 
-    int currentCustomerIndex = 0;
+    //int currentCustomerIndex = 0;
 
     void Awake()
     {
@@ -24,14 +24,13 @@ public class Customers : MonoBehaviour
     public void SpawnNextCustomer()
     {
         OrderTakingManager manager = OrderTakingManager.Instance;
+        manager.currentCustomerIndex++;
 
-        if (!manager.HasMoreCustomers())
+        if (manager.currentCustomerIndex > manager.maxCustomers)
         {
             Debug.Log("All customers finished.");
             return;
         }
-
-        manager.currentCustomerIndex++;
 
         int index = manager.currentCustomerIndex;
 

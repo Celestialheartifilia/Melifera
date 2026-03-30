@@ -2342,6 +2342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 497412488}
   - component: {fileID: 497412487}
+  - component: {fileID: 497412489}
   m_Layer: 0
   m_Name: Arrow 2P
   m_TagString: Untagged
@@ -2390,8 +2391,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2419,6 +2420,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!95 &497412489
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497412486}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &498354510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,6 +4283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314309593}
   - component: {fileID: 1314309592}
+  - component: {fileID: 1314309594}
   m_Layer: 0
   m_Name: Arrow 2H
   m_TagString: Untagged
@@ -4308,8 +4332,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4337,6 +4361,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!95 &1314309594
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314309591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1319676529
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,7 +4603,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2423209194585687875, guid: 24923a397dc5aaa49afb596aed1a22ce, type: 3}
+  m_Sprite: {fileID: -7291756233155940465, guid: dd1b96053e6d21f4993e8247730d081b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5093,6 +5139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1378683800}
   - component: {fileID: 1378683799}
+  - component: {fileID: 1378683801}
   m_Layer: 0
   m_Name: Arrow 1H
   m_TagString: Untagged
@@ -5141,8 +5188,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5164,12 +5211,34 @@ Transform:
   m_GameObject: {fileID: 1378683798}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -8.987695, y: 0.67615044, z: 0.8421538}
+  m_LocalPosition: {x: -9.7, y: 0.5, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!95 &1378683801
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378683798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1444620251
 GameObject:
   m_ObjectHideFlags: 0
@@ -5660,6 +5729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694245007}
   - component: {fileID: 1694245006}
+  - component: {fileID: 1694245008}
   m_Layer: 0
   m_Name: Arrow 2C
   m_TagString: Untagged
@@ -5708,8 +5778,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5737,6 +5807,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
+--- !u!95 &1694245008
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694245005}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1726209192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,7 +5988,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7524260459062620701, guid: 921e6aec6e001c74e864f704e8f64c6f, type: 3}
+  m_Sprite: {fileID: -5086364377183723754, guid: 902aa5aa26620a54983c53043f531cf3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7001,6 +7093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1926994592}
   - component: {fileID: 1926994591}
+  - component: {fileID: 1926994593}
   m_Layer: 0
   m_Name: Arrow 1P
   m_TagString: Untagged
@@ -7049,8 +7142,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7072,12 +7165,34 @@ Transform:
   m_GameObject: {fileID: 1926994590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.0123053, y: 0.67615044, z: 0.8421538}
+  m_LocalPosition: {x: 2.05, y: 0.5, z: 0.8421538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!95 &1926994593
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926994590}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1961700451
 GameObject:
   m_ObjectHideFlags: 0
@@ -7491,6 +7606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044269171}
   - component: {fileID: 2044269170}
+  - component: {fileID: 2044269172}
   m_Layer: 0
   m_Name: Arrow 1C
   m_TagString: Untagged
@@ -7539,8 +7655,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -651743797
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -4346244404228752641, guid: 34324f6afbe51a441ab1dca6d2d3a383, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7568,6 +7684,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 845436765}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2044269172
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044269169}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a8efb93005b5e4d948cf1af6700a98, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2095885923
 GameObject:
   m_ObjectHideFlags: 0
