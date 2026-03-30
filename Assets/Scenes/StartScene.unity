@@ -874,6 +874,65 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.9843137, b: 0.8509804, a: 0.5}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 1
+--- !u!1 &950442563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950442565}
+  - component: {fileID: 950442564}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &950442564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950442563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9097845268ef4384f876fcc00fa2609d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  src: {fileID: 1258317590}
+  trashBinSFX: {fileID: 8300000, guid: e5632ed50e185634b88ed5eeed7a1359, type: 3}
+  orderTakingSFX: {fileID: 8300000, guid: 9405e1c0ea2fa7541a992f66d89c19d4, type: 3}
+  SprinkleFertilizerSFX: {fileID: 8300000, guid: ffe7163f963549f46872acae81dd7eb1, type: 3}
+  buzzingSFX: {fileID: 0}
+  scissorsCuttingSFX: {fileID: 8300000, guid: 26cd49802539c9c499e35601322b831f, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: 8547f8f4d4670b241a273079adf6265b, type: 3}
+  wrappingPaperSFX: {fileID: 8300000, guid: 95dd3b3bc734dbf4e80559edead13980, type: 3}
+  wrongOrderSFX: {fileID: 8300000, guid: 4a60d139126433b448a2f805d8f678cf, type: 3}
+  customerArrivedSFX: {fileID: 8300000, guid: db65eb0e373707f46b55abbbde65d36d, type: 3}
+  addAccessoriesSFX: {fileID: 8300000, guid: c7845b990ebb3dc4a9714a563b5f8ef8, type: 3}
+  pluckOutLeavesSFX: {fileID: 8300000, guid: 1ea4dfbaf2dfd834e8ebac486204f388, type: 3}
+  correctOrderSFX: {fileID: 8300000, guid: 6e7b35fe6d3e0e1458b25de00225b57f, type: 3}
+  pollinateFlowerSFX: {fileID: 8300000, guid: a48252b251b53b145a975a138d235e1d, type: 3}
+  flowerGrowingSFX: {fileID: 8300000, guid: 97b6915acbd15494cbff38dca7a36acc, type: 3}
+--- !u!4 &950442565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950442563}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.028039198, y: -0.98863244, z: -0.001279564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096736773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1088,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096736773}
   m_CullTransparentMesh: 1
+--- !u!1 &1258317589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258317591}
+  - component: {fileID: 1258317590}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1258317590
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258317589}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1258317591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258317589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.028039198, y: -0.98863244, z: -0.001279564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273807012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1365,7 @@ GameObject:
   - component: {fileID: 1294206386}
   - component: {fileID: 1294206388}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: BG Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1696,3 +1884,5 @@ SceneRoots:
   - {fileID: 1606730922}
   - {fileID: 1294206387}
   - {fileID: 680688731}
+  - {fileID: 950442565}
+  - {fileID: 1258317591}

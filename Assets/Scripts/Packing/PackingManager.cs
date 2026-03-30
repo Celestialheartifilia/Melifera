@@ -177,6 +177,7 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
 
         flowerObj.SetActive(true);
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
 
         // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
