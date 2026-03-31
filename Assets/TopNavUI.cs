@@ -41,10 +41,21 @@ public class TopNavUI : MonoBehaviour
         UpdateUI(scene.name);
     }
 
-    void UpdateUI(string sceneName)
+    public void UpdateUI(string sceneName)
     {
+        // If options menu is open, hide everything
+        if (sceneName == "OptionMenuScene")
+        {
+            orderViewButton.SetActive(false);
+            hybridGuideButton.SetActive(false);
+            orderView.SetActive(false);
+            hybridGuide.SetActive(false);
+            return;
+        }
+
         // Hide everything first
         orderViewButton.SetActive(false);
+        orderView.SetActive(false);
         hybridGuideButton.SetActive(false);
         hybridGuide.SetActive(false);
 

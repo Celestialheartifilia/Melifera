@@ -819,9 +819,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 637678155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69fe9b3656cec2548907c95dd70d60eb, type: 3}
+  m_Script: {fileID: 11500000, guid: c8774cfc3a0e1c64886bbbdd990d92b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSlider: {fileID: 1324401129}
 --- !u!1 &885555434
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +849,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885555434}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &885555436
 Camera:
   m_ObjectHideFlags: 0
@@ -2220,7 +2221,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!224 &1934040332
 RectTransform:
@@ -2249,7 +2250,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934040325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
