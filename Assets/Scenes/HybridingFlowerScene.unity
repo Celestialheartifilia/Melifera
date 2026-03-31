@@ -1440,7 +1440,7 @@ Transform:
   m_GameObject: {fileID: 151887716}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.548159, y: 0, z: 0}
+  m_LocalPosition: {x: -9.68, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3375,12 +3375,12 @@ GameObject:
   m_Component:
   - component: {fileID: 341102489}
   m_Layer: 0
-  m_Name: PollinateSpeech
+  m_Name: PollinatedPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &341102489
 Transform:
   m_ObjectHideFlags: 0
@@ -3682,7 +3682,7 @@ GameObject:
   - component: {fileID: 366823277}
   - component: {fileID: 366823278}
   m_Layer: 0
-  m_Name: Pollinated_Indicator__1
+  m_Name: Pollinated_Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6004,7 +6004,7 @@ Transform:
   m_GameObject: {fileID: 658989632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.04, y: 0, z: 0}
+  m_LocalPosition: {x: -6.22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17270,7 +17270,7 @@ GameObject:
   - component: {fileID: 1776128071}
   - component: {fileID: 1776128072}
   m_Layer: 0
-  m_Name: Pollinated_Indicator__1
+  m_Name: Pollinated_Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17403,7 +17403,7 @@ Transform:
   m_GameObject: {fileID: 1801546283}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.91, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
