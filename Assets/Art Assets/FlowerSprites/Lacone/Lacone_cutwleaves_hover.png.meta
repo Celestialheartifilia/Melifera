@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40617c0cc2384594db4537f1cd239713
+guid: dd02d420c16c03f4984bc4f6fb2f2da3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 933990015654663671
-    second: Lacone_cutwleaves_0
+      213: -2121727826036526791
+    second: Lacone_cutwleaves_hover_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lacone_cutwleaves_0
+      name: Lacone_cutwleaves_hover_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f59bd288f236fc00800000000000000
-      internalID: 933990015654663671
+      spriteID: 931f70b98cb1e82e0800000000000000
+      internalID: -2121727826036526791
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f9f1d04cbc9f19e4b95300cf252e444f
+    spriteID: 1412b33285e848a48964840c41c7b5b2
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lacone_cutwleaves_0: 933990015654663671
+      Lacone_cutwleaves_hover_0: -2121727826036526791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

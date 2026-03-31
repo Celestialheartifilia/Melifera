@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40617c0cc2384594db4537f1cd239713
+guid: ec126d124164cdc47a47dac1489e2fbd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 933990015654663671
-    second: Lacone_cutwleaves_0
+      213: 4034965485248756374
+    second: Forlaven_cutwleaves_hover_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lacone_cutwleaves_0
+      name: Forlaven_cutwleaves_hover_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 400
+        width: 500
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f59bd288f236fc00800000000000000
-      internalID: 933990015654663671
+      spriteID: 69ab63d0bb31ff730800000000000000
+      internalID: 4034965485248756374
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f9f1d04cbc9f19e4b95300cf252e444f
+    spriteID: c231250d0f859e14eb7bf7af62938e33
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lacone_cutwleaves_0: 933990015654663671
+      Forlaven_cutwleaves_hover_0: 4034965485248756374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
