@@ -7,15 +7,13 @@ public class StartMenuController : MonoBehaviour
     public void OnStartClick()
     {
         SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
-        StartCoroutine(Delay());
-        SceneManager.LoadScene("IntroCutScene");
+        StartCoroutine(LoadSceneDelay("IntroCutScene"));
     }
 
     public void TempStartClick()
     {
         SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
-        StartCoroutine(Delay());
-        SceneManager.LoadScene("MainGameScene");
+        StartCoroutine(LoadSceneDelay("MainGameScene"));
     }
 
 
@@ -56,9 +54,10 @@ public class StartMenuController : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator Delay()
+    IEnumerator LoadSceneDelay(string sceneName)
     {
-        yield return new WaitForSeconds(0.2f); // small delay
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene(sceneName);
     }
 
 

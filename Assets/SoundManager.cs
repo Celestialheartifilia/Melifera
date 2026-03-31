@@ -10,6 +10,9 @@ public class SoundManager : MonoBehaviour
 
     private float currentVolume; // How loud the music is
 
+    [Header("SFX")]
+    private float sfxVolume;
+
     private void Awake()
     {
         // ?? FOR TESTING ONLY (Resets volume every time you press Play in Unity)
@@ -34,6 +37,7 @@ public class SoundManager : MonoBehaviour
     {
         // Load saved volume (default = 1 if nothing saved)
         currentVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
         // Apply volume
         if (musicSource != null)
@@ -63,6 +67,17 @@ public class SoundManager : MonoBehaviour
     public float GetMusicVolume()
     {
         return currentVolume;
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
+
+    public float GetSFXVolume()
+    {
+        return sfxVolume;
     }
 
     // ?? OPTIONAL: Button to reset volume manually

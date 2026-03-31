@@ -21,12 +21,24 @@ public class SoundEffectPlayer : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySound(AudioClip clip)
     {
-        src.PlayOneShot(clip);
+        float volume = 1f;
+
+        if (SoundManager.instance != null)
+            volume = SoundManager.instance.GetSFXVolume();
+
+        src.PlayOneShot(clip, volume);
     }
 
     public void TrashBin()
