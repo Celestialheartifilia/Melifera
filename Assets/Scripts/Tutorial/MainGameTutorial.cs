@@ -63,9 +63,22 @@ public class MainGameTutorial : MonoBehaviour
         return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1 && PlayerPrefs.GetInt("GoHybridTutorialDone", 0) == 1 && PlayerPrefs.GetInt("MainTutorialDone", 0) == 1;
     }
 
+    bool secondCus()
+    {
+        return OrderTakingManager.Instance != null && (OrderTakingManager.Instance.currentCustomerIndex == 2 || OrderTakingManager.Instance.currentCustomerIndex == 3);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        if (secondCus())
+        {
+            counterButton.GetComponent<PolygonCollider2D>().enabled = true;
+            hybridButton.GetComponent<PolygonCollider2D>().enabled = true;
+            packingButton.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
 
         DisableAllTutorialUI();
 

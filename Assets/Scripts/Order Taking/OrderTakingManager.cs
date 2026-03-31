@@ -11,7 +11,7 @@ public class OrderTakingManager : MonoBehaviour
     public OrderList currentOrder;
 
     public int currentCustomerIndex = 1;
-    public int maxCustomers = 3;
+    public int maxCustomers = 4;
 
     //public NextOrderPopup nextOrderPopup;
 

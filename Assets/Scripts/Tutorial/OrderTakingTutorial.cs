@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -80,6 +79,7 @@ public class OrderTakingTutorial : MonoBehaviour
     {
         DisableAllTutorialUI();
         PlayerPrefs.SetInt("OrderTutorialDone", 1);
+        PlayerPrefs.Save();
     }
 
     public void DisableAllTutorialUI()

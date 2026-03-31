@@ -146,6 +146,7 @@ public class PackingTutorial : MonoBehaviour
             {
                 orderPressed = true;
                 NextStep();
+                
             }
         }
 
@@ -157,7 +158,6 @@ public class PackingTutorial : MonoBehaviour
                  packingManager.WrongOrderPrompt.activeSelf))
             {
                 resultShown = true;
-                NextStep();
             }
         }
     }

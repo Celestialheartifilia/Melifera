@@ -512,6 +512,7 @@ public class PackingManager : MonoBehaviour
         }
 
         DisplayHybridInventory();
+        orderCompleteButton.interactable = false;
     }
 
     public SceneLoader sceneLoader;

@@ -8,6 +8,7 @@ public class EnterStation : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("Station clicked: " + gameObject.name);
         //Save spawn position before changing scene
         if (spawnPoint != null)
         {
