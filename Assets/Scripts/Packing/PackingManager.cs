@@ -118,20 +118,22 @@ public class PackingManager : MonoBehaviour
 
         foreach (var stack in InventoryManager.Instance.hybrids)
         {
-            for (int i = 0; i < stack.amount; i++)
-            {
-                if (slotIndex >= hybridSlots.Length)
-                    return;
+            if (slotIndex >= hybridSlots.Length)
+                return;
 
-                Button slotButton = hybridSlots[slotIndex];
-                slotButton.gameObject.SetActive(true);
-                slotButton.image.sprite = stack.item.itemSprite;
+            Button slotButton = hybridSlots[slotIndex];
+            slotButton.gameObject.SetActive(true);
+            slotButton.image.sprite = stack.item.itemSprite;
 
-                ItemsSOScript flowerData = stack.item;
-                slotButton.onClick.AddListener(() => ActivateFlowerFromInventory(flowerData));
+            // ADD TEXT
+            Text qtyText = slotButton.GetComponentInChildren<Text>();
+            if (qtyText != null)
+                qtyText.text = "x" + stack.amount;
 
-                slotIndex++;
-            }
+            ItemsSOScript flowerData = stack.item;
+            slotButton.onClick.AddListener(() => ActivateFlowerFromInventory(flowerData));
+
+            slotIndex++;
         }
     }
 
@@ -179,6 +181,9 @@ public class PackingManager : MonoBehaviour
         flowerObj.SetActive(true);
         SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
 
+        InventoryManager.Instance.RemoveHybrid(flowerData);
+        DisplayHybridInventory();
+
         // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
         {
@@ -216,13 +221,37 @@ public class PackingManager : MonoBehaviour
         }
     }
 
+    Dictionary<ItemsSOScript, int> flowerIndexTracker = new Dictionary<ItemsSOScript, int>();
+
     GameObject GetAvailableFlowerObject(ItemsSOScript flowerData)
     {
+        // get all matching flowers
+        List<FlowerEntry> matching = new List<FlowerEntry>();
+
         foreach (var f in flowers)
         {
-            if (f.flowerData == flowerData && !f.flowerObject.activeSelf)
+            if (f.flowerData == flowerData)
+                matching.Add(f);
+        }
+
+        if (matching.Count == 0)
+            return null;
+
+        // get index
+        if (!flowerIndexTracker.ContainsKey(flowerData))
+            flowerIndexTracker[flowerData] = 0;
+
+        int startIndex = flowerIndexTracker[flowerData];
+
+        // loop through list
+        for (int i = 0; i < matching.Count; i++)
+        {
+            int index = (startIndex + i) % matching.Count;
+
+            if (!matching[index].flowerObject.activeSelf)
             {
-                return f.flowerObject;
+                flowerIndexTracker[flowerData] = (index + 1) % matching.Count;
+                return matching[index].flowerObject;
             }
         }
 

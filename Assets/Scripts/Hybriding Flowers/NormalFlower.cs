@@ -5,8 +5,8 @@ public class NormalFlower : MonoBehaviour
     public ItemsSOScript flowerData;
     public bool isPollinated;
 
-    [Header("Speech Bubble")]
-    public GameObject speechIndicator;
+    [Header("Pollination Indicator")]
+    public GameObject pollinateIndicator;
 
     [Header("Hover Sprite")]
     public Sprite normalSprite;
@@ -19,10 +19,9 @@ public class NormalFlower : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
 
-        if (speechIndicator != null)
-            speechIndicator.SetActive(false);
+        if (pollinateIndicator != null)
+            pollinateIndicator.SetActive(false);
 
-        // ensure default sprite is set
         if (sr != null && normalSprite != null)
             sr.sprite = normalSprite;
     }
@@ -30,52 +29,53 @@ public class NormalFlower : MonoBehaviour
     public void SetPollinated(bool value)
     {
         isPollinated = value;
-        // Later: change sprite / play effect here
+
+        // hide indicator after pollinated
+        if (pollinateIndicator != null)
+            pollinateIndicator.SetActive(false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // controlled by BeeController
+    public void ShowPollinateIndicator(bool show)
     {
-        if (other.GetComponent<BeeController>() != null)
-        {
-            if (speechIndicator != null)
-                speechIndicator.SetActive(true);
-        }
+        if (pollinateIndicator != null)
+            pollinateIndicator.SetActive(show);
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<BeeController>() != null)
-        {
-            if (speechIndicator != null)
-                speechIndicator.SetActive(false);
-        }
-    }
-
-    // HOVER START
+    // =========================
+    // HOVER
+    // =========================
     void OnMouseEnter()
     {
         if (sr != null && hoverSprite != null)
         {
             sr.sprite = hoverSprite;
-            soil.SetActive(false);
+            if (soil != null) soil.SetActive(false);
         }
-            
-
     }
 
-    // HOVER END
     void OnMouseExit()
     {
         if (sr != null && normalSprite != null)
         {
             sr.sprite = normalSprite;
-            soil.SetActive(true);
+            if (soil != null) soil.SetActive(true);
         }
     }
 
     void OnMouseDown()
     {
         BeeController bee = FindObjectOfType<BeeController>();
+
+        if (bee == null) return;
+
+        if (!bee.canMoveToFlowers)
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Finish the current hybrid first.");
+            return;
+        }
+
         bee.MoveToFlower(this);
     }
 }

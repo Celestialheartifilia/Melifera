@@ -93,6 +93,13 @@ public class Pot : MonoBehaviour
         Debug.Log("[POT] Reset.");
 
         pollinationManager.ResetPollination();
+
+        BeeController bee = FindObjectOfType<BeeController>();
+        if (bee != null)
+        {
+            bee.canMoveToFlowers = true; // UNLOCK flowers
+            bee.canMoveToPot = true;     // UNLOCK pot
+        }
     }
 
     //method is used in the pollination manager script
@@ -131,6 +138,12 @@ public class Pot : MonoBehaviour
         }
 
         //if planting is successful
+        BeeController bee = FindObjectOfType<BeeController>();
+        if (bee != null)
+        {
+            bee.canMoveToFlowers = false; // LOCK flowers
+            bee.canMoveToPot = false;     // LOCK pot clicking again
+        }
         return true;
 
     }
