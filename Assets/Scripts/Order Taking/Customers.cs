@@ -42,17 +42,21 @@ public class Customers : MonoBehaviour
         if (index == 1)
         {
             customer1.SetActive(true);
-            manager.CreateNewOrder(OrderTakingManager.OrderType.Small);
+            //manager.CreateNewOrder(OrderTakingManager.OrderType.Small);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Small;
         }
         else if (index == 2)
         {
             customer2.SetActive(true);
-            manager.CreateNewOrder(OrderTakingManager.OrderType.Medium);
+            //manager.CreateNewOrder(OrderTakingManager.OrderType.Medium);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Medium;
+
         }
         else if (index == 3)
         {
             customer3.SetActive(true);
-            manager.CreateNewOrder(OrderTakingManager.OrderType.Big);
+            //manager.CreateNewOrder(OrderTakingManager.OrderType.Big);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Big;
         }
 
         OrderUIManager ui = FindObjectOfType<OrderUIManager>();

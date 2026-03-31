@@ -35,15 +35,20 @@ public class OrderUIManager : MonoBehaviour
 
     public void OnTakeOrderButtonClicked()
     {
-        if (OrderTakingManager.Instance == null || OrderTakingManager.Instance.currentOrder == null)
+        if (OrderTakingManager.Instance == null)
             return;
+
+        var manager = OrderTakingManager.Instance;
+
+        //CREATE ORDER HERE
+        manager.CreateNewOrder(manager.pendingOrderType);
 
         Debug.Log("Take order clicked");
 
         if (orderBubbleUI != null)
         {
             orderBubbleUI.gameObject.SetActive(true);
-            orderBubbleUI.DisplayOrder(OrderTakingManager.Instance.currentOrder);
+            orderBubbleUI.DisplayOrder(manager.currentOrder);
         }
 
         if (takeOrderButton != null)
@@ -70,8 +75,10 @@ public class OrderUIManager : MonoBehaviour
         if (collectedPopup != null)
             collectedPopup.SetActive(false);
 
+        //if (takeOrderButton != null)
+        //    takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
+        //                              OrderTakingManager.Instance.currentOrder != null);
         if (takeOrderButton != null)
-            takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
-                                      OrderTakingManager.Instance.currentOrder != null);
+            takeOrderButton.SetActive(true);
     }
 }

@@ -24,6 +24,8 @@ public class OrderTakingManager : MonoBehaviour
     //// Pop up message 
     //public GameObject collectedPopup;
 
+    public OrderType pendingOrderType;
+
     public bool IsTutorial()
     {
         return currentCustomerIndex == 1;
