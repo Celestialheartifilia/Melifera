@@ -10,7 +10,7 @@ public class OrderTakingManager : MonoBehaviour
 
     public OrderList currentOrder;
 
-    public int currentCustomerIndex = 0;
+    public int currentCustomerIndex = 1;
     public int maxCustomers = 3;
 
     //public NextOrderPopup nextOrderPopup;
@@ -25,6 +25,8 @@ public class OrderTakingManager : MonoBehaviour
     //public GameObject collectedPopup;
 
     public OrderType pendingOrderType;
+
+    public bool hasTakenOrder = false;
 
     public bool IsTutorial()
     {
@@ -50,6 +52,10 @@ public class OrderTakingManager : MonoBehaviour
     {
         currentOrder = null;
         ResetBouquet();
+
+        hasTakenOrder = false; // reset for next customer
+
+        currentCustomerIndex++;
 
     }
     public bool IsLastCustomer()

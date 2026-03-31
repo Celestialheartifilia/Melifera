@@ -40,10 +40,12 @@ public class OrderUIManager : MonoBehaviour
 
         var manager = OrderTakingManager.Instance;
 
-        //CREATE ORDER HERE
-        manager.CreateNewOrder(manager.pendingOrderType);
-
-        Debug.Log("Take order clicked");
+        // create order only once
+        if (!manager.hasTakenOrder)
+        {
+            manager.CreateNewOrder(manager.pendingOrderType);
+            manager.hasTakenOrder = true;
+        }
 
         if (orderBubbleUI != null)
         {
@@ -53,8 +55,6 @@ public class OrderUIManager : MonoBehaviour
 
         if (takeOrderButton != null)
             takeOrderButton.SetActive(false);
-
-        Debug.Log("Order collected!");
     }
 
     public void OnCloseOrderBubble()
@@ -69,16 +69,34 @@ public class OrderUIManager : MonoBehaviour
 
     public void RefreshUIForNewOrder()
     {
+        var manager = OrderTakingManager.Instance;
+
         if (orderBubbleUI != null)
             orderBubbleUI.gameObject.SetActive(false);
 
         if (collectedPopup != null)
             collectedPopup.SetActive(false);
 
-        //if (takeOrderButton != null)
-        //    takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
-        //                              OrderTakingManager.Instance.currentOrder != null);
-        if (takeOrderButton != null)
-            takeOrderButton.SetActive(true);
+        if (manager == null) return;
+
+        // KEY LOGIC
+        if (manager.hasTakenOrder && manager.currentOrder != null)
+        {
+            // show existing order
+            if (orderBubbleUI != null)
+            {
+                orderBubbleUI.gameObject.SetActive(true);
+                orderBubbleUI.DisplayOrder(manager.currentOrder);
+            }
+
+            if (takeOrderButton != null)
+                takeOrderButton.SetActive(false);
+        }
+        else
+        {
+            // show take order button
+            if (takeOrderButton != null)
+                takeOrderButton.SetActive(true);
+        }
     }
 }

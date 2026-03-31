@@ -18,13 +18,13 @@ public class Customers : MonoBehaviour
 
     void Start()
     {
-        SpawnNextCustomer();
+        SpawnCurrentCustomer();
     }
 
     public void SpawnNextCustomer()
     {
         OrderTakingManager manager = OrderTakingManager.Instance;
-        manager.currentCustomerIndex++;
+        //manager.currentCustomerIndex++;
 
         if (manager.currentCustomerIndex > manager.maxCustomers)
         {
@@ -62,5 +62,43 @@ public class Customers : MonoBehaviour
         OrderUIManager ui = FindObjectOfType<OrderUIManager>();
         if (ui) ui.RefreshUIForNewOrder();
 
+    }
+
+    public void SpawnCurrentCustomer()
+    {
+        OrderTakingManager manager = OrderTakingManager.Instance;
+
+        int index = manager.currentCustomerIndex;
+        Debug.Log(index);
+
+        if (index > manager.maxCustomers)
+        {
+            Debug.Log("All customers finished.");
+            return;
+        }
+
+        // Hide all
+        if (customer1) customer1.SetActive(false);
+        if (customer2) customer2.SetActive(false);
+        if (customer3) customer3.SetActive(false);
+
+        if (index == 1)
+        {
+            customer1.SetActive(true);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Small;
+        }
+        else if (index == 2)
+        {
+            customer2.SetActive(true);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Medium;
+        }
+        else if (index == 3)
+        {
+            customer3.SetActive(true);
+            manager.pendingOrderType = OrderTakingManager.OrderType.Big;
+        }
+
+        OrderUIManager ui = FindObjectOfType<OrderUIManager>();
+        if (ui) ui.RefreshUIForNewOrder();
     }
 }

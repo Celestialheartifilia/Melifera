@@ -164,8 +164,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c6004648d5e92c047a3c97b5fac4fc0d, type: 2}
   currentOrder:
     orderedItems: []
-  currentCustomerIndex: 0
+  currentCustomerIndex: 1
   maxCustomers: 3
+  pendingOrderType: 0
+  hasTakenOrder: 0
   currentBouquet:
     flowers: []
     wrap: {fileID: 0}
