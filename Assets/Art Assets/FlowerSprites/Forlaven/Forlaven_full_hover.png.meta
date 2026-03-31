@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Forlaven_full_hover_0: 6546990380459416209
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
