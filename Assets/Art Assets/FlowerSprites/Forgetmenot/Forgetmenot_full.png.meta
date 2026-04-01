@@ -103,10 +103,10 @@ TextureImporter:
       name: Forgetmenot_full_0
       rect:
         serializedVersion: 2
-        x: 87
-        y: 30
-        width: 317
-        height: 364
+        x: 0
+        y: 0
+        width: 450
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 015fed0e5414e8641960cda74f4352bb
     internalID: 0
     vertices: []
     indices: 

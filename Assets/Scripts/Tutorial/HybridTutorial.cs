@@ -3,6 +3,14 @@ using UnityEngine.UI;
 
 public class HybridTutorial : MonoBehaviour
 {
+    public PollinationManager pollinationManager;
+    bool hybridReadyTriggered = false;
+    public Pot hybridpot;
+    bool plantedTriggered = false;
+    bool fertilisedTriggered = false;
+    bool cutTriggered = false;
+    bool collectedTriggered = false;
+
     [Header("Steps")]
     public GameObject step1;
     public GameObject step2;
@@ -15,7 +23,6 @@ public class HybridTutorial : MonoBehaviour
     public GameObject step9;
     public GameObject step10;
     public GameObject step11;
-    public GameObject step12;
 
     [Header("Next")]
     public GameObject next1;
@@ -42,6 +49,12 @@ public class HybridTutorial : MonoBehaviour
     public GameObject scissors;
     public GameObject flower;
     public Button exitButton;
+    public Button collectedContinueButton;
+
+    //wrong hybrid
+    ItemsSOScript requiredHybrid;
+    public GameObject wrongHybridPopup;
+    bool waitingForClear = false;
 
     int step = 0;
 
@@ -52,6 +65,19 @@ public class HybridTutorial : MonoBehaviour
 
     void Start()
     {
+
+        if (OrderTakingManager.Instance != null && OrderTakingManager.Instance.currentOrder != null)
+        {
+            foreach (var item in OrderTakingManager.Instance.currentOrder.orderedItems)
+            {
+                if (OrderTakingManager.Instance.hybridFlowerItems.Contains(item))
+                {
+                    requiredHybrid = item;
+                    break;
+                }
+            }
+        }
+
         //orderButton = GameObject.FindWithTag("OrderViewButton");
         //hybridBookButton = GameObject.FindWithTag("HybridGuideButton");
 
@@ -80,6 +106,61 @@ public class HybridTutorial : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             NextStep();
+        }
+
+        if (step == 6 && pollinationManager.ReadyHybrid != null)
+        {
+            // correct hybrid
+            if (pollinationManager.ReadyHybrid == requiredHybrid)
+            {
+                hybridReadyTriggered = true;
+                NextStep();
+            }
+            else
+            {
+                ShowWrongHybridPopup();
+            }
+        }
+
+        if (!plantedTriggered && step == 7 && hybridpot.growthState == Pot.FlowerGrowthState.Planted)
+        {
+            plantedTriggered = true;
+            NextStep();
+        }
+
+        // STEP 9
+        if (!fertilisedTriggered && step == 8 && (hybridpot.growthState == Pot.FlowerGrowthState.Fertilised || hybridpot.growthState == Pot.FlowerGrowthState.Grown))
+        {
+            fertilisedTriggered = true;
+            NextStep();
+        }
+
+        // STEP 10
+        if (!cutTriggered && step == 9)
+        {
+            FlowerCutSwap[] flowers = FindObjectsByType<FlowerCutSwap>(FindObjectsSortMode.None);
+
+            foreach (var f in flowers)
+            {
+                if (f.cutDone)
+                {
+                    cutTriggered = true;
+                    NextStep();
+                    break;
+                }
+            }
+        }
+
+        // STEP 11
+        if (!collectedTriggered && step == 10 && cutTriggered)
+        {
+            GameObject cutFlower = GameObject.FindWithTag("CutFlower");
+
+            if (cutFlower == null)
+            {
+                collectedTriggered = true;
+                NextStep();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -112,6 +193,8 @@ public class HybridTutorial : MonoBehaviour
                 black.SetActive(true);
                 beeController.enabled = false;
                 exitButton.enabled = false;
+                pot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+               
                 break;
 
             case 2:
@@ -130,7 +213,7 @@ public class HybridTutorial : MonoBehaviour
 
             case 4:
                 // Order list button
-                black.SetActive(true);
+                black3.SetActive(true);
                 step4.SetActive(true);
                 next4.SetActive(true);
                 arrow1.SetActive(true);
@@ -138,47 +221,43 @@ public class HybridTutorial : MonoBehaviour
 
             case 5:
                 // Hybrid book open/close
-                black.SetActive(true);
+                black3.SetActive(true);
                 step5.SetActive(true);
                 next5.SetActive(true);
                 arrow2.SetActive(true);
                 break;
 
             case 6:
-                // Close hybrid book
+                // select flowers
                 step6.SetActive(true);
+                beeController.enabled = true;
                 break;
 
             case 7:
-                // Select flowers
+                // Plant in pot
                 step7.SetActive(true);
                 break;
 
             case 8:
-                // Plant in pot
-                black.SetActive(true);
+                // Fertilise
                 step8.SetActive(true);
                 break;
 
             case 9:
-                // Fertilise
+                // Cut flower
                 step9.SetActive(true);
                 break;
 
             case 10:
-                // Cut flower
+                // Collect flower
                 step10.SetActive(true);
+                beeController.enabled = false;
                 break;
 
             case 11:
-                // Collect flower
-                black.SetActive(true);
+                //leave
                 step11.SetActive(true);
-                break;
-
-            case 12:
-                // Final message, go packing
-                step12.SetActive(true);
+                collectedContinueButton.enabled = false;
                 break;
 
             default:
@@ -196,6 +275,8 @@ public class HybridTutorial : MonoBehaviour
         DisableAll();
         beeController.enabled = true;
         exitButton.enabled = true;
+        collectedContinueButton.enabled = true;
+        pot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         PlayerPrefs.SetInt("HybridTutorialDone", 1);
     }
 
@@ -206,14 +287,12 @@ public class HybridTutorial : MonoBehaviour
         step3.SetActive(false);
         step4.SetActive(false);
         step5.SetActive(false);
-        //step5.SetActive(false);
-        //step6.SetActive(false);
-        //step7.SetActive(false);
-        //step8.SetActive(false);
-        //step9.SetActive(false);
-        //step10.SetActive(false);
-        //step11.SetActive(false);
-        //step12.SetActive(false);
+        step6.SetActive(false);
+        step7.SetActive(false);
+        step8.SetActive(false);
+        step9.SetActive(false);
+        step10.SetActive(false);
+        step11.SetActive(false);
 
         black.SetActive(false);
         black2.SetActive(false);
@@ -227,5 +306,27 @@ public class HybridTutorial : MonoBehaviour
 
         arrow1.SetActive(false);
         arrow2.SetActive(false);
+    }
+
+    void ShowWrongHybridPopup()
+    {
+        if (waitingForClear) return;
+
+        wrongHybridPopup.SetActive(true);
+        waitingForClear = true;
+
+        beeController.enabled = false; // optional lock
+    }
+
+    public void OnClearPollinationPressed()
+    {
+        if (!waitingForClear) return;
+
+        wrongHybridPopup.SetActive(false);
+        waitingForClear = false;
+
+        beeController.enabled = true;
+
+        pollinationManager.ResetPollination();
     }
 }

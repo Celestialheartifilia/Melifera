@@ -20,6 +20,13 @@ public class InventoryManager : MonoBehaviour
 
     public List<ItemStack> hybrids = new();
 
+    public int maxPerFlower = 4;
+
+    public bool IsFull(ItemsSOScript hybrid)
+    {
+        return GetCount(hybrid) >= maxPerFlower;
+    }
+
     void Awake()
     {
         if (Instance != null)
@@ -43,6 +50,16 @@ public class InventoryManager : MonoBehaviour
 
         if (stack != null)
         {
+            if (stack.amount >= maxPerFlower)
+            {
+                Debug.Log($"Cannot add {hybrid.name}, max reached.");
+
+                if (UIManager.Instance != null)
+                    UIManager.Instance.ShowMessage("You already have the max amount of this flower.");
+
+                return; //STOP adding
+            }
+
             stack.amount++;
         }
         else

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FP Forlaven
   m_EditorClassIdentifier: 
   flowerItem: {fileID: 11400000, guid: d19225a747880e248a115f23bf010ab3, type: 2}
-  firstPosition: {x: 0.06, y: 1.42, z: 0}
-  firstRotation: {x: 0, y: 0, z: -30}
-  secondPosition: {x: -1.48, y: 0.62, z: -0.1}
+  firstPosition: {x: -0.26, y: -0.48, z: 0}
+  firstRotation: {x: 0, y: 0, z: -40}
+  secondPosition: {x: -1.4, y: -0.89, z: -0.1}
   secondRotation: {x: 0, y: 0, z: 0}

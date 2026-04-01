@@ -103,10 +103,10 @@ TextureImporter:
       name: Coneme_cutwleaves_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 58
-        width: 293
-        height: 301
+        x: 0
+        y: 0
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 17f4fbe2d6bc9af4fabc29835cf1d6d2
     internalID: 0
     vertices: []
     indices: 

@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 4dad3e2e195e83a4ea77884723f01694
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2796427806370510847
+    second: Sprouted-10_0
+  - first:
+      213: 8644283040388089248
+    second: Sprouted-10_1
+  - first:
+      213: 6918900451566486775
+    second: Sprouted-10_2
+  - first:
+      213: 8357163735631060275
+    second: Sprouted-10_3
+  - first:
+      213: -4428144482691439484
+    second: Sprouted-10_4
+  - first:
+      213: 2758829208484066112
+    second: Sprouted-10_5
+  - first:
+      213: -3957378218202465808
+    second: Sprouted-10_6
+  - first:
+      213: -9030062246121819557
+    second: Sprouted-10_7
+  - first:
+      213: 8650055379263366154
+    second: Sprouted-10_8
+  - first:
+      213: -7903886685285585436
+    second: Sprouted-10_9
+  - first:
+      213: -327860688783942416
+    second: Sprouted-10_10
+  - first:
+      213: 3311089463642050710
+    second: Sprouted-10_11
+  - first:
+      213: -2932537246683446544
+    second: Sprouted-10_12
+  - first:
+      213: 2749803019184292580
+    second: Sprouted-10_13
+  - first:
+      213: -4215834077406559067
+    second: Sprouted-10_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprouted-10_0
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 624
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff73db61648eec620800000000000000
+      internalID: 2796427806370510847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_1
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 637
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a5044830a9a6f770800000000000000
+      internalID: 8644283040388089248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f409e38d4fd40060800000000000000
+      internalID: 6918900451566486775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 550
+        width: 39
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33dd010b32c9af370800000000000000
+      internalID: 8357163735631060275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_4
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 559
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4842217ed021c82c0800000000000000
+      internalID: -4428144482691439484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_5
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 502
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0433aa75c84594620800000000000000
+      internalID: 2758829208484066112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_6
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 425
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f97c264a719419c0800000000000000
+      internalID: -3957378218202465808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_7
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 414
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b523e300b36cea280800000000000000
+      internalID: -9030062246121819557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_8
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 444
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a042378998b2b0870800000000000000
+      internalID: 8650055379263366154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_9
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 302
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4edec92bfe0cf4290800000000000000
+      internalID: -7903886685285585436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_10
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 341
+        width: 47
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fcd73dc074337bf0800000000000000
+      internalID: -327860688783942416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_11
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 342
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6905ce3035a53fd20800000000000000
+      internalID: 3311089463642050710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_12
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 268
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f2c4d059e88d47d0800000000000000
+      internalID: -2932537246683446544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_13
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 204
+        width: 48
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e2c6c0e643492620800000000000000
+      internalID: 2749803019184292580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprouted-10_14
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 185
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a402383e395e75c0800000000000000
+      internalID: -4215834077406559067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1a5b0227ba2cde0459669d69f9effd4e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sprouted-10_0: 2796427806370510847
+      Sprouted-10_1: 8644283040388089248
+      Sprouted-10_10: -327860688783942416
+      Sprouted-10_11: 3311089463642050710
+      Sprouted-10_12: -2932537246683446544
+      Sprouted-10_13: 2749803019184292580
+      Sprouted-10_14: -4215834077406559067
+      Sprouted-10_2: 6918900451566486775
+      Sprouted-10_3: 8357163735631060275
+      Sprouted-10_4: -4428144482691439484
+      Sprouted-10_5: 2758829208484066112
+      Sprouted-10_6: -3957378218202465808
+      Sprouted-10_7: -9030062246121819557
+      Sprouted-10_8: 8650055379263366154
+      Sprouted-10_9: -7903886685285585436
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

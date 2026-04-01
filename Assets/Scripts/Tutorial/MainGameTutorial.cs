@@ -12,6 +12,14 @@ public class MainGameTutorial : MonoBehaviour
     public GameObject next1;
     public GameObject next2;
 
+    [Header("Arrows")]
+    public GameObject arrow1C;
+    public GameObject arrow2C;
+    public GameObject arrow1H;
+    public GameObject arrow2H;
+    public GameObject arrow1P;
+    public GameObject arrow2P;
+
     public GameObject black;
     public BoxCollider2D counterCollider;
     public BoxCollider2D hybridCollider;
@@ -52,12 +60,26 @@ public class MainGameTutorial : MonoBehaviour
 
     bool allTutorialCompleted()
     {
-        return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1;
+        return PlayerPrefs.GetInt("GoPackingTutorialDone", 0) == 1 && PlayerPrefs.GetInt("GoHybridTutorialDone", 0) == 1 && PlayerPrefs.GetInt("MainTutorialDone", 0) == 1;
+    }
+
+    bool secondCus()
+    {
+        return OrderTakingManager.Instance != null && (OrderTakingManager.Instance.currentCustomerIndex == 2 || OrderTakingManager.Instance.currentCustomerIndex == 3);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        if (secondCus())
+        {
+            counterButton.GetComponent<PolygonCollider2D>().enabled = true;
+            hybridButton.GetComponent<PolygonCollider2D>().enabled = true;
+            packingButton.GetComponent<PolygonCollider2D>().enabled = true;
+        }
+
+
         DisableAllTutorialUI();
 
         if (IsTutorial())
@@ -82,6 +104,9 @@ public class MainGameTutorial : MonoBehaviour
         if (allTutorialCompleted())
         {
             EnableStationCollider();
+            counterButton.GetComponent<PolygonCollider2D>().enabled = true;
+            hybridButton.GetComponent<PolygonCollider2D>().enabled = true;
+            packingButton.GetComponent<PolygonCollider2D>().enabled = true;
         }
     }
 
@@ -119,9 +144,10 @@ public class MainGameTutorial : MonoBehaviour
         next2.SetActive(false);
         black.SetActive(false);
         step3.SetActive(true);
+        arrow1C.SetActive(true);
         counterCollider.enabled = true;
         exitButton.enabled = false;
-        
+
     }
 
     void Update()
@@ -155,7 +181,9 @@ public class MainGameTutorial : MonoBehaviour
     public void Step4()
     {
         step3.SetActive(false);
+        arrow1C.SetActive(false);
         step4.SetActive(true);
+        arrow2C.SetActive(true);
     }
 
     public void EndTutorial()
@@ -179,12 +207,23 @@ public class MainGameTutorial : MonoBehaviour
         step1hybrid.SetActive(false);
         step2hybrid.SetActive(false);
 
+        arrow1C.SetActive(false);
+        arrow2C.SetActive(false);
+        arrow1H.SetActive(false);
+        arrow2H.SetActive(false);
+        arrow1P.SetActive(false);
+        arrow2P.SetActive(false);
+
+        step1packing.SetActive(false);
+        step2packing.SetActive(false);
+
     }
 
     //hybrid
     public void Step1Hybrid()
-    {;
+    {
         step1hybrid.SetActive(true);
+        arrow1H.SetActive(true);
 
         // lock everything except hybrid
         counterCollider.enabled = false;
@@ -199,7 +238,9 @@ public class MainGameTutorial : MonoBehaviour
     public void Step2Hybrid()
     {
         step1hybrid.SetActive(false);
+        arrow1H.SetActive(false);
         step2hybrid.SetActive(true);
+        arrow2H.SetActive(true);
 
     }
 
@@ -213,6 +254,7 @@ public class MainGameTutorial : MonoBehaviour
     public void Step1Packing()
     {
         step1packing.SetActive(true);
+        arrow1P.SetActive(true);
 
         // lock everything except hybrid
         counterCollider.enabled = false;
@@ -227,7 +269,9 @@ public class MainGameTutorial : MonoBehaviour
     public void Step2Packing()
     {
         step1packing.SetActive(false);
+        arrow1P.SetActive(false);
         step2packing.SetActive(true);
+        arrow2P.SetActive(true);
 
     }
 
@@ -239,3 +283,4 @@ public class MainGameTutorial : MonoBehaviour
 
     }
 }
+

@@ -7,8 +7,7 @@ TagManager:
   - Flower
   - Pot
   - Disposable
-  - OrderViewButton
-  - HybridGuideButton
+  - CutFlower
   layers:
   - Default
   - TransparentFX
@@ -55,9 +54,6 @@ TagManager:
   - name: Counter
     uniqueID: 2585483519
     locked: 0
-  - name: OrderBubble
-    uniqueID: 3527452549
-    locked: 0
   - name: Background
     uniqueID: 877012923
     locked: 0
@@ -67,11 +63,23 @@ TagManager:
   - name: Player
     uniqueID: 3079617619
     locked: 0
-  - name: Bin
-    uniqueID: 838941837
-    locked: 0
   - name: Leaves
     uniqueID: 2080379641
+    locked: 0
+  - name: Bee
+    uniqueID: 1688527011
+    locked: 0
+  - name: Bin
+    uniqueID: 669135123
+    locked: 0
+  - name: OrderBubble
+    uniqueID: 3527452549
+    locked: 0
+  - name: UI
+    uniqueID: 474758459
+    locked: 0
+  - name: Arrow
+    uniqueID: 3643223499
     locked: 0
   m_RenderingLayers:
   - Default

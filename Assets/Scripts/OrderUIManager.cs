@@ -13,15 +13,17 @@ public class OrderUIManager : MonoBehaviour
     {
         cam = Camera.main;
 
-        if (orderBubbleUI != null)
-            orderBubbleUI.gameObject.SetActive(false);
+        //if (orderBubbleUI != null)
+        //    orderBubbleUI.gameObject.SetActive(false);
 
-        if (takeOrderButton != null)
-            takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
-                                      OrderTakingManager.Instance.currentOrder != null);
+        //if (takeOrderButton != null)
+        //    takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
+        //                              OrderTakingManager.Instance.currentOrder != null);
 
-        if (collectedPopup != null)
-            collectedPopup.SetActive(false);
+        //if (collectedPopup != null)
+        //    collectedPopup.SetActive(false);
+
+        RefreshUIForNewOrder();
     }
 
     void Update()
@@ -29,37 +31,30 @@ public class OrderUIManager : MonoBehaviour
         if (orderBubbleUI == null) return;
         if (!orderBubbleUI.gameObject.activeSelf) return;
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        //    Collider2D hit = Physics2D.OverlapPoint(mousePos);
-
-        //    // If we clicked something that is NOT the bubble
-        //    if (hit == null || hit.gameObject != orderBubbleUI.gameObject)
-        //    {
-        //        OnCloseOrderBubble();
-        //    }
-        //}
     }
 
     public void OnTakeOrderButtonClicked()
     {
-        if (OrderTakingManager.Instance == null || OrderTakingManager.Instance.currentOrder == null)
+        if (OrderTakingManager.Instance == null)
             return;
 
-        Debug.Log("Take order clicked");
+        var manager = OrderTakingManager.Instance;
+
+        // create order only once
+        if (!manager.hasTakenOrder)
+        {
+            manager.CreateNewOrder(manager.pendingOrderType);
+            manager.hasTakenOrder = true;
+        }
 
         if (orderBubbleUI != null)
         {
             orderBubbleUI.gameObject.SetActive(true);
-            orderBubbleUI.DisplayOrder(OrderTakingManager.Instance.currentOrder);
+            orderBubbleUI.DisplayOrder(manager.currentOrder);
         }
 
         if (takeOrderButton != null)
             takeOrderButton.SetActive(false);
-
-        Debug.Log("Order collected!");
     }
 
     public void OnCloseOrderBubble()
@@ -74,14 +69,34 @@ public class OrderUIManager : MonoBehaviour
 
     public void RefreshUIForNewOrder()
     {
+        var manager = OrderTakingManager.Instance;
+
         if (orderBubbleUI != null)
             orderBubbleUI.gameObject.SetActive(false);
 
         if (collectedPopup != null)
             collectedPopup.SetActive(false);
 
-        if (takeOrderButton != null)
-            takeOrderButton.SetActive(OrderTakingManager.Instance != null &&
-                                      OrderTakingManager.Instance.currentOrder != null);
+        if (manager == null) return;
+
+        // KEY LOGIC
+        if (manager.hasTakenOrder && manager.currentOrder != null)
+        {
+            // show existing order
+            if (orderBubbleUI != null)
+            {
+                orderBubbleUI.gameObject.SetActive(true);
+                orderBubbleUI.DisplayOrder(manager.currentOrder);
+            }
+
+            if (takeOrderButton != null)
+                takeOrderButton.SetActive(false);
+        }
+        else
+        {
+            // show take order button
+            if (takeOrderButton != null)
+                takeOrderButton.SetActive(true);
+        }
     }
 }

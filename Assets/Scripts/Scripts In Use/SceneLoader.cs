@@ -1,35 +1,79 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadStartScene()
+    public Image fadePanel;
+    public float fadeDuration = 0.2f;
+    public float delayBeforeLoad = 0.1f;
+
+    void Start()
     {
-        SceneManager.LoadScene("StartScene");
+        // When scene starts -> fade OUT (black -> clear)
+        if (fadePanel != null)
+            StartCoroutine(FadeOutOnStart());
     }
 
-    public void LoadMainGameScene()
+    IEnumerator FadeOutOnStart()
     {
-        SceneManager.LoadScene("MainGameScene");
+        fadePanel.gameObject.SetActive(true);
+
+        // start fully black
+        SetAlpha(1f);
+
+        yield return StartCoroutine(Fade(1, 0));
+
+        // disable so it doesn't block UI
+        fadePanel.gameObject.SetActive(false);
     }
 
-    public void LoadOrderTakingScene()
+    // =============================
+    // SCENE LOAD FUNCTIONS
+    // =============================
+    public void LoadStartScene() => StartCoroutine(LoadScene("StartScene"));
+    public void LoadMainGameScene() => StartCoroutine(LoadScene("MainGameScene"));
+    public void LoadOrderTakingScene() => StartCoroutine(LoadScene("OrderTakingScene"));
+    public void LoadHybridingFlowerScene() => StartCoroutine(LoadScene("HybridingFlowerScene"));
+    public void LoadPackingScene() => StartCoroutine(LoadScene("PackingScene"));
+    public void LoadOptionMenuScene() => StartCoroutine(LoadScene("OptionMenuScene"));
+
+    IEnumerator LoadScene(string sceneName)
     {
-        SceneManager.LoadScene("OrderTakingScene");
+        // enable panel so we can fade in
+        fadePanel.gameObject.SetActive(true);
+
+        yield return StartCoroutine(Fade(0, 1)); // fade IN to black
+
+        yield return new WaitForSeconds(delayBeforeLoad);
+
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadHybridingFlowerScene()
+    IEnumerator Fade(float startAlpha, float endAlpha)
     {
-        SceneManager.LoadScene("HybridingFlowerScene");
+        float time = 0;
+        Color color = fadePanel.color;
+
+        while (time < fadeDuration)
+        {
+            float t = time / fadeDuration;
+            color.a = Mathf.Lerp(startAlpha, endAlpha, t);
+            fadePanel.color = color;
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        color.a = endAlpha;
+        fadePanel.color = color;
     }
 
-    public void LoadPackingScene()
+    void SetAlpha(float alpha)
     {
-        SceneManager.LoadScene("PackingScene");
-    }
-
-    public void LoadOptionMenuScene()
-    {
-        SceneManager.LoadScene("OptionMenuScene");
+        Color c = fadePanel.color;
+        c.a = alpha;
+        fadePanel.color = c;
     }
 }

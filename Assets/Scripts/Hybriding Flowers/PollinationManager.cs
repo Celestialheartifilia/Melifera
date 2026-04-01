@@ -18,6 +18,7 @@ public class PollinationManager : MonoBehaviour
     [Header("Visual Indicators")]
     public GameObject WrongPollinationTryAgain;
     public GameObject HybridIsReady;
+    public GameObject MaxHybridReachedUI;
 
     public int PollinationCount => pickedFlowers.Count;
 
@@ -32,6 +33,8 @@ public class PollinationManager : MonoBehaviour
     {
         WrongPollinationTryAgain.SetActive(false);
         HybridIsReady.SetActive(false);
+        MaxHybridReachedUI.SetActive(false);
+
     }
 
     //Stores the final hybrid result -> Acts as the “output” of pollination
@@ -86,7 +89,24 @@ public class PollinationManager : MonoBehaviour
                 return false;
             }
 
-            //if have results -> store the result in ReadyHybrid
+            ////if have results -> store the result in ReadyHybrid
+            //ReadyHybrid = result;
+            //Debug.Log($"[POLLINATION] Hybrid ready: {ReadyHybrid.itemName}");
+            //StartCoroutine(ShowForSeconds(HybridIsReady, 0.5f));
+
+            // CHECK IF FULL FIRST
+            if (InventoryManager.Instance.IsFull(result))
+            {
+                Debug.Log("Hybrid is full, cannot create more.");
+
+                // optional visual
+                StartCoroutine(ShowForSeconds(MaxHybridReachedUI, 1f));
+
+                OnClearPollination(); // VERY IMPORTANT
+                return false;
+            }
+
+            // ONLY SET if not full
             ReadyHybrid = result;
             Debug.Log($"[POLLINATION] Hybrid ready: {ReadyHybrid.itemName}");
             StartCoroutine(ShowForSeconds(HybridIsReady, 0.5f));

@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PackingManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PackingManager : MonoBehaviour
 
     [Header("Flower Gameplay Objects")]
     public FlowerEntry[] flowers;
+
     //public GameObject hybridLacone;
     //public GameObject hybridForlaven;
 
@@ -50,11 +52,8 @@ public class PackingManager : MonoBehaviour
     public Button orderCompleteButton;
 
     [Header("UI Order")]
-    [SerializeField] GameObject CorrectOrderPrompt;
-    [SerializeField] GameObject WrongOrderPrompt;
-
-    [Header("Game End")]
-    [SerializeField] GameObject GameDonePrompt;
+    [SerializeField] public GameObject CorrectOrderPrompt;
+    [SerializeField] public GameObject WrongOrderPrompt;
 
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
@@ -64,7 +63,7 @@ public class PackingManager : MonoBehaviour
 
     List<ItemsSOScript> bouquetFlowers = new List<ItemsSOScript>();
 
-    bool pluckingInProgress = false;
+    public bool pluckingInProgress = false;
     bool wrapSelected = false;
     bool accessorySelected = false;
 
@@ -119,20 +118,22 @@ public class PackingManager : MonoBehaviour
 
         foreach (var stack in InventoryManager.Instance.hybrids)
         {
-            for (int i = 0; i < stack.amount; i++)
-            {
-                if (slotIndex >= hybridSlots.Length)
-                    return;
+            if (slotIndex >= hybridSlots.Length)
+                return;
 
-                Button slotButton = hybridSlots[slotIndex];
-                slotButton.gameObject.SetActive(true);
-                slotButton.image.sprite = stack.item.itemSprite;
+            Button slotButton = hybridSlots[slotIndex];
+            slotButton.gameObject.SetActive(true);
+            slotButton.image.sprite = stack.item.itemSprite;
 
-                ItemsSOScript flowerData = stack.item;
-                slotButton.onClick.AddListener(() => ActivateFlowerFromInventory(flowerData));
+            // ADD TEXT
+            Text qtyText = slotButton.GetComponentInChildren<Text>();
+            if (qtyText != null)
+                qtyText.text = "x" + stack.amount;
 
-                slotIndex++;
-            }
+            ItemsSOScript flowerData = stack.item;
+            slotButton.onClick.AddListener(() => ActivateFlowerFromInventory(flowerData));
+
+            slotIndex++;
         }
     }
 
@@ -144,18 +145,24 @@ public class PackingManager : MonoBehaviour
         if (pluckingInProgress)
         {
             Debug.Log("Finish plucking current flower first.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Finish plucking current flower first.");
             return;
         }
 
         if (wrapSelected || accessorySelected)
         {
             Debug.Log("Remove wrap/accessory first before adding another flower.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Remove wrap/accessory first before adding another flower.");
             return;
         }
 
         if (bouquetFlowers.Count >= maxBouquetFlowers)
         {
             Debug.Log("Bouquet already has 2 flowers.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Bouquet already has 2 flowers.");
             return;
         }
 
@@ -163,6 +170,8 @@ public class PackingManager : MonoBehaviour
         if (flowerObj == null)
         {
             Debug.LogWarning("No available flower GameObject for this flower data.");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("No more flowers available.");
             return;
         }
 
@@ -170,6 +179,10 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
 
         flowerObj.SetActive(true);
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
+        InventoryManager.Instance.RemoveHybrid(flowerData);
+        DisplayHybridInventory();
 
         // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
@@ -208,13 +221,37 @@ public class PackingManager : MonoBehaviour
         }
     }
 
+    Dictionary<ItemsSOScript, int> flowerIndexTracker = new Dictionary<ItemsSOScript, int>();
+
     GameObject GetAvailableFlowerObject(ItemsSOScript flowerData)
     {
+        // get all matching flowers
+        List<FlowerEntry> matching = new List<FlowerEntry>();
+
         foreach (var f in flowers)
         {
-            if (f.flowerData == flowerData && !f.flowerObject.activeSelf)
+            if (f.flowerData == flowerData)
+                matching.Add(f);
+        }
+
+        if (matching.Count == 0)
+            return null;
+
+        // get index
+        if (!flowerIndexTracker.ContainsKey(flowerData))
+            flowerIndexTracker[flowerData] = 0;
+
+        int startIndex = flowerIndexTracker[flowerData];
+
+        // loop through list
+        for (int i = 0; i < matching.Count; i++)
+        {
+            int index = (startIndex + i) % matching.Count;
+
+            if (!matching[index].flowerObject.activeSelf)
             {
-                return f.flowerObject;
+                flowerIndexTracker[flowerData] = (index + 1) % matching.Count;
+                return matching[index].flowerObject;
             }
         }
 
@@ -323,6 +360,8 @@ public class PackingManager : MonoBehaviour
         }
 
         Debug.Log("Leaves finished. You may wrap now or add another flower.");
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowMessage("You may wrap now or add another flower.");
     }
 
     public GameObject wrapAccessoryTab;
@@ -473,18 +512,26 @@ public class PackingManager : MonoBehaviour
         }
 
         DisplayHybridInventory();
+        orderCompleteButton.interactable = false;
+    }
+
+    public SceneLoader sceneLoader;
+    public void OnContinueAfterOrder()
+    {
+        CorrectOrderPrompt.SetActive(false);
+        WrongOrderPrompt.SetActive(false);
 
         OrderTakingManager.Instance.FinishOrder();
 
         if (OrderTakingManager.Instance.IsLastCustomer())
         {
-            Debug.Log("GAME OVER");
-
-            GameDonePrompt.SetActive(true);
-
-            return; // STOP here
+            // Show score screen instead of going back to order scene
+            ScoreManager.Instance.ShowFinalScore(); // or load a score scene
         }
-
+        else
+        {
+            sceneLoader.LoadMainGameScene(); // your normal flow
+        }
     }
 
     bool ValidateFlowersExactly(OrderList order)
@@ -537,6 +584,8 @@ public class PackingManager : MonoBehaviour
 
             orderCompleteButton.interactable = false;
             Debug.Log("Accessory removed");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Accessory removed");
             return;
         }
 
@@ -545,6 +594,8 @@ public class PackingManager : MonoBehaviour
             if (accessorySelected)
             {
                 Debug.Log("Remove accessory first!");
+                if (UIManager.Instance != null)
+                    UIManager.Instance.ShowMessage("Remove accessory first!");
                 return;
             }
 
@@ -562,6 +613,8 @@ public class PackingManager : MonoBehaviour
             orderCompleteButton.interactable = false;
 
             Debug.Log("Wrap removed");
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Wrap removed");
             return;
         }
 
@@ -572,11 +625,14 @@ public class PackingManager : MonoBehaviour
                 if (wrapSelected || accessorySelected)
                 {
                     Debug.Log("Remove accessory and wrap first!");
+                    if (UIManager.Instance != null)
+                        UIManager.Instance.ShowMessage("Remove accessory and wrap first!");
                     return;
                 }
-
                 RemoveFlowerFromBouquet(disposed);
                 Debug.Log("Flower removed");
+                if (UIManager.Instance != null)
+                    UIManager.Instance.ShowMessage("Flower removed");
                 return;
             }
         }
@@ -592,7 +648,7 @@ public class PackingManager : MonoBehaviour
 
         flowerObj.SetActive(false);
 
-        ResetLeaves();
+        ResetLeaves(flowerObj);
         RelayoutActiveFlowers();
 
         pluckingInProgress = false;
@@ -602,6 +658,8 @@ public class PackingManager : MonoBehaviour
     public void DisposeWholeBouquet()
     {
         Debug.Log("Whole bouquet disposed");
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowMessage("Bouquet disposed!");
         ResetPackingScene();
     }
 
@@ -626,7 +684,10 @@ public class PackingManager : MonoBehaviour
             f.flowerObject.SetActive(false);
         }
 
-        ResetLeaves();
+        foreach (var f in flowers)
+        {
+            ResetLeaves(f.flowerObject); // reset EACH flower
+        }
 
         wrapBackRenderer.sprite = null;
         wrapFrontRenderer.sprite = null;
@@ -704,11 +765,13 @@ public class PackingManager : MonoBehaviour
         CheckIfOrderReady();
     }
 
-    void ResetLeaves()
+    void ResetLeaves(GameObject flowerObj)
     {
         LeafTracker tracker = FindObjectOfType<LeafTracker>();
         if (tracker != null)
+        {
             tracker.ResetLeaves();
+        }
     }
 
     void DisableFlowerDragging()
@@ -756,22 +819,23 @@ public class PackingManager : MonoBehaviour
     {
         List<GameObject> activeFlowers = new List<GameObject>();
 
-        foreach (var f in flowers)
+        foreach (var flowerData in bouquetFlowers)
         {
-            if (f.flowerObject.activeSelf)
-                activeFlowers.Add(f.flowerObject);
+            foreach (var f in flowers)
+            {
+                if (f.flowerData == flowerData && f.flowerObject.activeSelf)
+                {
+                    activeFlowers.Add(f.flowerObject);
+                    break;
+                }
+            }
         }
 
-        foreach (var f in activeFlowers)
+        for (int i = 0; i < activeFlowers.Count; i++)
         {
-            SetFlowerOpacity(f, 1f);
+            float alpha = (i == 0 && activeFlowers.Count >= 2) ? 0.5f : 1f;
+            SetFlowerOpacity(activeFlowers[i], alpha);
         }
-
-        if (activeFlowers.Count >= 2)
-        {
-            SetFlowerOpacity(activeFlowers[0], 0.5f);
-        }
-
         //if (activeFlowers.Count == 1)
         //{
         //    SetFlowerOpacity(activeFlowers[0], 1f);

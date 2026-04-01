@@ -103,10 +103,10 @@ TextureImporter:
       name: Lacone_cutwleaves_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 54
-        width: 321
-        height: 306
+        x: 0
+        y: 0
+        width: 400
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f9f1d04cbc9f19e4b95300cf252e444f
     internalID: 0
     vertices: []
     indices: 

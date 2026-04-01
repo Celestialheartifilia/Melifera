@@ -45,9 +45,6 @@ public class PlayerMovementScript : MonoBehaviour
         Vector2 current = rb.position;
         Vector2 dir = currentTarget - current;
 
-        Debug.Log("dir.y" + Mathf.Abs(dir.y));
-        Debug.Log("dir.x" + Mathf.Abs(dir.x));
-
         // Check if reached
         if (dir.magnitude <= stopDistance)
         {
@@ -63,9 +60,6 @@ public class PlayerMovementScript : MonoBehaviour
                 if (beeRightAnimator != null)
                     beeRightAnimator.SetBool("Idle", true);
             }
-
-            Debug.Log("dir.y" + Mathf.Abs(dir.y));
-            Debug.Log("dir.x" + Mathf.Abs(dir.x));
 
             // Only show front/back when reached
             if (Mathf.Abs(dir.y) == Mathf.Abs(dir.x))

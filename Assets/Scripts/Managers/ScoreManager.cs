@@ -1,11 +1,16 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
     public TMP_Text scoreText;
+
+    [Header("Final Score Screen")]
+    public GameObject finalScorePanel;
+    public TMP_Text finalScoreText;
 
     int score = 0;
 
@@ -43,5 +48,26 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreText != null)
             scoreText.text = score.ToString();
+    }
+
+    public void ShowFinalScore()
+    {
+        Debug.Log("Final Score: " + score);
+        if (finalScorePanel != null)
+            finalScorePanel.SetActive(true);
+
+        if (finalScoreText != null)
+            finalScoreText.text = "" + score;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScore();
+    }
+
+    public void OnEndDayClicked()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndingCutScene");
     }
 }

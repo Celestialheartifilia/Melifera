@@ -19,7 +19,7 @@ public class FlowerCutSwap : MonoBehaviour
  
 
     SpriteRenderer sr;   // Lets us change the flower picture
-    bool cutDone;        // So we don't cut again and again
+    public bool cutDone;        // So we don't cut again and again
 
     void Awake()
     {

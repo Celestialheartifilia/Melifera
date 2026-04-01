@@ -103,10 +103,10 @@ TextureImporter:
       name: Coneflower_full_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 36
-        width: 377
-        height: 382
+        x: 0
+        y: 0
+        width: 450
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 07a2c6549076336459d353354c96fc1f
     internalID: 0
     vertices: []
     indices: 

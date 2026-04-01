@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class OrderTakingManager : MonoBehaviour
 {
@@ -11,8 +10,8 @@ public class OrderTakingManager : MonoBehaviour
 
     public OrderList currentOrder;
 
-    public int currentCustomerIndex = 0;
-    public int maxCustomers = 3;
+    public int currentCustomerIndex = 1;
+    public int maxCustomers = 4;
 
     //public NextOrderPopup nextOrderPopup;
 
@@ -25,9 +24,13 @@ public class OrderTakingManager : MonoBehaviour
     //// Pop up message 
     //public GameObject collectedPopup;
 
+    public OrderType pendingOrderType;
+
+    public bool hasTakenOrder = false;
+
     public bool IsTutorial()
     {
-        return currentCustomerIndex == 0;
+        return currentCustomerIndex == 1;
     }
 
     [System.Serializable]
@@ -49,6 +52,15 @@ public class OrderTakingManager : MonoBehaviour
     {
         currentOrder = null;
         ResetBouquet();
+
+        hasTakenOrder = false; // reset for next customer
+
+        currentCustomerIndex++;
+
+    }
+    public bool IsLastCustomer()
+    {
+        return currentCustomerIndex >= maxCustomers;
     }
 
     void Awake()

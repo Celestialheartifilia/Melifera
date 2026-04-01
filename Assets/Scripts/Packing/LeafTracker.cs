@@ -10,7 +10,7 @@ public class LeafTracker : MonoBehaviour
 
     void Start()
     {
-        PluckLeaves.SetActive(true);
+        //PluckLeaves.SetActive(true);
         packingManager = FindObjectOfType<PackingManager>();
 
         totalLeaves = GetComponentsInChildren<LeafDispose>(true).Length;
@@ -23,7 +23,7 @@ public class LeafTracker : MonoBehaviour
 
         if (removedLeaves >= totalLeaves)
         {
-            PluckLeaves.SetActive(false);
+            //PluckLeaves.SetActive(false);
             Debug.Log("All leaves plucked!");
             packingManager.OnLeavesPlucked();
         }
@@ -40,6 +40,6 @@ public class LeafTracker : MonoBehaviour
             leaf.gameObject.SetActive(true);
         }
 
-        PluckLeaves.SetActive(true);
+        //PluckLeaves.SetActive(true);
     }
 }

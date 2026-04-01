@@ -15,19 +15,18 @@ public class BeeController : MonoBehaviour
     public GameObject leftObj;
     public GameObject rightObj;
 
-    [Header("Disappear Animation")]
-    public float disappearDuration = 0.25f;
-
     Rigidbody2D rb;
 
     Vector3 targetPosition;
     bool hasTarget = false;
 
     Vector3 startPosition;
-    Vector3 originalScale;
 
     NormalFlower currentFlower;
     Pot currentPot;
+
+    public bool canMoveToFlowers = true;
+    public bool canMoveToPot = true;
 
     void Awake()
     {
@@ -35,7 +34,6 @@ public class BeeController : MonoBehaviour
         rb.gravityScale = 0f;
 
         startPosition = transform.position;
-        originalScale = transform.localScale;
 
         ShowOnly(frontObj);
     }
@@ -73,15 +71,18 @@ public class BeeController : MonoBehaviour
 
     void OnReachedTarget()
     {
-        // Pollinate flower
+        //FLOWER LOGIC
         if (currentFlower != null && !currentFlower.isPollinated)
         {
-            pollinationManager.TryAddPollinatedFlower(currentFlower);
-            currentFlower = null;
+            //SHOW INDICATOR ONLY WHEN REACHED
+            currentFlower.ShowPollinateIndicator(true);
+
+            // small delay feels nicer (optional)
+            StartCoroutine(DoPollination(currentFlower));
             return;
         }
 
-        // Plant into pot
+        //POT LOGIC
         if (currentPot != null && pollinationManager.PollinationCount == 2)
         {
             bool planted = pollinationManager.TryPlantInto(currentPot);
@@ -95,14 +96,42 @@ public class BeeController : MonoBehaviour
         }
     }
 
+    IEnumerator DoPollination(NormalFlower flower)
+    {
+        yield return new WaitForSeconds(0.3f); // optional polish
+
+        pollinationManager.TryAddPollinatedFlower(flower);
+
+        flower.ShowPollinateIndicator(false);
+
+        currentFlower = null;
+    }
+
     // ===============================
-    // Public Movement Commands
+    // Movement Commands
     // ===============================
 
     public void MoveToFlower(NormalFlower flower)
     {
+        if (!canMoveToFlowers)
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("You can't pollinate now.");
+            return;
+        }
+
+        if (pollinationManager.PollinationCount >= 2)
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("You already selected 2 flowers. Plant or clear first.");
+            return;
+        }
+
         if (flower.isPollinated)
             return;
+
+        if (currentFlower != null)
+            currentFlower.ShowPollinateIndicator(false);
 
         currentFlower = flower;
         currentPot = null;
@@ -113,8 +142,12 @@ public class BeeController : MonoBehaviour
 
     public void MoveToPot(Pot pot)
     {
+
         if (pollinationManager.PollinationCount < 2)
             return;
+
+        if (currentFlower != null)
+            currentFlower.ShowPollinateIndicator(false);
 
         currentPot = pot;
         currentFlower = null;
@@ -125,6 +158,9 @@ public class BeeController : MonoBehaviour
 
     public void ReturnToStart()
     {
+        if (currentFlower != null)
+            currentFlower.ShowPollinateIndicator(false);
+
         currentFlower = null;
         currentPot = null;
 
@@ -133,7 +169,7 @@ public class BeeController : MonoBehaviour
     }
 
     // ===============================
-    // Animations
+    // Animation
     // ===============================
 
     void ShowOnly(GameObject obj)
@@ -143,7 +179,4 @@ public class BeeController : MonoBehaviour
         if (leftObj) leftObj.SetActive(obj == leftObj);
         if (rightObj) rightObj.SetActive(obj == rightObj);
     }
-
 }
-
-
