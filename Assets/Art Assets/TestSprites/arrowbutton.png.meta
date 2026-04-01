@@ -103,17 +103,10 @@ TextureImporter:
       name: arrowbutton_0
       rect:
         serializedVersion: 2
-<<<<<<<< HEAD:Assets/Art Assets/TestSprites/arrowbutton.png.meta
-        x: 45
-        y: 70
-        width: 447
-        height: 310
-========
         x: 0
         y: 0
-        width: 500
-        height: 500
->>>>>>>> new-main:Assets/Art Assets/HybridingFlowerSprites/Scissors/Scissors.png.meta
+        width: 0
+        height: 0
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 499ce5b945b8d924d9d98342683a6262
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
