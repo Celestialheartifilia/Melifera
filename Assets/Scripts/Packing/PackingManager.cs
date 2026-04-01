@@ -51,9 +51,11 @@ public class PackingManager : MonoBehaviour
     [Header("Order")]
     public Button orderCompleteButton;
 
-    [Header("UI Order")]
+    [Header("Order Completed Prompts")]
     [SerializeField] public GameObject CorrectOrderPrompt;
     [SerializeField] public GameObject WrongOrderPrompt;
+    [SerializeField] public GameObject LastCorrectOrderPrompt;
+    [SerializeField] public GameObject LastWrongOrderPrompt;
 
     [Header("Flower Placements")]
     public FlowerPlacementsSOScript[] flowerPlacements;
@@ -93,6 +95,8 @@ public class PackingManager : MonoBehaviour
 
         CorrectOrderPrompt.SetActive(false);
         WrongOrderPrompt.SetActive(false);
+        LastCorrectOrderPrompt.SetActive(false);
+        LastWrongOrderPrompt.SetActive(false);
 
         wrapAccessoryTabBackground.SetActive(false);
         SetWrapButtons(false);
@@ -492,18 +496,41 @@ public class PackingManager : MonoBehaviour
         bool wrapCorrect = order.orderedItems.Contains(selectedWrap);
         bool accessoryCorrect = order.orderedItems.Contains(selectedAccessory);
 
-        if (flowerCorrect && wrapCorrect && accessoryCorrect)
+        bool isCorrect = flowerCorrect && wrapCorrect && accessoryCorrect;
+        bool isLastCustomer = OrderTakingManager.Instance.currentCustomerIndex == 3;
+
+        if (isCorrect)
         {
             Debug.Log("Order completed successfully!");
-            CorrectOrderPrompt.SetActive(true);
             Debug.Log("Adding score for customer");
             ScoreManager.Instance.AddPoints(10);
+
+            if (isLastCustomer)
+            {
+                LastCorrectOrderPrompt.SetActive(true);
+                Debug.Log("Last Correct Order Prompt");
+            }
+            else
+            {
+                CorrectOrderPrompt.SetActive(true);
+                Debug.Log("Correct Order Prompt");
+            }
+                
         }
         else
         {
             Debug.Log("Order incorrect!");
-            WrongOrderPrompt.SetActive(true);
 
+            if (isLastCustomer)
+            {
+                LastWrongOrderPrompt.SetActive(true);
+                Debug.Log("Last Wrong Order Prompt");
+            }
+            else
+            {
+                WrongOrderPrompt.SetActive(true);
+                Debug.Log("Correct Wrong Prompt");
+            }
         }
 
         foreach (var flower in bouquetFlowers)
@@ -523,7 +550,7 @@ public class PackingManager : MonoBehaviour
 
         OrderTakingManager.Instance.FinishOrder();
 
-        if (OrderTakingManager.Instance.IsLastCustomer())
+        if (OrderTakingManager.Instance.IsAfterLastCustomer())
         {
             // Show score screen instead of going back to order scene
             ScoreManager.Instance.ShowFinalScore(); // or load a score scene

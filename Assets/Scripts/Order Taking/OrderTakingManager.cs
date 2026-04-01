@@ -58,7 +58,7 @@ public class OrderTakingManager : MonoBehaviour
         currentCustomerIndex++;
 
     }
-    public bool IsLastCustomer()
+    public bool IsAfterLastCustomer()
     {
         return currentCustomerIndex >= maxCustomers;
     }
