@@ -16,40 +16,26 @@ public class StartMenuController : MonoBehaviour
         StartCoroutine(LoadSceneDelay("MainGameScene"));
     }
 
-
-
     public void OpenOptions()
     {
         SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
-        // "Additive" keeps the current scene active underneath
-        //SceneManager.LoadScene("OptionMenuScene", LoadSceneMode.Additive);
-        Scene scene = SceneManager.GetSceneByName("OptionMenuScene");
 
-        if (!scene.isLoaded)
-            SceneManager.LoadScene("OptionMenuScene", LoadSceneMode.Additive);
-
+        if (OptionsMenuController.Instance != null)
+            OptionsMenuController.Instance.OpenOptions();
     }
-
-
 
     public void CloseOptions()
     {
-        //SceneManager.UnloadSceneAsync("OptionMenuScene");
-        Scene scene = SceneManager.GetSceneByName("OptionMenuScene");
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
 
-        if (scene.isLoaded)
-            SceneManager.UnloadSceneAsync("OptionMenuScene");
-
-        // IMPORTANT: restore UI based on current scene if not ui dissapears
-        TopNavUI.instance.UpdateUI(SceneManager.GetActiveScene().name);
-
-
+        if (OptionsMenuController.Instance != null)
+            OptionsMenuController.Instance.CloseOptions();
     }
 
     public void OnExitClick()
     {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; 
+        UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
     }
@@ -59,6 +45,4 @@ public class StartMenuController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene(sceneName);
     }
-
-
 }

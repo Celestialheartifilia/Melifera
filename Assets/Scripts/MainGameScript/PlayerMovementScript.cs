@@ -20,6 +20,8 @@ public class PlayerMovementScript : MonoBehaviour
     public Animator beeLeftAnimator;
     public Animator beeRightAnimator;
 
+    public bool canMove = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +42,8 @@ public class PlayerMovementScript : MonoBehaviour
     }
     void FixedUpdate()
     {
+        Debug.Log(canMove);
+        if (!canMove) return;
         if (!hasTarget) return;
 
         Vector2 current = rb.position;
@@ -61,19 +65,15 @@ public class PlayerMovementScript : MonoBehaviour
                     beeRightAnimator.SetBool("Idle", true);
             }
 
-            // Only show front/back when reached
-            if (Mathf.Abs(dir.y) == Mathf.Abs(dir.x))
-            {
-                if (beeLeftAnimator != null)
-                    beeLeftAnimator.SetBool("Idle", true);
+            //// Only show front/back when reached
+            //if (Mathf.Abs(dir.y) == Mathf.Abs(dir.x))
+            //{
+            //    if (beeLeftAnimator != null)
+            //        beeLeftAnimator.SetBool("Idle", true);
 
-                if (beeRightAnimator != null)
-                    beeRightAnimator.SetBool("Idle", true);
-
-                //ShowOnly(backObj);
-                //if (dir.y > 0) ShowOnly(backObj);
-                //else ShowOnly(frontObj);
-            }
+            //    if (beeRightAnimator != null)
+            //        beeRightAnimator.SetBool("Idle", true);
+            //}
 
             return;
         }
