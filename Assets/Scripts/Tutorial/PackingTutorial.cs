@@ -32,6 +32,7 @@ public class PackingTutorial : MonoBehaviour
 
     [Header("UI")]
     public Button orderCompleteButton;
+    public Button exitButton;
 
     [Header("Wrong Flower")]
     public GameObject wrongFlowerPopup;
@@ -190,6 +191,7 @@ public class PackingTutorial : MonoBehaviour
                 step1.SetActive(true);
                 next1.SetActive(true);
                 black.SetActive(true);
+                exitButton.enabled = false;
                 break;
 
             case 2:
@@ -244,6 +246,7 @@ public class PackingTutorial : MonoBehaviour
     public void EndTutorial()
     {
         DisableAll();
+        exitButton.enabled = true;
         protectedFlowerObject = null;
         PlayerPrefs.SetInt("PackingTutorialDone", 1);
         PlayerPrefs.Save();

@@ -652,6 +652,13 @@ public class PackingManager : MonoBehaviour
 
         if (disposed == wrap.gameObject)
         {
+            bool hasVisibleWrap = wrapBackRenderer.sprite != null || wrapFrontRenderer.sprite != null;
+
+            if (!hasVisibleWrap)
+            {
+                return;
+            }
+
             if (accessorySelected)
             {
                 Debug.Log("Remove accessory first!");
