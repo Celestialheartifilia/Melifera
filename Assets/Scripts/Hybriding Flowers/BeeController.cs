@@ -42,7 +42,6 @@ public class BeeController : MonoBehaviour
         {
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
-            rb.isKinematic = true;
         }
 
         startPosition = transform.position;
@@ -85,12 +84,10 @@ public class BeeController : MonoBehaviour
         // only switch facing if movement in x is strong enough
         if (moveDelta.x > faceThreshold * Time.deltaTime)
         {
-            ShowOnly(rightObj);
             PlayAnim("TinyBeeFlyRight");
         }
         else if (moveDelta.x < -faceThreshold * Time.deltaTime)
         {
-            ShowOnly(leftObj);
             PlayAnim("TinyBeeFly");
         }
     }
@@ -187,11 +184,5 @@ public class BeeController : MonoBehaviour
         currentPot = null;
         targetPosition = startPosition;
         hasTarget = true;
-    }
-
-    void ShowOnly(GameObject obj)
-    {
-        if (leftObj) leftObj.SetActive(obj == leftObj);
-        if (rightObj) rightObj.SetActive(obj == rightObj);
     }
 }
