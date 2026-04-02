@@ -22,6 +22,13 @@ public class PackingBin : MonoBehaviour
         if (binAnimator != null)
             binAnimator.SetBool("Open", true);
 
+        // tutorial protection check FIRST
+        if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(other.gameObject))
+        {
+            currentDisposable = null;
+            return;
+        }
+
         currentDisposable = other.gameObject;
     }
 
@@ -54,22 +61,48 @@ public class PackingBin : MonoBehaviour
         if (currentDisposable == null)
             return;
 
+        // block protected tutorial flower
+        if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(currentDisposable))
+        {
+            currentDisposable = null;
+            return;
+        }
+
         Debug.Log(currentDisposable);
         packingManager.HandleDisposal(currentDisposable);
         currentDisposable = null;
     }
 
-    public void TryDisposeFlower(GameObject flowerObj)
+    public bool TryDisposeFlower(GameObject flowerObj)
     {
         if (flowerObj == null)
-            return;
+            return false;
+
+        // block protected tutorial flower
+        if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(flowerObj))
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Flower is correct, disposal not needed.");
+            return false;
+        }
 
         packingManager.HandleDisposal(flowerObj);
         currentDisposable = null;
+        return true;
     }
 
     void OnMouseDown()
     {
+        // during tutorial, if correct flower is already spawned, block whole bouquet disposal
+        if (PackingTutorial.Instance != null && PackingTutorial.Instance.ShouldBlockWholeBouquetDispose())
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Flower is correct, disposal not needed.");
+            return;
+        }
+
+            
+
         packingManager.DisposeWholeBouquet();
     }
 

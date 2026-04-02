@@ -18,6 +18,9 @@ public class PackingManager : MonoBehaviour
     [Header("Hybrid Flower Slots UI")]
     public Button[] hybridSlots;
 
+    [Header("Normal Flower Buttons")]
+    public Button[] normalFlowerButtons;
+
     [Header("Flower Gameplay Objects")]
     public FlowerEntry[] flowers;
 
@@ -105,6 +108,11 @@ public class PackingManager : MonoBehaviour
 
         DisplayHybridInventory();
         RestoreSavedBouquet();
+
+        UpdatePackingAccess();
+
+        if (!HasValidOrder())
+            ShowTakeOrderFirstMessage();
     }
 
     // =========================
@@ -146,6 +154,12 @@ public class PackingManager : MonoBehaviour
     // =========================
     public void ActivateFlowerFromInventory(ItemsSOScript flowerData)
     {
+        if (!HasValidOrder())
+        {
+            ShowTakeOrderFirstMessage();
+            return;
+        }
+
         if (pluckingInProgress)
         {
             Debug.Log("Finish plucking current flower first.");
@@ -409,6 +423,7 @@ public class PackingManager : MonoBehaviour
     // =========================
     public void SelectWrap1()
     {
+
         selectedWrap = wrap1;
         wrapSelected = true;
         OrderTakingManager.Instance.currentBouquet.wrap = selectedWrap;
@@ -424,6 +439,7 @@ public class PackingManager : MonoBehaviour
 
     public void SelectWrap2()
     {
+
         selectedWrap = wrap2;
         wrapSelected = true;
         OrderTakingManager.Instance.currentBouquet.wrap = selectedWrap;
@@ -442,6 +458,8 @@ public class PackingManager : MonoBehaviour
     // =========================
     public void SelectAccessory1()
     {
+
+
         if (!wrapSelected) return;
 
         selectedAccessory = accessory1;
@@ -458,6 +476,8 @@ public class PackingManager : MonoBehaviour
 
     public void SelectAccessory2()
     {
+
+
         if (!wrapSelected) return;
 
         selectedAccessory = accessory2;
@@ -474,6 +494,12 @@ public class PackingManager : MonoBehaviour
 
     void CheckIfOrderReady()
     {
+        if (!HasValidOrder())
+        {
+            orderCompleteButton.interactable = false;
+            return;
+        }
+
         if (selectedWrap != null && selectedAccessory != null && bouquetFlowers.Count > 0 && !pluckingInProgress)
             orderCompleteButton.interactable = true;
         else
@@ -482,6 +508,14 @@ public class PackingManager : MonoBehaviour
 
     public void OnOrderComplete()
     {
+        if (!HasValidOrder())
+        {
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowMessage("Take order first.");
+
+            return;
+        }
+
         ValidateOrder();
     }
 
@@ -686,7 +720,7 @@ public class PackingManager : MonoBehaviour
     {
         Debug.Log("Whole bouquet disposed");
         if (UIManager.Instance != null)
-            UIManager.Instance.ShowMessage("Bouquet disposed!");
+            UIManager.Instance.ShowMessage("Disposed everything!");
         ResetPackingScene();
     }
 
@@ -872,5 +906,46 @@ public class PackingManager : MonoBehaviour
         //    SetFlowerOpacity(activeFlowers[0], 0.5f);
         //    SetFlowerOpacity(activeFlowers[1], 1f);
         //}
+    }
+
+    bool HasValidOrder()
+    {
+        return OrderTakingManager.Instance != null &&
+               OrderTakingManager.Instance.hasTakenOrder &&
+               OrderTakingManager.Instance.currentOrder != null;
+    }
+
+    void ShowTakeOrderFirstMessage()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.ShowMessage("Go to the counter and take an order first.");
+    }
+
+    void UpdatePackingAccess()
+    {
+        bool hasOrder = HasValidOrder();
+
+        // flower slots
+        foreach (Button slot in hybridSlots)
+        {
+            slot.interactable = hasOrder;
+        }
+
+        foreach (Button btn in normalFlowerButtons)
+        {
+            btn.interactable = hasOrder;
+        }
+
+        // wrap buttons
+        wrap1Button.interactable = hasOrder;
+        wrap2Button.interactable = hasOrder;
+
+        // accessory buttons
+        accessory1Button.interactable = hasOrder;
+        accessory2Button.interactable = hasOrder;
+
+        // order complete button
+        if (!hasOrder)
+            orderCompleteButton.interactable = false;
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PackingTutorial : MonoBehaviour
 {
+    public static PackingTutorial Instance;
+
     public PackingManager packingManager;
 
     [Header("Steps")]
@@ -44,8 +46,15 @@ public class PackingTutorial : MonoBehaviour
     bool orderPressed = false;
     bool resultShown = false;
 
-
     int step = 0;
+
+    // NEW: store the correct spawned flower object
+    GameObject protectedFlowerObject;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     bool IsTutorial()
     {
@@ -92,6 +101,10 @@ public class PackingTutorial : MonoBehaviour
                 {
                     flowerSpawned = true;
                     wrongFlowerSpawned = false;
+
+                    // NEW: find and protect the correct flower object
+                    protectedFlowerObject = FindActiveFlowerObject(requiredFlower);
+
                     NextStep();
                 }
                 else
@@ -109,19 +122,18 @@ public class PackingTutorial : MonoBehaviour
 
             if (bouquet.flowers.Count == 0)
             {
-                // flower removed, reset step 2
                 wrongFlowerSpawned = false;
                 waitingForClear = false;
                 wrongFlowerPopup.SetActive(false);
 
-                ShowStep(); // stay in step 2
+                ShowStep();
             }
         }
 
         // STEP 3, leaves removed
         if (!leavesDone && step == 3)
         {
-            if (!packingManager.pluckingInProgress) // leaves done
+            if (!packingManager.pluckingInProgress)
             {
                 leavesDone = true;
                 NextStep();
@@ -147,7 +159,6 @@ public class PackingTutorial : MonoBehaviour
             {
                 orderPressed = true;
                 NextStep();
-                
             }
         }
 
@@ -163,9 +174,6 @@ public class PackingTutorial : MonoBehaviour
         }
     }
 
-    // ========================
-    // STEP CONTROL
-    // ========================
     public void NextStep()
     {
         step++;
@@ -215,9 +223,6 @@ public class PackingTutorial : MonoBehaviour
         }
     }
 
-    // ========================
-    // WRONG FLOWER
-    // ========================
     void ShowWrongFlowerPopup()
     {
         if (waitingForClear) return;
@@ -236,12 +241,10 @@ public class PackingTutorial : MonoBehaviour
         waitingForClear = false;
     }
 
-    // ========================
-    // END
-    // ========================
     public void EndTutorial()
     {
         DisableAll();
+        protectedFlowerObject = null;
         PlayerPrefs.SetInt("PackingTutorialDone", 1);
         PlayerPrefs.Save();
     }
@@ -265,5 +268,40 @@ public class PackingTutorial : MonoBehaviour
         arrow5.SetActive(false);
 
         black.SetActive(false);
+    }
+
+    // ========================
+    // NEW HELPERS
+    // ========================
+
+    GameObject FindActiveFlowerObject(ItemsSOScript flowerData)
+    {
+        if (packingManager == null || packingManager.flowers == null) return null;
+
+        foreach (var entry in packingManager.flowers)
+        {
+            if (entry.flowerData == flowerData &&
+                entry.flowerObject != null &&
+                entry.flowerObject.activeInHierarchy)
+            {
+                return entry.flowerObject;
+            }
+        }
+
+        return null;
+    }
+
+    public bool IsProtectedFlower(GameObject obj)
+    {
+        if (!IsTutorial()) return false;
+        if (protectedFlowerObject == null) return false;
+
+        return obj == protectedFlowerObject || obj.transform.root.gameObject == protectedFlowerObject;
+    }
+
+    public bool ShouldBlockWholeBouquetDispose()
+    {
+        if (!IsTutorial()) return false;
+        return protectedFlowerObject != null;
     }
 }

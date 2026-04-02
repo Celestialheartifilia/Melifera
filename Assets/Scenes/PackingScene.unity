@@ -26846,6 +26846,10 @@ MonoBehaviour:
   - {fileID: 358427907}
   - {fileID: 1947218887}
   - {fileID: 1019813413}
+  normalFlowerButtons:
+  - {fileID: 613784586}
+  - {fileID: 451373269}
+  - {fileID: 857515326}
   flowers:
   - flowerData: {fileID: 11400000, guid: bf52e7d21ccceec4f8e905e9390908d5, type: 2}
     flowerObject: {fileID: 1108161896}

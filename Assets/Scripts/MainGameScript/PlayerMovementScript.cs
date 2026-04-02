@@ -23,9 +23,9 @@ public class PlayerMovementScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        ShowOnly(leftObj);
-        if (beeLeftAnimator != null)
-            beeLeftAnimator.SetBool("Idle", true);
+        ShowOnly(rightObj);
+        if (beeRightAnimator != null)
+            beeRightAnimator.SetBool("Idle", true);
     }
 
     void Start()

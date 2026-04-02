@@ -55,8 +55,7 @@ public class DragFlower : MonoBehaviour
 
         if (packingBin != null && packingBin.IsObjectInsideBin(gameObject))
         {
-            packingBin.TryDisposeFlower(gameObject);
-            disposed = true;
+            disposed = packingBin.TryDisposeFlower(gameObject);
         }
 
         foreach (var leaf in leaves)
