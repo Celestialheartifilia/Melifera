@@ -20,6 +20,7 @@ public class PackingTutorial : MonoBehaviour
     [Header("Arrows")]
     public GameObject arrow1;
     public GameObject arrow2;
+    public GameObject arrow2pt2;
     public GameObject arrow3;
     public GameObject arrow4;
     public GameObject arrow5;
@@ -191,6 +192,7 @@ public class PackingTutorial : MonoBehaviour
             case 3:
                 step3.SetActive(true);
                 arrow2.SetActive(true);
+                arrow2pt2.SetActive(true);
                 break;
 
             case 4:
@@ -257,6 +259,7 @@ public class PackingTutorial : MonoBehaviour
 
         arrow1.SetActive(false);
         arrow2.SetActive(false);
+        arrow2pt2.SetActive(false);
         arrow3.SetActive(false);
         arrow4.SetActive(false);
         arrow5.SetActive(false);

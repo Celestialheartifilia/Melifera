@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FP Forgetmenot
   m_EditorClassIdentifier: 
   flowerItem: {fileID: 11400000, guid: 1e11fff537b8e2948a93b285191909b3, type: 2}
-  firstPosition: {x: -0.51, y: 0.71, z: 0}
+  firstPosition: {x: 0.01, y: -0.79, z: 0}
   firstRotation: {x: 0, y: 0, z: -10}
   secondPosition: {x: -0.52, y: -1.01, z: -0.1}
   secondRotation: {x: 0, y: 0, z: 0}

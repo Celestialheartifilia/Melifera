@@ -36,6 +36,8 @@ public class BeeController : MonoBehaviour
 
     public ParticleSystem pollinateParticle;
 
+    private bool isPollinating = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -128,16 +130,22 @@ public class BeeController : MonoBehaviour
 
     IEnumerator DoPollination(NormalFlower flower)
     {
+        flower.ShowPollinateIndicator(true);
+
         yield return new WaitForSeconds(1f);
 
         pollinationManager.TryAddPollinatedFlower(flower);
         flower.ShowPollinateIndicator(false);
 
         currentFlower = null;
+        isPollinating = false;
     }
 
     public void MoveToFlower(NormalFlower flower)
     {
+        if (isPollinating || hasTarget)
+            return;
+
         if (!canMoveToFlowers)
         {
             if (UIManager.Instance != null)
@@ -162,6 +170,7 @@ public class BeeController : MonoBehaviour
         currentPot = null;
         targetPosition = flower.transform.position;
         hasTarget = true;
+        isPollinating = true;
     }
 
     public void MoveToPot(Pot pot)
