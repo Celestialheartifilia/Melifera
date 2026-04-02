@@ -15568,7 +15568,7 @@ GameObject:
   - component: {fileID: 1628350856}
   - component: {fileID: 1628350855}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ui manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16137,7 +16137,7 @@ SpriteRenderer:
   m_SortingLayerID: 1688527011
   m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8038707989885953410, guid: b7c75f57c85c58b4fbcc82263414c9ea, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16145,7 +16145,7 @@ SpriteRenderer:
   m_Size: {x: 1.61, y: 1.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!60 &1650219920
@@ -16249,14 +16249,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650219916}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -16281,11 +16281,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  stopDistance: 0.05
+  faceThreshold: 0.1
   pollinationManager: {fileID: 1900136113}
-  frontObj: {fileID: 0}
-  backObj: {fileID: 0}
   leftObj: {fileID: 0}
   rightObj: {fileID: 0}
+  beeAnimator: {fileID: 1650219918}
   canMoveToFlowers: 1
   canMoveToPot: 1
 --- !u!1 &1660236230

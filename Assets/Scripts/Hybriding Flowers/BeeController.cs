@@ -5,15 +5,18 @@ public class BeeController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public float stopDistance = 0.05f;
+    public float faceThreshold = 0.1f;
 
     [Header("References")]
     public PollinationManager pollinationManager;
 
     [Header("Direction Animation")]
-    public GameObject frontObj;
-    public GameObject backObj;
     public GameObject leftObj;
     public GameObject rightObj;
+
+    [Header("Animator")]
+    public Animator beeAnimator;
 
     Rigidbody2D rb;
 
@@ -21,6 +24,7 @@ public class BeeController : MonoBehaviour
     bool hasTarget = false;
 
     Vector3 startPosition;
+    Vector3 lastPosition;
 
     NormalFlower currentFlower;
     Pot currentPot;
@@ -28,14 +32,21 @@ public class BeeController : MonoBehaviour
     public bool canMoveToFlowers = true;
     public bool canMoveToPot = true;
 
+    string currentAnim = "";
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
+
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            rb.isKinematic = true;
+        }
 
         startPosition = transform.position;
-
-        ShowOnly(frontObj);
+        lastPosition = transform.position;
     }
 
     void Update()
@@ -44,45 +55,64 @@ public class BeeController : MonoBehaviour
         {
             MoveToTarget();
         }
+
+        lastPosition = transform.position;
     }
 
     void MoveToTarget()
     {
-        Vector2 dir = (targetPosition - transform.position);
+        Vector3 currentPosition = transform.position;
+        float distance = Vector3.Distance(currentPosition, targetPosition);
 
-        if (dir.magnitude < 0.05f)
+        if (distance <= stopDistance)
         {
-            rb.linearVelocity = Vector2.zero;
+            transform.position = targetPosition;
             hasTarget = false;
 
             OnReachedTarget();
             return;
         }
 
-        dir.Normalize();
-        rb.linearVelocity = dir * moveSpeed;
+        Vector3 newPosition = Vector3.MoveTowards(
+            currentPosition,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        );
 
-        // Direction animation
-        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-            ShowOnly(dir.x > 0 ? rightObj : leftObj);
-        else
-            ShowOnly(dir.y > 0 ? backObj : frontObj);
+        Vector3 moveDelta = newPosition - currentPosition;
+        transform.position = newPosition;
+
+        // only switch facing if movement in x is strong enough
+        if (moveDelta.x > faceThreshold * Time.deltaTime)
+        {
+            ShowOnly(rightObj);
+            PlayAnim("TinyBeeFlyRight");
+        }
+        else if (moveDelta.x < -faceThreshold * Time.deltaTime)
+        {
+            ShowOnly(leftObj);
+            PlayAnim("TinyBeeFly");
+        }
+    }
+
+    void PlayAnim(string animName)
+    {
+        if (beeAnimator == null) return;
+        if (currentAnim == animName) return;
+
+        beeAnimator.Play(animName);
+        currentAnim = animName;
     }
 
     void OnReachedTarget()
     {
-        //FLOWER LOGIC
         if (currentFlower != null && !currentFlower.isPollinated)
         {
-            //SHOW INDICATOR ONLY WHEN REACHED
             currentFlower.ShowPollinateIndicator(true);
-
-            // small delay feels nicer (optional)
             StartCoroutine(DoPollination(currentFlower));
             return;
         }
 
-        //POT LOGIC
         if (currentPot != null && pollinationManager.PollinationCount == 2)
         {
             bool planted = pollinationManager.TryPlantInto(currentPot);
@@ -98,18 +128,13 @@ public class BeeController : MonoBehaviour
 
     IEnumerator DoPollination(NormalFlower flower)
     {
-        yield return new WaitForSeconds(0.3f); // optional polish
+        yield return new WaitForSeconds(0.3f);
 
         pollinationManager.TryAddPollinatedFlower(flower);
-
         flower.ShowPollinateIndicator(false);
 
         currentFlower = null;
     }
-
-    // ===============================
-    // Movement Commands
-    // ===============================
 
     public void MoveToFlower(NormalFlower flower)
     {
@@ -135,14 +160,12 @@ public class BeeController : MonoBehaviour
 
         currentFlower = flower;
         currentPot = null;
-
         targetPosition = flower.transform.position;
         hasTarget = true;
     }
 
     public void MoveToPot(Pot pot)
     {
-
         if (pollinationManager.PollinationCount < 2)
             return;
 
@@ -151,7 +174,6 @@ public class BeeController : MonoBehaviour
 
         currentPot = pot;
         currentFlower = null;
-
         targetPosition = pot.transform.position;
         hasTarget = true;
     }
@@ -163,19 +185,12 @@ public class BeeController : MonoBehaviour
 
         currentFlower = null;
         currentPot = null;
-
         targetPosition = startPosition;
         hasTarget = true;
     }
 
-    // ===============================
-    // Animation
-    // ===============================
-
     void ShowOnly(GameObject obj)
     {
-        if (frontObj) frontObj.SetActive(obj == frontObj);
-        if (backObj) backObj.SetActive(obj == backObj);
         if (leftObj) leftObj.SetActive(obj == leftObj);
         if (rightObj) rightObj.SetActive(obj == rightObj);
     }
