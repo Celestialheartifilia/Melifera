@@ -202,7 +202,7 @@ public class Pot : MonoBehaviour
 
     IEnumerator ShowFlowerAfterGrow()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
 
         if (plantedHybrid == hybrid1Data)
         {
@@ -232,7 +232,7 @@ public class Pot : MonoBehaviour
             Debug.Log("Flower 3 parented");
         }
 
-        flowerGrow.SetActive(false);
+        //flowerGrow.SetActive(false);
         Grow();
     }
 

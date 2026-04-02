@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c05d3558ae19d142bb819d0bc1f61e5
+guid: 3ad89912eb45a484198296d9666b6c9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1611005008019809891
-    second: Beebop_Flowerpot_Front_0
+      213: 431368271424142554
+    second: OpenScissors_hover_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beebop_Flowerpot_Front_0
+      name: OpenScissors_hover_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 37
-        width: 348
-        height: 315
+        x: 0
+        y: 0
+        width: 500
+        height: 500
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3666562f4807b5610800000000000000
-      internalID: 1611005008019809891
+      spriteID: 0adfa1fefd8ae9d478c0a97abd457bab
+      internalID: -820227393
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 06c39dd283c379649b43c0a2cfcda246
+    spriteID: 0fd7c60efb7cd3c4d8b9907183f81475
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beebop_Flowerpot_Front_0: 1611005008019809891
+      OpenScissors_hover_0: -820227393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

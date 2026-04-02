@@ -1,35 +1,44 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))] 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class DragReturn : MonoBehaviour
 {
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
     Camera cam;
+    SpriteRenderer sr;
 
-    Vector2 offset; 
+    Vector2 offset;
     Vector2 startPos;
 
     bool dragging;
 
-    public Bin bin; 
+    public Bin bin;
     public PackingBin packingBin;
 
     public bool returnToStartPosition = true;
 
     private Animator scissorAnimator;
 
+    [Header("Hover Sprite")]
+    public Sprite normalSprite;
+    public Sprite hoverSprite;
+
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        sr = GetComponent<SpriteRenderer>();
 
         scissorAnimator = GetComponent<Animator>();
 
-        rb.gravityScale = 0f; // ensure no gravity
+        rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
+
+        if (sr != null && normalSprite != null)
+            sr.sprite = normalSprite;
     }
 
-    // IMPORTANT: store correct start position every time object becomes active
     void OnEnable()
     {
         if (rb == null)
@@ -37,14 +46,39 @@ public class DragReturn : MonoBehaviour
 
         startPos = rb.position;
         rb.linearVelocity = Vector2.zero;
+
+        if (sr != null && normalSprite != null)
+            sr.sprite = normalSprite;
+    }
+
+    void OnMouseEnter()
+    {
+        if (!dragging && scissorAnimator != null)
+            scissorAnimator.SetBool("isHover", true);
+        if (sr != null && hoverSprite != null)
+            sr.sprite = hoverSprite;
+    }
+
+    void OnMouseExit()
+    {
+        if (!dragging && scissorAnimator != null)
+            scissorAnimator.SetBool("isHover", false);
+        if (sr != null && normalSprite != null)
+            sr.sprite = normalSprite;
     }
 
     void OnMouseDown()
     {
         dragging = true;
 
+        if (sr != null && hoverSprite != null)
+            sr.sprite = hoverSprite;
+
         if (scissorAnimator != null)
+        {
+            scissorAnimator.SetBool("isHover", false);
             scissorAnimator.SetBool("isCutting", true);
+        }
 
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         offset = rb.position - mouseWorld;
@@ -57,16 +91,17 @@ public class DragReturn : MonoBehaviour
         if (scissorAnimator != null)
             scissorAnimator.SetBool("isCutting", false);
 
-        // Call bin disposal BEFORE resetting position
         if (bin != null)
             bin.TryDispose();
 
         if (packingBin != null)
             packingBin.TryDispose();
 
-        // Hard reset physics properly
         rb.linearVelocity = Vector2.zero;
         rb.position = startPos;
+
+        if (sr != null && normalSprite != null)
+            sr.sprite = normalSprite;
     }
 
     void FixedUpdate()
@@ -78,5 +113,4 @@ public class DragReturn : MonoBehaviour
 
         rb.MovePosition(newPos);
     }
-
 }

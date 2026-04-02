@@ -81,5 +81,8 @@ TagManager:
   - name: Arrow
     uniqueID: 3643223499
     locked: 0
+  - name: Particle
+    uniqueID: 3317916293
+    locked: 0
   m_RenderingLayers:
   - Default

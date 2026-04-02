@@ -47,6 +47,10 @@ public class PollinationManager : MonoBehaviour
         ReadyHybrid = null;
 
         ResetAllFlowers();
+        if (beeController != null)
+        {
+            beeController.StopPollinateEffect();
+        }
     }
 
 
@@ -102,7 +106,7 @@ public class PollinationManager : MonoBehaviour
                 // optional visual
                 StartCoroutine(ShowForSeconds(MaxHybridReachedUI, 1f));
 
-                OnClearPollination(); // VERY IMPORTANT
+                OnClearPollination();
                 return false;
             }
 

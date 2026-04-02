@@ -34,6 +34,8 @@ public class BeeController : MonoBehaviour
 
     string currentAnim = "";
 
+    public ParticleSystem pollinateParticle;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -106,6 +108,7 @@ public class BeeController : MonoBehaviour
         if (currentFlower != null && !currentFlower.isPollinated)
         {
             currentFlower.ShowPollinateIndicator(true);
+            ShowPollinateEffect();
             StartCoroutine(DoPollination(currentFlower));
             return;
         }
@@ -125,7 +128,7 @@ public class BeeController : MonoBehaviour
 
     IEnumerator DoPollination(NormalFlower flower)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1f);
 
         pollinationManager.TryAddPollinatedFlower(flower);
         flower.ShowPollinateIndicator(false);
@@ -184,5 +187,20 @@ public class BeeController : MonoBehaviour
         currentPot = null;
         targetPosition = startPosition;
         hasTarget = true;
+    }
+
+    public void ShowPollinateEffect()
+    {
+        if (pollinateParticle == null) return;
+
+        pollinateParticle.Clear();
+        pollinateParticle.Play();
+    }
+
+    public void StopPollinateEffect()
+    {
+        if (pollinateParticle == null) return;
+
+        pollinateParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 }

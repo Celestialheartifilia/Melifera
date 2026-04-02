@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c05d3558ae19d142bb819d0bc1f61e5
+guid: ca2456097b6493346868e1a8ba05a4ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1611005008019809891
-    second: Beebop_Flowerpot_Front_0
+      213: 1298042044935875650
+    second: CloseScissors_hover_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beebop_Flowerpot_Front_0
+      name: CloseScissors_hover_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 37
-        width: 348
-        height: 315
+        x: 22
+        y: 69
+        width: 447
+        height: 366
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3666562f4807b5610800000000000000
-      internalID: 1611005008019809891
+      spriteID: 24cacefcc52930210800000000000000
+      internalID: 1298042044935875650
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 06c39dd283c379649b43c0a2cfcda246
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Beebop_Flowerpot_Front_0: 1611005008019809891
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
