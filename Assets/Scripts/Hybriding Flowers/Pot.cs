@@ -202,7 +202,7 @@ public class Pot : MonoBehaviour
 
     IEnumerator ShowFlowerAfterGrow()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.9f);
 
         if (plantedHybrid == hybrid1Data)
         {
