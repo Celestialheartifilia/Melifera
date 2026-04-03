@@ -132,7 +132,7 @@ public class BeeController : MonoBehaviour
     {
         flower.ShowPollinateIndicator(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         pollinationManager.TryAddPollinatedFlower(flower);
         flower.ShowPollinateIndicator(false);
