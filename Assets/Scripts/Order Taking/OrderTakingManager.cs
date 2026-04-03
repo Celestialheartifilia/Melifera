@@ -53,10 +53,15 @@ public class OrderTakingManager : MonoBehaviour
         currentOrder = null;
         ResetBouquet();
 
-        hasTakenOrder = false; // reset for next customer
+        hasTakenOrder = false;
 
         currentCustomerIndex++;
 
+        if (currentCustomerIndex < maxCustomers)
+        {
+            if (SoundEffectPlayer.Instance != null)
+                SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.customerArrivedSFX);
+        }
     }
     public bool IsAfterLastCustomer()
     {

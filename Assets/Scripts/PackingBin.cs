@@ -22,7 +22,6 @@ public class PackingBin : MonoBehaviour
         if (binAnimator != null)
             binAnimator.SetBool("Open", true);
 
-        // tutorial protection check FIRST
         if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(other.gameObject))
         {
             currentDisposable = null;
@@ -61,12 +60,14 @@ public class PackingBin : MonoBehaviour
         if (currentDisposable == null)
             return;
 
-        // block protected tutorial flower
         if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(currentDisposable))
         {
             currentDisposable = null;
             return;
         }
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.trashBinSFX);
 
         Debug.Log(currentDisposable);
         packingManager.HandleDisposal(currentDisposable);
@@ -78,13 +79,15 @@ public class PackingBin : MonoBehaviour
         if (flowerObj == null)
             return false;
 
-        // block protected tutorial flower
         if (PackingTutorial.Instance != null && PackingTutorial.Instance.IsProtectedFlower(flowerObj))
         {
             if (UIManager.Instance != null)
                 UIManager.Instance.ShowMessage("Flower is correct, disposal not needed.");
             return false;
         }
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.trashBinSFX);
 
         packingManager.HandleDisposal(flowerObj);
         currentDisposable = null;
@@ -93,15 +96,12 @@ public class PackingBin : MonoBehaviour
 
     void OnMouseDown()
     {
-        // during tutorial, if correct flower is already spawned, block whole bouquet disposal
         if (PackingTutorial.Instance != null && PackingTutorial.Instance.ShouldBlockWholeBouquetDispose())
         {
             if (UIManager.Instance != null)
                 UIManager.Instance.ShowMessage("Flower is correct, disposal not needed.");
             return;
         }
-
-            
 
         packingManager.DisposeWholeBouquet();
     }

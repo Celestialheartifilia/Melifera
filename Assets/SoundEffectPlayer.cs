@@ -9,7 +9,7 @@ public class SoundEffectPlayer : MonoBehaviour
     public AudioClip trashBinSFX, 
         orderTakingSFX, 
         SprinkleFertilizerSFX, 
-        buzzingSFX, scissorsCuttingSFX,
+        scissorsCuttingSFX,
         buttonClickSFX, wrappingPaperSFX, 
         wrongOrderSFX, 
         customerArrivedSFX, 
@@ -56,12 +56,6 @@ public class SoundEffectPlayer : MonoBehaviour
     public void SprinkleFertilizer()
     {
         src.clip = SprinkleFertilizerSFX;
-        src.Play();
-    }
-
-    public void BuzzingSound()
-    {
-        src.clip = buzzingSFX;
         src.Play();
     }
 

@@ -24,13 +24,15 @@ public class DragLeaf : MonoBehaviour
     {
         dragging = true;
 
+        // leaf pluck SFX
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.pluckOutLeavesSFX);
+
         Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
         offset = (Vector2)transform.position - mouse;
 
-        // disable flower dragging
         flower.enabled = false;
 
-        // detach from flower
         if (!detached)
         {
             transform.parent = null;
@@ -49,8 +51,6 @@ public class DragLeaf : MonoBehaviour
     void OnMouseUp()
     {
         dragging = false;
-
-        // enable flower again
         flower.enabled = true;
     }
 

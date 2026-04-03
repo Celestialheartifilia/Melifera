@@ -150,53 +150,42 @@ public class Pot : MonoBehaviour
     //method is used in FertilizerGrowFlower script
     public bool Fertilise()
     {
-        //ensure state is in planted
         if (growthState != FlowerGrowthState.Planted)
         {
             Debug.LogWarning("[POT] Fertilise failed — wrong state.");
             return false;
         }
 
+        // fertilizer SFX
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.SprinkleFertilizerSFX);
+
         if (spriteRenderer != null && pollenPotSprite != null)
         {
             spriteRenderer.sprite = emptyPotSprite;
         }
 
-        // Enable fertiliser + scissors colliders
         if (fertiliserCollider != null)
         {
             fertiliserCollider.enabled = true;
         }
 
-        //new
         if (hybridFlower1 != null) hybridFlower1.SetActive(false);
         if (hybridFlower2 != null) hybridFlower2.SetActive(false);
         if (hybridFlower3 != null) hybridFlower3.SetActive(false);
 
         flowerGrow.SetActive(true);
 
-        if(flowerGrowAnimator != null)
+        if (flowerGrowAnimator != null)
         {
             flowerGrowAnimator.SetTrigger("Grow");
         }
 
         StartCoroutine(ShowFlowerAfterGrow());
 
-
-        //use when final flower is out
-        //if (spriteRenderer != null && pollenPotSprite != null)
-        //{
-        //    spriteRenderer.sprite = potWithStudSprite;
-        //}
-
-        //changes the state to fertilised
         growthState = FlowerGrowthState.Fertilised;
         Debug.Log("[FERTILISE] Fertilizer applied");
 
-
-        //add anim here, then grow method
-        //Grow();
-        //if fertilise is successful
         return true;
     }
 
@@ -243,6 +232,9 @@ public class Pot : MonoBehaviour
         {
             return;
         }
+
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.flowerGrowingSFX);
+
         //changes the state to grown
         growthState = FlowerGrowthState.Grown;
         Debug.Log("[GROW] Flower fully grown");

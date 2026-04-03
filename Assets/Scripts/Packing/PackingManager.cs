@@ -24,9 +24,6 @@ public class PackingManager : MonoBehaviour
     [Header("Flower Gameplay Objects")]
     public FlowerEntry[] flowers;
 
-    //public GameObject hybridLacone;
-    //public GameObject hybridForlaven;
-
     [Header("Wrap Visual")]
     public SpriteRenderer wrapBackRenderer;
     public SpriteRenderer wrapFrontRenderer;
@@ -115,9 +112,6 @@ public class PackingManager : MonoBehaviour
             ShowTakeOrderFirstMessage();
     }
 
-    // =========================
-    // INVENTORY UI
-    // =========================
     void DisplayHybridInventory()
     {
         for (int i = 0; i < hybridSlots.Length; i++)
@@ -137,7 +131,6 @@ public class PackingManager : MonoBehaviour
             slotButton.gameObject.SetActive(true);
             slotButton.image.sprite = stack.item.itemSprite;
 
-            // ADD TEXT
             Text qtyText = slotButton.GetComponentInChildren<Text>();
             if (qtyText != null)
                 qtyText.text = "x" + stack.amount;
@@ -149,9 +142,6 @@ public class PackingManager : MonoBehaviour
         }
     }
 
-    // =========================
-    // FLOWER SPAWN
-    // =========================
     public void ActivateFlowerFromInventory(ItemsSOScript flowerData)
     {
         if (!HasValidOrder())
@@ -197,17 +187,17 @@ public class PackingManager : MonoBehaviour
         OrderTakingManager.Instance.currentBouquet.flowers = new List<ItemsSOScript>(bouquetFlowers);
 
         flowerObj.SetActive(true);
-        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
 
         InventoryManager.Instance.RemoveHybrid(flowerData);
         DisplayHybridInventory();
 
-        // If this is the first flower, keep its original transform
         if (bouquetFlowers.Count == 1)
         {
             ResetFlowerToOriginalTransform(flowerObj);
         }
-        // If now there are 2 flowers, arrange both using placement SO
         else if (bouquetFlowers.Count == 2)
         {
             RelayoutActiveFlowers();
@@ -243,7 +233,6 @@ public class PackingManager : MonoBehaviour
 
     GameObject GetAvailableFlowerObject(ItemsSOScript flowerData)
     {
-        // get all matching flowers
         List<FlowerEntry> matching = new List<FlowerEntry>();
 
         foreach (var f in flowers)
@@ -255,13 +244,11 @@ public class PackingManager : MonoBehaviour
         if (matching.Count == 0)
             return null;
 
-        // get index
         if (!flowerIndexTracker.ContainsKey(flowerData))
             flowerIndexTracker[flowerData] = 0;
 
         int startIndex = flowerIndexTracker[flowerData];
 
-        // loop through list
         for (int i = 0; i < matching.Count; i++)
         {
             int index = (startIndex + i) % matching.Count;
@@ -276,9 +263,6 @@ public class PackingManager : MonoBehaviour
         return null;
     }
 
-    // =========================
-    // FLOWER PLACEMENT (SO)
-    // =========================
     FlowerPlacementsSOScript GetPlacementData(ItemsSOScript flower)
     {
         foreach (var placement in flowerPlacements)
@@ -334,14 +318,12 @@ public class PackingManager : MonoBehaviour
 
         int activeCount = activeFlowers.Count;
 
-        // 1 flower → original position
         if (activeCount == 1)
         {
             ResetFlowerToOriginalTransform(activeFlowers[0]);
             return;
         }
 
-        // 2 flowers → placement system
         for (int i = 0; i < activeFlowers.Count; i++)
         {
             GameObject flowerObj = activeFlowers[i];
@@ -356,9 +338,6 @@ public class PackingManager : MonoBehaviour
         UpdateFlowerOpacity();
     }
 
-    // =========================
-    // LEAF COMPLETE
-    // =========================
     public void OnLeavesPlucked()
     {
         pluckingInProgress = false;
@@ -367,7 +346,6 @@ public class PackingManager : MonoBehaviour
         SetWrapButtons(true);
         SetAccessoryButtons(false);
 
-        // If both flowers exist, restore full opacity
         if (bouquetFlowers.Count >= 2)
         {
             foreach (var f in flowers)
@@ -389,21 +367,25 @@ public class PackingManager : MonoBehaviour
     {
         if (pluckingInProgress == false)
         {
+            if (SoundEffectPlayer.Instance != null)
+                SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
             wrapAccessoryTab.SetActive(true);
             wrapAccessoryTabBackground.SetActive(true);
         }
-        
     }
 
     public void ClickToFlowerTab()
     {
         if (pluckingInProgress == false)
         {
+            if (SoundEffectPlayer.Instance != null)
+                SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
             flowerTab.SetActive(true);
             wrapAccessoryTab.SetActive(false);
             wrapAccessoryTabBackground.SetActive(false);
         }
-
     }
 
     void SetWrapButtons(bool state)
@@ -418,11 +400,10 @@ public class PackingManager : MonoBehaviour
         accessory2Button.gameObject.SetActive(state);
     }
 
-    // =========================
-    // WRAP
-    // =========================
     public void SelectWrap1()
     {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.wrappingPaperSFX);
 
         selectedWrap = wrap1;
         wrapSelected = true;
@@ -439,6 +420,8 @@ public class PackingManager : MonoBehaviour
 
     public void SelectWrap2()
     {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.wrappingPaperSFX);
 
         selectedWrap = wrap2;
         wrapSelected = true;
@@ -453,14 +436,12 @@ public class PackingManager : MonoBehaviour
         CheckIfOrderReady();
     }
 
-    // =========================
-    // ACCESSORY
-    // =========================
     public void SelectAccessory1()
     {
-
-
         if (!wrapSelected) return;
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.addAccessoriesSFX);
 
         selectedAccessory = accessory1;
         accessorySelected = true;
@@ -476,9 +457,10 @@ public class PackingManager : MonoBehaviour
 
     public void SelectAccessory2()
     {
-
-
         if (!wrapSelected) return;
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.addAccessoriesSFX);
 
         selectedAccessory = accessory2;
         accessorySelected = true;
@@ -516,12 +498,12 @@ public class PackingManager : MonoBehaviour
             return;
         }
 
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
         ValidateOrder();
     }
 
-    // =========================
-    // VALIDATION
-    // =========================
     void ValidateOrder()
     {
         var order = OrderTakingManager.Instance.currentOrder;
@@ -543,13 +525,18 @@ public class PackingManager : MonoBehaviour
             {
                 LastCorrectOrderPrompt.SetActive(true);
                 Debug.Log("Last Correct Order Prompt");
+
+                if (SoundEffectPlayer.Instance != null)
+                    SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.correctOrderSFX);
             }
             else
             {
                 CorrectOrderPrompt.SetActive(true);
                 Debug.Log("Correct Order Prompt");
+
+                if (SoundEffectPlayer.Instance != null)
+                    SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.correctOrderSFX);
             }
-                
         }
         else
         {
@@ -559,11 +546,17 @@ public class PackingManager : MonoBehaviour
             {
                 LastWrongOrderPrompt.SetActive(true);
                 Debug.Log("Last Wrong Order Prompt");
+
+                if (SoundEffectPlayer.Instance != null)
+                    SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.wrongOrderSFX);
             }
             else
             {
                 WrongOrderPrompt.SetActive(true);
                 Debug.Log("Correct Wrong Prompt");
+
+                if (SoundEffectPlayer.Instance != null)
+                    SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.wrongOrderSFX);
             }
         }
 
@@ -586,12 +579,11 @@ public class PackingManager : MonoBehaviour
 
         if (OrderTakingManager.Instance.IsAfterLastCustomer())
         {
-            // Show score screen instead of going back to order scene
-            ScoreManager.Instance.ShowFinalScore(); // or load a score scene
+            ScoreManager.Instance.ShowFinalScore();
         }
         else
         {
-            sceneLoader.LoadMainGameScene(); // your normal flow
+            sceneLoader.LoadMainGameScene();
         }
     }
 
@@ -624,9 +616,6 @@ public class PackingManager : MonoBehaviour
         return true;
     }
 
-    // =========================
-    // DISPOSAL
-    // =========================
     public void HandleDisposal(GameObject disposed)
     {
         if (disposed == accessory1Object || disposed == accessory2Object)
@@ -697,7 +686,9 @@ public class PackingManager : MonoBehaviour
                         UIManager.Instance.ShowMessage("Remove accessory and wrap first!");
                     return;
                 }
+
                 RemoveFlowerFromBouquet(disposed);
+
                 Debug.Log("Flower removed");
                 if (UIManager.Instance != null)
                     UIManager.Instance.ShowMessage("Flower removed");
@@ -725,15 +716,15 @@ public class PackingManager : MonoBehaviour
 
     public void DisposeWholeBouquet()
     {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.trashBinSFX);
+
         Debug.Log("Whole bouquet disposed");
         if (UIManager.Instance != null)
             UIManager.Instance.ShowMessage("Disposed everything!");
         ResetPackingScene();
     }
 
-    // =========================
-    // RESET / RESTORE
-    // =========================
     void ResetPackingScene()
     {
         bouquetFlowers.Clear();
@@ -754,7 +745,7 @@ public class PackingManager : MonoBehaviour
 
         foreach (var f in flowers)
         {
-            ResetLeaves(f.flowerObject); // reset EACH flower
+            ResetLeaves(f.flowerObject);
         }
 
         wrapBackRenderer.sprite = null;
@@ -904,15 +895,6 @@ public class PackingManager : MonoBehaviour
             float alpha = (i == 0 && activeFlowers.Count >= 2) ? 0.5f : 1f;
             SetFlowerOpacity(activeFlowers[i], alpha);
         }
-        //if (activeFlowers.Count == 1)
-        //{
-        //    SetFlowerOpacity(activeFlowers[0], 1f);
-        //}
-        //else if (activeFlowers.Count >= 2)
-        //{
-        //    SetFlowerOpacity(activeFlowers[0], 0.5f);
-        //    SetFlowerOpacity(activeFlowers[1], 1f);
-        //}
     }
 
     bool HasValidOrder()
@@ -932,7 +914,6 @@ public class PackingManager : MonoBehaviour
     {
         bool hasOrder = HasValidOrder();
 
-        // flower slots
         foreach (Button slot in hybridSlots)
         {
             slot.interactable = hasOrder;
@@ -943,15 +924,12 @@ public class PackingManager : MonoBehaviour
             btn.interactable = hasOrder;
         }
 
-        // wrap buttons
         wrap1Button.interactable = hasOrder;
         wrap2Button.interactable = hasOrder;
 
-        // accessory buttons
         accessory1Button.interactable = hasOrder;
         accessory2Button.interactable = hasOrder;
 
-        // order complete button
         if (!hasOrder)
             orderCompleteButton.interactable = false;
     }

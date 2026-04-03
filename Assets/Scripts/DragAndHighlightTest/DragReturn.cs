@@ -24,6 +24,9 @@ public class DragReturn : MonoBehaviour
     public Sprite normalSprite;
     public Sprite hoverSprite;
 
+    [Header("SFX")]
+    public bool playScissorsSFX = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +58,7 @@ public class DragReturn : MonoBehaviour
     {
         if (!dragging && scissorAnimator != null)
             scissorAnimator.SetBool("isHover", true);
+
         if (sr != null && hoverSprite != null)
             sr.sprite = hoverSprite;
     }
@@ -63,6 +67,7 @@ public class DragReturn : MonoBehaviour
     {
         if (!dragging && scissorAnimator != null)
             scissorAnimator.SetBool("isHover", false);
+
         if (sr != null && normalSprite != null)
             sr.sprite = normalSprite;
     }
@@ -70,6 +75,9 @@ public class DragReturn : MonoBehaviour
     void OnMouseDown()
     {
         dragging = true;
+
+        if (playScissorsSFX && SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.scissorsCuttingSFX);
 
         if (sr != null && hoverSprite != null)
             sr.sprite = hoverSprite;

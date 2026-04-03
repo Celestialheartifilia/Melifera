@@ -36,11 +36,13 @@ public class Bin : MonoBehaviour
         }
     }
 
-
     public void TryDispose()
     {
         if (currentDisposable == null)
             return;
+
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.trashBinSFX);
 
         Pot pot = currentDisposable.GetComponent<Pot>();
 

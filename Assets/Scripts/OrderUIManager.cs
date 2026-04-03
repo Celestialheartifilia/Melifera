@@ -40,11 +40,14 @@ public class OrderUIManager : MonoBehaviour
 
         var manager = OrderTakingManager.Instance;
 
-        // create order only once
         if (!manager.hasTakenOrder)
         {
             manager.CreateNewOrder(manager.pendingOrderType);
             manager.hasTakenOrder = true;
+
+            // order taking SFX
+            if (SoundEffectPlayer.Instance != null)
+                SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.orderTakingSFX);
         }
 
         if (orderBubbleUI != null)
