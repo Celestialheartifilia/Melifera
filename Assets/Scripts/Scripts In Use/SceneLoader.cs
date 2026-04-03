@@ -11,7 +11,6 @@ public class SceneLoader : MonoBehaviour
 
     void Start()
     {
-        // When scene starts -> fade OUT (black -> clear)
         if (fadePanel != null)
             StartCoroutine(FadeOutOnStart());
     }
@@ -19,33 +18,33 @@ public class SceneLoader : MonoBehaviour
     IEnumerator FadeOutOnStart()
     {
         fadePanel.gameObject.SetActive(true);
-
-        // start fully black
         SetAlpha(1f);
 
         yield return StartCoroutine(Fade(1, 0));
 
-        // disable so it doesn't block UI
         fadePanel.gameObject.SetActive(false);
     }
 
-    // =============================
-    // SCENE LOAD FUNCTIONS
-    // =============================
-    public void LoadStartScene() => StartCoroutine(LoadScene("StartScene"));
-    public void LoadMainGameScene() => StartCoroutine(LoadScene("MainGameScene"));
-    public void LoadOrderTakingScene() => StartCoroutine(LoadScene("OrderTakingScene"));
-    public void LoadHybridingFlowerScene() => StartCoroutine(LoadScene("HybridingFlowerScene"));
-    public void LoadPackingScene() => StartCoroutine(LoadScene("PackingScene"));
-    public void LoadOptionMenuScene() => StartCoroutine(LoadScene("OptionMenuScene"));
+    public void LoadStartScene() => LoadSceneWithSFX("StartScene");
+    public void LoadMainGameScene() => LoadSceneWithSFX("MainGameScene");
+    public void LoadOrderTakingScene() => LoadSceneWithSFX("OrderTakingScene");
+    public void LoadHybridingFlowerScene() => LoadSceneWithSFX("HybridingFlowerScene");
+    public void LoadPackingScene() => LoadSceneWithSFX("PackingScene");
+    public void LoadOptionMenuScene() => LoadSceneWithSFX("OptionMenuScene");
+
+    void LoadSceneWithSFX(string sceneName)
+    {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
+        StartCoroutine(LoadScene(sceneName));
+    }
 
     IEnumerator LoadScene(string sceneName)
     {
-        // enable panel so we can fade in
         fadePanel.gameObject.SetActive(true);
 
-        yield return StartCoroutine(Fade(0, 1)); // fade IN to black
-
+        yield return StartCoroutine(Fade(0, 1));
         yield return new WaitForSeconds(delayBeforeLoad);
 
         SceneManager.LoadScene(sceneName);

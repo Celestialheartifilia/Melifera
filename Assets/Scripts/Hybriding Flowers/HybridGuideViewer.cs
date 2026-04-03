@@ -14,6 +14,7 @@ public class HybridGuideViewer : MonoBehaviour
 
     public void ToggleGuide()
     {
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
         isOpen = !isOpen;
         guidePanel.SetActive(isOpen);
 

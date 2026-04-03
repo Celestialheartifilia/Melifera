@@ -34,6 +34,7 @@ public class StartMenuController : MonoBehaviour
 
     public void OnExitClick()
     {
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif

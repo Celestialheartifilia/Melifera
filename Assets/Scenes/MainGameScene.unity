@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 188406859}
   - component: {fileID: 188406860}
   m_Layer: 0
-  m_Name: PackagingTitle
+  m_Name: PackingTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,7 +2139,8 @@ GameObject:
   - component: {fileID: 453571522}
   - component: {fileID: 453571525}
   - component: {fileID: 453571528}
-  - component: {fileID: 453571527}
+  - component: {fileID: 453571529}
+  - component: {fileID: 453571530}
   m_Layer: 0
   m_Name: HybridButton
   m_TagString: Untagged
@@ -2217,46 +2218,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &453571527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453571521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6523bf7193a5ea45895ceb83dd244a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStationEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 95831832}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadHybridingFlowerScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 238924974}
-        m_TargetAssemblyTypeName: MainGameTutorial, Assembly-CSharp
-        m_MethodName: EndTutorialHybrid
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  spawnPoint: {fileID: 1795433848}
 --- !u!60 &453571528
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2264,7 +2225,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453571521}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2310,6 +2271,67 @@ PolygonCollider2D:
       - {x: 2.4814122, y: -0.0074508153}
       - {x: 1.1962163, y: 2.2346468}
   m_UseDelaunayMesh: 0
+--- !u!114 &453571529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453571521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c9bcbebbd2583468ebb2ca07b42441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 1795433848}
+  sceneLoader: {fileID: 95831832}
+  mainGameTutorial: {fileID: 238924974}
+--- !u!61 &453571530
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453571521}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.89, y: 4.46}
+    newSize: {x: 7.6, y: 2.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4.89, y: 4.46}
+  m_EdgeRadius: 0
 --- !u!1 &464128913
 GameObject:
   m_ObjectHideFlags: 0
@@ -7093,37 +7115,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1908608655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6523bf7193a5ea45895ceb83dd244a4, type: 3}
+  m_Script: {fileID: 11500000, guid: f1e1ade4dc2546142b55dc661d8ed5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStationEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 238924974}
-        m_TargetAssemblyTypeName: MainGameTutorial, Assembly-CSharp
-        m_MethodName: EndTutorial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 95831832}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadOrderTakingScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   spawnPoint: {fileID: 1197950716}
+  sceneLoader: {fileID: 95831832}
+  mainGameTutorial: {fileID: 238924974}
 --- !u!1 &1922958797
 GameObject:
   m_ObjectHideFlags: 0
@@ -8125,37 +8122,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102387247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6523bf7193a5ea45895ceb83dd244a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b0d67fba0e8e884e858ed6fcf60167d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onStationEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 238924974}
-        m_TargetAssemblyTypeName: MainGameTutorial, Assembly-CSharp
-        m_MethodName: EndTutorialPacking
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 95831832}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadPackingScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   spawnPoint: {fileID: 1817369326}
+  sceneLoader: {fileID: 95831832}
+  mainGameTutorial: {fileID: 238924974}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

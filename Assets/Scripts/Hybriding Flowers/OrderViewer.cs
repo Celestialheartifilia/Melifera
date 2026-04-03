@@ -27,6 +27,8 @@ public class OrderViewer : MonoBehaviour
             return;
         }
 
+        SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+
         isOpen = !isOpen;
 
         orderPanel.SetActive(isOpen);

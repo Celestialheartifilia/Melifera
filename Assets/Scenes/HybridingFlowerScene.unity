@@ -15236,6 +15236,7 @@ MonoBehaviour:
   returnToStartPosition: 1
   normalSprite: {fileID: 0}
   hoverSprite: {fileID: 0}
+  playScissorsSFX: 0
 --- !u!50 &1189174312
 Rigidbody2D:
   serializedVersion: 5
@@ -19234,6 +19235,7 @@ MonoBehaviour:
   returnToStartPosition: 1
   normalSprite: {fileID: 6689946350199266671, guid: 05098c653a2868a4d9906479d9e9c5aa, type: 3}
   hoverSprite: {fileID: 1982734976, guid: 72093e3612858704eb2c8951b185c37c, type: 3}
+  playScissorsSFX: 1
 --- !u!50 &1524150878
 Rigidbody2D:
   serializedVersion: 5

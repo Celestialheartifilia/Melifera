@@ -76,17 +76,21 @@ public class DragReturn : MonoBehaviour
     {
         dragging = true;
 
-        if (playScissorsSFX && SoundEffectPlayer.Instance != null)
-            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.scissorsCuttingSFX);
-
-        if (sr != null && hoverSprite != null)
-            sr.sprite = hoverSprite;
-
         if (scissorAnimator != null)
         {
             scissorAnimator.SetBool("isHover", false);
             scissorAnimator.SetBool("isCutting", true);
         }
+
+        if (playScissorsSFX && SoundEffectPlayer.Instance != null)
+        {
+            SoundEffectPlayer.Instance.PlaySound(
+                SoundEffectPlayer.Instance.scissorsCuttingSFX
+            );
+        }
+
+        if (sr != null && hoverSprite != null)
+            sr.sprite = hoverSprite;
 
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
         offset = rb.position - mouseWorld;

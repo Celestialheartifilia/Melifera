@@ -133,6 +133,8 @@ public class MainGameTutorial : MonoBehaviour
 
     public void Step2()
     {
+        PlayButtonClickSFX();
+
         step1.SetActive(false);
         next1.SetActive(false);
         step2.SetActive(true);
@@ -140,6 +142,8 @@ public class MainGameTutorial : MonoBehaviour
     }
     public void Step3()
     {
+        PlayButtonClickSFX();
+
         step2.SetActive(false);
         next2.SetActive(false);
         black.SetActive(false);
@@ -281,6 +285,12 @@ public class MainGameTutorial : MonoBehaviour
         EnableStationCollider();
         PlayerPrefs.SetInt("GoPackingTutorialDone", 1);
 
+    }
+
+    void PlayButtonClickSFX()
+    {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
     }
 }
 

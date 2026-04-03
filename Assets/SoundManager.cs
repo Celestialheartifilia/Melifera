@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // Load saved volume (default = 1 if nothing saved)
-        currentVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        currentVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
 
         // Apply volume

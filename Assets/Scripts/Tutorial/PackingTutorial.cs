@@ -307,4 +307,10 @@ public class PackingTutorial : MonoBehaviour
         if (!IsTutorial()) return false;
         return protectedFlowerObject != null;
     }
+
+    public void PlayButtonClickSFX()
+    {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
+    }
 }

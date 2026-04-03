@@ -198,6 +198,7 @@ public class HybridTutorial : MonoBehaviour
                 break;
 
             case 2:
+                PlayButtonClickSFX();
                 // Clear pollination button
                 step2.SetActive(true);
                 next2.SetActive(true);
@@ -205,6 +206,7 @@ public class HybridTutorial : MonoBehaviour
                 break;
 
             case 3:
+                PlayButtonClickSFX();
                 // Bin explanation
                 step3.SetActive(true);
                 next3.SetActive(true);
@@ -212,6 +214,7 @@ public class HybridTutorial : MonoBehaviour
                 break;
 
             case 4:
+                PlayButtonClickSFX();
                 // Order list button
                 black3.SetActive(true);
                 step4.SetActive(true);
@@ -220,6 +223,7 @@ public class HybridTutorial : MonoBehaviour
                 break;
 
             case 5:
+                PlayButtonClickSFX();
                 // Hybrid book open/close
                 black3.SetActive(true);
                 step5.SetActive(true);
@@ -328,5 +332,11 @@ public class HybridTutorial : MonoBehaviour
         beeController.enabled = true;
 
         pollinationManager.ResetPollination();
+    }
+
+    void PlayButtonClickSFX()
+    {
+        if (SoundEffectPlayer.Instance != null)
+            SoundEffectPlayer.Instance.PlaySound(SoundEffectPlayer.Instance.buttonClickSFX);
     }
 }
